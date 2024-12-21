@@ -1,4 +1,4 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import cors from 'cors';
 import dotenv from 'dotenv'
 dotenv.config()
@@ -13,6 +13,10 @@ import connectToDb from "./config/connectDB.js";
 import { authRouter } from "./routes/userAuth.js";
 
 
+
+//middlewares....
+ app.use(express.json());
+ app.use(urlencoded({extended:true}))
 
 //routes..
 

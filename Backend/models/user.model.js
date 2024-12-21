@@ -17,5 +17,12 @@ const userSchma = new Schema({
         type:String,
         enum:['user','assitant','teacher'],
         default:'user'
+    },
+    validateUser:{
+        type:Boolean,
+        default:false
     }
-},{timestamps:true})
+},{timestamps:true});
+
+const user  = model('user',userSchma);
+export default user
