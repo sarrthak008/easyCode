@@ -2,16 +2,19 @@ import user from "../models/user.model.js";
 import otp from "../models/otp.model.js";
 import bcrypt from "bcrypt"
 import nodemailer from "nodemailer"
+import jwt from "jsonwebtoken"
 
-// import my routes or controller or configg..
+// import my routes or controller or configg.
+import { responder } from "../utils/responder.js";
 
 
 const postSignup = async (req, res) => {
 
     // create a function that create OTP of four digit 
     const getOtp = () => {
-        return (Math.floor(1000 + Math.random() * 9999))
+        return Math.floor(1000 + Math.random() * 9000);
     }
+
 
     // create a SMTP server or Transporter..
     const transporter = nodemailer.createTransport({
@@ -32,11 +35,7 @@ const postSignup = async (req, res) => {
         // checks the req.body cntainig given data or not...
         for (const element of requiredData) {
             if (!req.body[element]) {
-                return res.json({
-                    success: false,
-                    message: `${element} is required`
-                    ,
-                }).status(400)
+                return responder(res, false, `${element} is required`, null, 400)
             }
         }
 
@@ -45,10 +44,7 @@ const postSignup = async (req, res) => {
         // if user already exist send responce as user already exist...
 
         if (alreadyExitUser) {
-            return res.json({
-                success: false,
-                message: 'email is already exist'
-            }).status(400)
+            return responder(res, false, 'email is already exist', null, 400);
         }
 
         // hash the password for security ....
@@ -66,10 +62,7 @@ const postSignup = async (req, res) => {
         //checks the user is successfully created or not ...
 
         if (!createduser) {
-            return res.json({
-                message: "something went wrong",
-                success: false
-            }).status(400)
+            return responder(res, false, 'something went wrong', null, 400);
         } else {
 
             //create and send OTP...
@@ -82,7 +75,7 @@ const postSignup = async (req, res) => {
                 to: `${email}`,
                 subject: `hello this message is regarding to signup please dont share your OTP`,
                 text: "hello student keep learning",
-                html: `<h1>your otp is : <b> ${OTP} </b></h1>`,
+                html: `<h2>your otp is : <h1><b> ${OTP} </b></h1></h2>`,
             });
 
             const newOtp = new otp({
@@ -93,45 +86,95 @@ const postSignup = async (req, res) => {
             const sendedOTP = await newOtp.save()
             if (!sendedOTP) {
                 await user.findByIdAndDelete(createduser._id);
-                return res.json({
-                    success: false,
-                    message: 'something went wrong try after some time'
-                }).status(400)
+                return responder(res, false, 'cant send mail try again', null, 400)
             }
 
-            res.json({
-                success: true,
-                message: 'otp send successfully please check your eamil'
-            }).status(200)
-
+            return responder(res, true, 'OTP send sucessfully please check your mail', null, 200)
         }
 
     } catch (error) {
 
-        return res.json({
-            success: false,
-            message: `something went wrong , ${error.message}`
-        }).status(400)
-
+        return responder(res, false, `${error.message}`, null, 400);
     }
 }
 
-const postVerificationMail = async () => {
-    let { email, otp } = req.body;
-    const requireddata = ["email", "otp"];
-    for (const element of requireddata) {
-        if (!req.body[element]) {
-            return res.json({
-                success: false,
-                message: `${element} is required`
-            })
+const postVerifyEmail = async (req, res) => {
+
+    let { email, myotp } = req.body;
+    try {
+        const requireddata = ["email", "myotp"];
+
+        // checks the OTP and email are provide or not...
+        for (const element of requireddata) {
+            if (!req.body[element]) {
+                return responder(res, false, `${element} is required`, null, 400);
+            }
         }
+
+        let findedUser = await user.findOne({ email })
+        if (!findedUser) {
+            return responder(res, false, `cant found your account`, null, 400);
+        }
+
+        let allOTpInfo = await otp.findOne({ otp: myotp }).populate("userId", '_id')
+        if (!allOTpInfo) {
+            return responder(res, false, `invalid OTP`, null, 400);
+        }
+
+
+        if (!(allOTpInfo?.expireAt > Date.now) && myotp === allOTpInfo?.otp) {
+            findedUser.validateUser = true
+            await otp.deleteOne({ _id: allOTpInfo._id })
+            await findedUser.save()
+            return responder(res, true, `account create successfully`, null, 200);
+        } else {
+            return responder(res, false, `invalid OTP`, null, 400);
+        }
+
+
+    } catch (error) {
+        return responder(res, false, `invalid OTP`, null, 400);
     }
+}
+
+const postLogin = async (req,res) => {
+ 
+     const {email,password} = req.body
+     try {
+        const LoginUser = await user.findOne({email});
+        if(!LoginUser){
+           return responder(res,false,'cant find account please signup',null,400);
+        }
+
+        // matching the pass
+        let isPassMatch = await bcrypt.compare(password,LoginUser.password)
+        if(!isPassMatch){
+            return responder(res,false,'please check creandials',null,400);
+        }
+        
+        // making the JWT token that store user info
+         const token =  jwt.sign({
+            data:LoginUser
+         },process.env.JWT_SERECT,{expiresIn:'1w'})
+
+        return res.json({
+            
+         })
 
 
+     } catch (error) {
+        return responder(res,false,`${error.message}`,null,400);
+     }
+     
+
+
+
+
+
+    responder(res,true,'work',null,200);
 }
 
 
 
 
-export { postSignup }
+export { postSignup, postVerifyEmail ,postLogin}

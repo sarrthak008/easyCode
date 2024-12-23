@@ -10,6 +10,7 @@ const PORT =  process.env.PORT || 3000;
 // create routers....
 
 import connectToDb from "./config/connectDB.js";
+import { responder } from "./utils/responder.js";
 import { authRouter } from "./routes/userAuth.js";
 
 
@@ -24,17 +25,11 @@ app.use('/api/auth',authRouter)
 
 
 app.get('/health',(req,res)=>{
-     res.json({
-         success: true,
-          message: "server is runnig healthy..."
-     }).status(200)
+     responder(res,true,'server is running healthy',null,200);
 })
 
 app.use("*",(req,res)=>{
-     res.json({
-         success:false,
-         message: `${req.path} not found.`
-     }).status(404)
+  responder(res,false,`${req.baseUrl} not found`,null,404)
 })
 
 

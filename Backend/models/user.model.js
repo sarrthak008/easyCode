@@ -15,13 +15,20 @@ const userSchma = new Schema({
     },
     role:{
         type:String,
-        enum:['user','assitant','teacher'],
+        enum:['user','assitant','owner'],
         default:'user'
     },
     validateUser:{
         type:Boolean,
         default:false
-    }
+    },
+    courses:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:'course'
+        }
+    ]
+    
 },{timestamps:true});
 
 const user  = model('user',userSchma);
