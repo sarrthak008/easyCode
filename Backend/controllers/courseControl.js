@@ -64,4 +64,27 @@ const getmycourse = async (req, res) => {
 }
 
 
-export { getcourses, postcourse, getmycourse }
+const getcoursesStudent = async (req, res) => {
+    const courseId = req.body.courseId
+    try {
+        if (!courseId) {
+            return responder(res, false, "Course not found",null, 404)
+        }
+        const courseStudent = await course.find({ _id: courseId }).populate('students')
+
+        console.log (courseStudent)
+
+        if (!courseStudent) {
+            return responder(res, false, "No student found",null, 404)
+        }
+        return responder(res, true, "Course students", courseStudent, 200)
+
+
+    }
+    catch (error) {
+        return responder(res, false, `${error.message}`,null, 500)
+    }
+
+}
+
+    export { getcourses, postcourse, getmycourse, getcoursesStudent }
