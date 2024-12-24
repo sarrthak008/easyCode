@@ -15,7 +15,7 @@ import connectToDb from "./config/connectDB.js";
 import { responder } from "./utils/responder.js";
 import { authRouter } from "./routes/userAuth.js";
 import {courseRouter} from "./routes/courseRoute.js";
-import { verifyRouter } from "./routes/verifyRouter.js";
+import { requestRouter } from "./routes/requestRouter.js";
 
 //import middle wares
 
@@ -30,10 +30,9 @@ import { verifyRouter } from "./routes/verifyRouter.js";
  
 
 //routes..
-
 app.use('/api/auth',authRouter);
 app.use('/api/course',courseRouter);
-app.use('api/verify',verifyRouter)
+app.use('/api/request',requestRouter)
 
 
 app.get('/health',(req,res)=>{

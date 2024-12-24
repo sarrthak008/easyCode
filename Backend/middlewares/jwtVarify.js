@@ -25,17 +25,17 @@ const verifyJWTOwner = async (req, res, next) => {
         if (!token) {
             return responder(res, false, 'unauthrized user', null, 400);
         }
-        const user = jwt.verify(token, process.env.JWT_SERECT);
+        const userInfo = jwt.verify(token, process.env.JWT_SERECT);
         //console.log(user)
-        if (!user) {
+        if (!userInfo) {
             return responder(res, false, 'unauthrized user', null, 400);
         }
-        const checkRole = await user.findOne({ _id: user._id });
+        const checkRole = await user.findOne({ _id: userInfo._id });
 
         if (checkRole.role.toLowerCase() !== "owner") {
             return responder(res, false, 'you dont have permisson to add new course', null, 400);
         }
-        req.user = user
+        req.user = userInfo
         next()
 
     } catch (error) {
@@ -49,17 +49,17 @@ const verifyJWTAssitant = async (req,res,next) =>{
         if (!token) {
             return responder(res, false, 'unauthrized user', null, 400);
         }
-        const user = jwt.verify(token, process.env.JWT_SERECT);
+        const userInfo = jwt.verify(token, process.env.JWT_SERECT);
         //console.log(user)
-        if (!user) {
+        if (!userInfo) {
             return responder(res, false, 'unauthrized user', null, 400);
         }
-        const checkRole = await user.findOne({ _id: user._id });
+        const checkRole = await user.findOne({ _id: userInfo._id });
 
         if (checkRole.role.toLowerCase() !== "assitant") {
             return responder(res, false, 'you dont have permisson to add new course', null, 400);
         }
-        req.user = user
+        req.user = userInfo
         next()
 
     } catch (error) {
