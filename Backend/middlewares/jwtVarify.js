@@ -12,8 +12,8 @@ const verifyJwtUser = (req, res, next) => {
         if (!user) {
             return responder(res, false, 'cant found details', null, 400)
         }
-        next();
         req.user = user
+        next();
     } catch (error) {
         return responder(res, `${error.message}`, null, 400)
     }
@@ -63,7 +63,7 @@ const verifyJWTAssitant = async (req,res,next) =>{
         next()
 
     } catch (error) {
-        return responder(res, `${error.message}`, null, 400)
+        return responder(res, false,`${error.message}`, null, 400)
     }
 }
 
