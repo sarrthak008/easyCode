@@ -26,7 +26,7 @@ const verifyJWTOwner = async (req, res, next) => {
             return responder(res, false, 'unauthrized user', null, 400);
         }
         const user = jwt.verify(token, process.env.JWT_SERECT);
-        console.log(user)
+        //console.log(user)
         if (!user) {
             return responder(res, false, 'unauthrized user', null, 400);
         }
@@ -35,6 +35,7 @@ const verifyJWTOwner = async (req, res, next) => {
         if (checkRole.role.toLowerCase() !== "owner") {
             return responder(res, false, 'you dont have permisson to add new course', null, 400);
         }
+        req.user = user
         next()
 
     } catch (error) {
@@ -49,7 +50,7 @@ const verifyJWTAssitant = async (req,res,next) =>{
             return responder(res, false, 'unauthrized user', null, 400);
         }
         const user = jwt.verify(token, process.env.JWT_SERECT);
-        console.log(user)
+        //console.log(user)
         if (!user) {
             return responder(res, false, 'unauthrized user', null, 400);
         }
@@ -58,6 +59,7 @@ const verifyJWTAssitant = async (req,res,next) =>{
         if (checkRole.role.toLowerCase() !== "assitant") {
             return responder(res, false, 'you dont have permisson to add new course', null, 400);
         }
+        req.user = user
         next()
 
     } catch (error) {

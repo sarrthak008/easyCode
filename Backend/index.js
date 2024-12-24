@@ -44,8 +44,6 @@ app.use("*",(req,res)=>{
 
 
 
-
-
 app.listen(PORT,()=>{
      console.log(`app listen on port : ${PORT}`);
      connectToDb()

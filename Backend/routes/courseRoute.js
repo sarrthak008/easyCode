@@ -9,6 +9,7 @@ import  {getcourses,postcourse} from "../controllers/courseControl.js"
 
 courseRouter.get('/getcourse',getcourses);
 courseRouter.post('/addcourse',verifyJWTOwner,postcourse)
+courseRouter.get('/getMycourse',verifyJwtUser,getmycourse)
 
 
 
