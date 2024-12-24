@@ -32,7 +32,7 @@ import { verifyJwt } from "./middlewares/jwtVarify.js";
 //routes..
 
 app.use('/api/auth',authRouter);
-app.use('/api/course',verifyJwt,courseRouter);
+app.use('/api/course',courseRouter);
 
 
 app.get('/health',(req,res)=>{

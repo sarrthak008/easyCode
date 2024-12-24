@@ -2,10 +2,13 @@ import {Router} from "express"
 
 const courseRouter = Router()
 
-//controllers related courses...
-import  {getcourses} from "../controllers/courseControl.js"
+import {verifyJwt} from "../middlewares/jwtVarify.js"
 
-courseRouter.get('/getcourse',getcourses)
+//controllers related courses...
+import  {getcourses,postcourse} from "../controllers/courseControl.js"
+
+courseRouter.get('/getcourse',verifyJwt,getcourses);
+courseRouter.post('/addcourse',postcourse)
 
 
 

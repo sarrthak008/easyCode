@@ -146,13 +146,13 @@ const postLogin = async (req,res) => {
            return responder(res,false,'cant find account please signup',null,400);
         }
 
-        // matching the pass
+        // matching the pass..
         let isPassMatch = await bcrypt.compare(password,LoginUser.password)
         if(!isPassMatch){
             return responder(res,false,'please check creandials',null,400);
         }
         
-        // making the JWT token that store user info
+        // making the JWT token that store user info..
          const token =  jwt.sign({
              _id:LoginUser._id,
              role:LoginUser.role,
@@ -161,18 +161,14 @@ const postLogin = async (req,res) => {
              email:LoginUser.email
          },process.env.JWT_SERECT,{expiresIn:'1w'})
        
-        res.cookie('token',token)
-        responder(res,true,"login sucessfully",token,200);
+         res.cookie('token',token)
+         return  responder(res,true,"login sucessfully",token,200);
 
 
      } catch (error) {
         return responder(res,false,`${error.message}`,null,400);
      }
-
-    responder(res,true,'work',null,200);
 }
-
-
 
 
 export { postSignup, postVerifyEmail ,postLogin}
