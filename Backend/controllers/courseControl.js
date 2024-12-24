@@ -4,7 +4,14 @@ import course from "../models/course.model.js"
 
 
 const getcourses = async (req, res) => {
-    res.json("hii")
+    try {
+        const allcource = await course.find()
+        responder(res, true, "All courses", allcource, 200)
+    }
+    catch (error) {
+        responder(res, false, `${error.message}`, 500)
+    }
+
 }
 
 const postcourse = async (req, res) => {
