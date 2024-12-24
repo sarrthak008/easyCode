@@ -20,15 +20,16 @@ const getcourses = async (req, res) => {
 }
 
 const postcourse = async (req, res) => {
-    const { name, startingDate, instructor } = req.body
+    const { name, startingDate, instructor, prise } = req.body
     try {
-        if (!name || !startingDate || !instructor) {
+        if (!name || !startingDate || !instructor || !prise) {
             return responder(res, false, "All fields are required", 400);
         }
         const newcouse = new course({
             name,
             startingDate,
-            instructor
+            instructor,
+            prise
         })
         if (!newcouse) {
             return responder(res, false, "course not created", 400)
@@ -48,6 +49,7 @@ const getmycourse = async (req, res) => {
         if (!userId) {
             return responder(res, false, "User not found", 404)
         }
+        const mycourse = await course.find({ _id: userId })
 
 
 
