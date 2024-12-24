@@ -51,11 +51,14 @@ const getmycourse = async (req, res) => {
         }
         const mycourse = await course.find({ _id: userId })
 
-
+        if (!mycourse) {
+            return responder(res, false, "No course found", 404)
+        }
+        return responder(res, true, "My courses", mycourse, 200)
 
     }
     catch (error) {
-        responder(res, false, `${error.message}`, 500)
+        return responder(res, false, `${error.message}`, 500)
 
     }
 }
