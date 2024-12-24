@@ -3,9 +3,14 @@ import { responder } from "../utils/responder.js"
 import course from "../models/course.model.js"
 
 
+
+
 const getcourses = async (req, res) => {
     try {
         const allcource = await course.find()
+        if (!allcource) {
+            return responder(res, false, "No course found", 404)
+        }
         responder(res, true, "All courses", allcource, 200)
     }
     catch (error) {
@@ -36,5 +41,22 @@ const postcourse = async (req, res) => {
     }
 }
 
+const getmycourse = async (req, res) => {
+    const userId = req.user._id
+    console.log(userId)
+    try {
+        if (!userId) {
+            return responder(res, false, "User not found", 404)
+        }
 
-export { getcourses, postcourse }
+
+
+    }
+    catch (error) {
+        responder(res, false, `${error.message}`, 500)
+
+    }
+}
+
+
+export { getcourses, postcourse, getmycourse }
