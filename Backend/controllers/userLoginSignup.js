@@ -137,38 +137,36 @@ const postVerifyEmail = async (req, res) => {
     }
 }
 
-const postLogin = async (req,res) => {
- 
-     const {email,password} = req.body
-     try {
-        const LoginUser = await user.findOne({email});
-        if(!LoginUser){
-           return responder(res,false,'cant find account please signup',null,400);
+const postLogin = async (req, res) => {
+
+    const { email, password } = req.body
+    try {
+        const LoginUser = await user.findOne({ email });
+        if (!LoginUser) {
+            return responder(res, false, 'cant find account please signup', null, 400);
         }
 
         // matching the pass..
-        let isPassMatch = await bcrypt.compare(password,LoginUser.password)
-        if(!isPassMatch){
-            return responder(res,false,'please check creandials',null,400);
+        let isPassMatch = await bcrypt.compare(password, LoginUser.password)
+        if (!isPassMatch) {
+            return responder(res, false, 'please check creandials', null, 400);
         }
-        
+
         // making the JWT token that store user info..
-         const token =  jwt.sign({
-             _id:LoginUser._id,
-             role:LoginUser.role,
-             courses:LoginUser.courses,
-             validateUser:LoginUser.validateUser,
-             email:LoginUser.email
-         },process.env.JWT_SERECT,{expiresIn:'1w'})
-       
-         res.cookie('token',token)
-         return  responder(res,true,"login sucessfully",token,200);
+        const token = jwt.sign({
+            _id: LoginUser._id,
+            role: LoginUser.role,
+            courses: LoginUser.courses,
+            validateUser: LoginUser.validateUser,
+            email: LoginUser.email
+        }, process.env.JWT_SERECT, { expiresIn: '1w' })
 
-
-     } catch (error) {
-        return responder(res,false,`${error.message}`,null,400);
-     }
+        res.cookie('token', token)
+        return responder(res, true, "login sucessfully", token, 200);
+    } catch (error) {
+        return responder(res, false, `${error.message}`, null, 400);
+    }
 }
 
 
-export { postSignup, postVerifyEmail ,postLogin}
+export { postSignup, postVerifyEmail, postLogin }
