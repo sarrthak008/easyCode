@@ -18,7 +18,6 @@ import {courseRouter} from "./routes/courseRoute.js";
 
 //import middle wares
 
-import { verifyJwt } from "./middlewares/jwtVarify.js";
 
 
 

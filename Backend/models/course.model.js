@@ -9,8 +9,12 @@ const couserSchema = new Schema({
         type: Date,
         required: true
     },
+    prise:{
+        type:Number,
+        required:true
+    },
     instructor: [
-        {
+      {
             type: Schema.Types.ObjectId,
             ref: 'user',
             required:true
