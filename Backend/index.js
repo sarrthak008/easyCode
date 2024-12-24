@@ -1,7 +1,9 @@
 import express, { urlencoded } from "express";
 import cors from 'cors';
 import dotenv from 'dotenv'
+import cookieParser  from "cookie-parser"
 dotenv.config()
+
 
 const app = express();
 const PORT =  process.env.PORT || 3000;
@@ -12,16 +14,25 @@ const PORT =  process.env.PORT || 3000;
 import connectToDb from "./config/connectDB.js";
 import { responder } from "./utils/responder.js";
 import { authRouter } from "./routes/userAuth.js";
+import {courseRouter} from "./routes/courseRoute.js";
+
+//import middle wares
+
+import { verifyJwt } from "./middlewares/jwtVarify.js";
 
 
 
 //middlewares....
  app.use(express.json());
  app.use(urlencoded({extended:true}))
+ app.use(cors())
+ app.use(cookieParser())
+ 
 
 //routes..
 
-app.use('/api/auth',authRouter)
+app.use('/api/auth',authRouter);
+app.use('/api/course',verifyJwt,courseRouter);
 
 
 app.get('/health',(req,res)=>{

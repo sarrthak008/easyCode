@@ -154,22 +154,20 @@ const postLogin = async (req,res) => {
         
         // making the JWT token that store user info
          const token =  jwt.sign({
-            data:LoginUser
+             _id:LoginUser._id,
+             role:LoginUser.role,
+             courses:LoginUser.courses,
+             validateUser:LoginUser.validateUser,
+             email:LoginUser.email
          },process.env.JWT_SERECT,{expiresIn:'1w'})
-
-        return res.json({
-            
-         })
+       
+        res.cookie('token',token)
+        responder(res,true,"login sucessfully",token,200);
 
 
      } catch (error) {
         return responder(res,false,`${error.message}`,null,400);
      }
-     
-
-
-
-
 
     responder(res,true,'work',null,200);
 }
