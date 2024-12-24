@@ -2,13 +2,13 @@ import { Schema,model } from "mongoose";
 
 const requestSchema =  new Schema({
     user:{
-        type:Schema.Type.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:'user',
         required:true
     },
 
     requestedCourse:{
-         type:Schema.Type.ObjectId,
+         type:Schema.Types.ObjectId,
          ref:'course',
          required:true
     },
