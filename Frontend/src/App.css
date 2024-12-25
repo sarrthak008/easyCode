@@ -31,3 +31,7 @@ html,body{
 .text-green{
     color: #00dc82;
 }
+
+body::-webkit-scrollbar{
+    display: none;
+}
