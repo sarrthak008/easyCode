@@ -6,7 +6,7 @@ import './index.css';
 
 function App() {
   return (
-    <div className="p-4">
+    <div>
       <Button
         variant="contained"
         className="text-white bg-red-600 hover:bg-red-200" // Tailwind classes
