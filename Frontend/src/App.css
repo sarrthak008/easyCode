@@ -27,3 +27,7 @@ html,body{
 .bg-dark{
     background-color:#060A23;
 }
+
+.text-green{
+    color: #00dc82;
+}
