@@ -57,7 +57,7 @@ const verifyJWTAssitant = async (req,res,next) =>{
         const checkRole = await user.findOne({ _id: userInfo._id });
 
         if (checkRole.role.toLowerCase() !== "assitant") {
-            return responder(res, false, 'you dont have permisson to add new course', null, 400);
+            return responder(res, false, 'you are not able to perform these action', null, 400);
         }
         req.user = userInfo
         next()

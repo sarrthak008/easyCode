@@ -16,7 +16,7 @@ const postrequest = async (req, res) => {
         }
 
         let newrequest = new request({
-            user: user._id,
+            userId: user._id,
             requestedCourse: joiningcourse._id
         })
 
@@ -37,13 +37,15 @@ const postrequest = async (req, res) => {
 }
 
 const acceptrequest = async (req,res)=>{
-    let {requestedCourse ,userId} = req.body 
-    let elem = ["requestedCourse","userId"]
-    for (const element of elem) {
-         if(!req.body[element]){
-            return responder(res,false,`${element} is required`,null,400);
-         }
+    let {requestedCourse} = req.body 
+    if(!rejectrequest){
+        return responder(res,false,'course not found',null,400);
     }
+
+     let reqcourse =await course.findById(requestedCourse)
+     reqcourse.students.push(userId)
+     await reqcourse.save()
+     responder(res,true,'studnet add into course',reqcourse,201)
 }
 
 
