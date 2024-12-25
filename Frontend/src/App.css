@@ -32,6 +32,11 @@ html,body{
     color: #00dc82;
 }
 
+.bg-blur{
+    filter: blur(140px);
+    pointer-events: none;
+}
+
 body::-webkit-scrollbar{
     display: none;
 }
