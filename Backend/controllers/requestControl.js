@@ -36,6 +36,9 @@ const postrequest = async (req, res) => {
 
 }
 
+
+// going wokr to forndend update these route there is error
+
 const acceptrequest = async (req,res)=>{
     let {requestedCourse} = req.body 
     if(!rejectrequest){
