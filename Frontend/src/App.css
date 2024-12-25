@@ -17,3 +17,13 @@ gilyroy{
 hevy{
     font-family: "MyCustomFont";
 }
+
+html,body{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.bg-dark{
+    background-color:#060A23;
+}

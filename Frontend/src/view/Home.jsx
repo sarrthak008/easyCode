@@ -4,7 +4,7 @@ import { Hero } from '../components/Hero'
 
 const Home = () => {
   return (
-    <div>
+    <div className='w-lvw h-lvh bg-dark'>
        <Navbar></Navbar>
        <Hero></Hero>
     </div>
