@@ -1,19 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Button } from '@mui/material';
+import {BrowserRouter ,Routes ,Route} from "react-router-dom"
 import './app.css';
 import './index.css';
+import Home from "./view/Home.jsx"
+import { Storeprovider } from './context/Store.jsx';
 
 function App() {
   return (
-    <div>
-      <Button
-        variant="contained"
-        className="text-white bg-red-600 hover:bg-red-200" // Tailwind classes
-      >
-        Material UI with Tailwind
-      </Button>
-    </div>
+     <BrowserRouter>
+      <Storeprovider>
+         <Routes>
+           <Route path='/' element={<Home/>}/>
+
+         </Routes>
+        </Storeprovider>
+     </BrowserRouter>
   );
 }
 

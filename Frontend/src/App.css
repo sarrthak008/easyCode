@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/fonts/font.TTF')
+
+}
+
+@font-face {
+    font-family: 'gilyroy';
+    src: url('/fonts/gilyroy.ttf')
+
+}
+
+gilyroy{
+    font-family: "gilyroy";
+}
+
+hevy{
+    font-family: "MyCustomFont";
+}
