@@ -9,10 +9,9 @@ export const Hero = () => {
         <h1 className=' text-6xl MyCustomFont uppercase font-bold'>Transform <span className='text-green'>Ideas</span> into <span className='text-green'>Code</span> !</h1>
         <div className=' w-52 absolute bottom-0 right-40 text-center opacity-75 font-thin leading-5  '><p className=' mt-4'>Dive right into <span className='text-green font-bold'>coding</span> with our easy-to-follow live tutorials and tools <span className='text-green font-bold'>designed</span> for beginners and pros alike. Start building your first <span className='text-green font-bold'>project</span> today!</p></div>
       </div>
+      <div className='mt-10'>
 
-      <div className='   mt-36'>
-
-        <h1 className='text-center text-white font-bold text-3xl'>Explore Skill</h1>
+        <h1 className='text-center text-white  opacity-40 font-bold text-[3vw] block mb-10 tracking-[5px]'>Explore Skill</h1>
         <div className='flex justify-center items-center h-20 w-[75%] m-auto relative'>
           <marquee scrollamount='2' behavior="alternate" className='text-green-400 opacity-50 font-bold text-4xl'>
             <span className='m-5'>HTML</span>
