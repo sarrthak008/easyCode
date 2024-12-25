@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <>
-    <div className="w-full h-16 bg-opacity-10 bg-gray-300 fixed top-0 z-50">
+    <div className="w-full h-16 bg-opacity-10 bg-gray-300 fixed top-0 z-50 backdrop-filter backdrop-blur-lg">
        <div className="flex justify-between items-center h-full px-4">
          <div className="text-2xl font-bold text-white">easyCode <CodeOffIcon /></div>
 
