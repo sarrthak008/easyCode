@@ -4,6 +4,7 @@ import './app.css';
 import './index.css';
 import Home from "./view/Home.jsx"
 import { Storeprovider } from './context/Store.jsx';
+import 'remixicon/fonts/remixicon.css'
 
 function App() {
   return (
