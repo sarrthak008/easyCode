@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CodeOffIcon from '@mui/icons-material/CodeOff';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -17,9 +18,9 @@ const Navbar = () => {
              
   
          <div className='hidden  w-1/3 sm:flex justify-evenly items-center text-white text-[17px] font-semibold'>
-            <span className='cursor-pointer hover:text-green-400'>Home</span>
-            <span className='cursor-pointer hover:text-green-400'>Courses</span>
-            <button className="border py-[3px] px-10 rounded-xl text-green hover:bg-green-400 hover:text-white  shadow-md shadow-gray-700 hover:shadow-2xl hover:shadow-green-400 transition-all">Sign In</button>           
+            <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Home</span></Link>
+           <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Courses</span></Link>
+           <Link to={'/login'}> <button className="border py-[3px] px-10 rounded-xl text-green hover:bg-green-400 hover:text-white  shadow-md shadow-gray-700 hover:shadow-2xl hover:shadow-green-400 transition-all">Sign In</button></Link>           
          </div>
 
        </div>
@@ -27,9 +28,9 @@ const Navbar = () => {
      {   showmenu ?  <div className='bg-dark h-lvh w-lvw absolute top-0 left-0 z-50 sm:hidden'>
                   <span><i className="ri-close-line float-right text-4xl text-green cursor-pointer" onClick={()=>setshowmenu(false)}></i></span>
         <div className='flex flex-col items-center justify-center gap-7 h-full'>
-          <span className='text-white text-2xl cursor-pointer opacity-75 '>Home</span>
-          <span className='text-white text-2xl cursor-pointer opacity-75 '>Courses</span>
-          <span className='text-white text-2xl cursor-pointer opacity-75 '> sign In<i className="ri-arrow-right-up-line"></i></span>       
+          <Link to={'/'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Home</span></Link>
+         <Link><span className='text-white text-2xl cursor-pointer opacity-75 '>Courses</span></Link>
+         <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '> sign In<i className="ri-arrow-right-up-line"></i></span></Link>     
         </div>
      </div> : null}
     </>

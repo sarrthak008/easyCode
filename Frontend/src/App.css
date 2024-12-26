@@ -21,6 +21,7 @@ html,body{
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    background-color:#060A23;
 }
 
 .bg-dark{
@@ -39,3 +40,4 @@ html,body{
 body::-webkit-scrollbar{
     display: none;
 }
+

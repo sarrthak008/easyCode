@@ -16,7 +16,7 @@ export const Hero = () => {
 
         <h1 className='text-center text-white  opacity-40 font-bold text-[3vw] block mb-10 tracking-[5px]'>Explore Skill</h1>
         <div className='flex justify-center items-center h-20 w-[75%] m-auto relative'>
-          <marquee scrollamount='2' behavior="alternate" className='text-green-400 opacity-50 font-bold text-4xl'>
+          <marquee scrollamount='2' behavior="alternate" className='text-green-400 opacity-50 font-bold text-6xl'>
             <span className='m-5'>HTML</span>
             <span className='m-5'>CSS</span>
             <span className='m-5'>CSS</span>
@@ -63,7 +63,7 @@ export const Hero = () => {
       </div>
       <h1 className='text-center text-white  opacity-40 font-bold text-[3vw] block mb-10 tracking-[5px]'>How We Work</h1>
      
-      <div className='h-72 w-full flex items-center justify-evenly flex-wrap mb-20'>
+      <div className='min-h-72 w-full flex items-center justify-evenly flex-wrap mb-20 gap-14'>
            <div className='h-[350px] w-[300px] bg-gray-900  rounded-md overflow-hidden flex flex-col px-3'>
                  <div className='h-[160px] w-full overflow-hidden flex items-center justify-center cursor-pointer'>
                        <img src={CIRCLE} className='w-[300px] object-cover hover:animate-pulse duration-300'/>
