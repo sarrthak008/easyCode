@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build"   # The build command (it runs npm build inside frontend)
-  publish = "Frontend/dist"   # The folder where the build output is generated
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
