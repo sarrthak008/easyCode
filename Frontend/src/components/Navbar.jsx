@@ -19,8 +19,9 @@ const Navbar = () => {
   
          <div className='hidden  w-1/3 sm:flex justify-evenly items-center text-white text-[17px] font-semibold'>
             <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Home</span></Link>
-           <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Courses</span></Link>
-           <Link to={'/login'}> <button className="border py-[3px] px-10 rounded-xl text-green hover:bg-green-400 hover:text-white  shadow-md shadow-gray-700 hover:shadow-2xl hover:shadow-green-400 transition-all">Sign In</button></Link>           
+           <Link to={'/course'}><span className='cursor-pointer hover:text-green-400'>Courses</span></Link>
+           <Link to={'/login'}><span className='cursor-pointer hover:text-green-400'>Login</span></Link>
+           <Link to={'/singup'}> <button className="border py-[3px] px-10 rounded-xl text-green hover:bg-green-400 hover:text-white  shadow-md shadow-gray-700 hover:shadow-2xl hover:shadow-green-400 transition-all">Sign In</button></Link>           
          </div>
 
        </div>
