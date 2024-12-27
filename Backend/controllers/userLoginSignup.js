@@ -30,8 +30,8 @@ const postSignup = async (req, res) => {
 
     try {
 
-        let { email, password } = req.body;
-        const requiredData = ["email", "password"];
+        let { email, password ,name,mobile} = req.body;
+        const requiredData = ["email", "password","name","mobile"];
         // checks the req.body cntainig given data or not...
         for (const element of requiredData) {
             if (!req.body[element]) {
@@ -55,7 +55,9 @@ const postSignup = async (req, res) => {
 
         const newUser = new user({
             email: email,
-            password: hashPass
+            password: hashPass,
+            name:name,
+            mobile:mobile
         });
 
         const createduser = await newUser.save();

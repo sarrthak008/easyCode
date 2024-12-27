@@ -39,6 +39,10 @@ app.get('/health',(req,res)=>{
      responder(res,true,'server is running healthy',null,200);
 })
 
+app.get('/connect',(req,res)=>{
+     responder(res,true,'connected to server',null,200)
+})
+
 app.use("*",(req,res)=>{
   responder(res,false,`${req.baseUrl} not found`,null,404)
 })

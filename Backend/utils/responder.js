@@ -1,8 +1,8 @@
 
-const responder = (res,success=true,meesage="these is default message",data=null,statusCode=200) =>{
+const responder = (res,success=true,message="these is default message",data=null,statusCode=200) =>{
   res.json({
     success,
-    meesage,
+    message,
     data,
   }).status(statusCode)
 }

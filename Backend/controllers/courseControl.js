@@ -87,4 +87,4 @@ const getcoursesStudent = async (req, res) => {
 
 }
 
-    export { getcourses, postcourse, getmycourse, getcoursesStudent }
+export { getcourses, postcourse, getmycourse, getcoursesStudent }
