@@ -9,13 +9,15 @@ import { useSnackbar } from 'notistack'
 const API_URl = import.meta.env.VITE_SERVER_URI
 
 const Home = () => {
-
+ 
+    console.log(API_URl)
   
     const { enqueueSnackbar } = useSnackbar()
 
    const loadserver = async () =>{
       try {
         const responce = await axios.get(`${API_URl}/connect`)
+        console.log(responce.data)  
          if(responce.data.success){
             enqueueSnackbar(`${responce.data.message}`, { variant: "success" })
          }
