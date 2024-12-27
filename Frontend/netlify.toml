@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"   # The build command (it runs npm build inside frontend)
-  publish = "frontend/dist"   # The folder where the build output is generated
+  publish = "Frontend/dist"   # The folder where the build output is generated
 
 [[redirects]]
   from = "/*"
