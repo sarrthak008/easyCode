@@ -1,12 +1,18 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const connectToDb = async () => {
-    const connection =await  mongoose.connect(process.env.MONGO_CONNECT_URI);
-    if(!connection){
-        console.log('connecting error...')
-    }else{
-        console.log('connected to database...')
-    }
-}
+  try {
+    const connection = await mongoose.connect(process.env.MONGO_CONNECT_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-export default connectToDb
+    if (connection) {
+      console.log('Connected to database...');
+    }
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+  }
+};
+
+export default connectToDb;
