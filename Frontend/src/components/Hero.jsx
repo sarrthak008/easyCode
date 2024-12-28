@@ -3,6 +3,7 @@ import ARROW from "../assets/arrrow.svg";
 import CIRCLE from "../assets/circle.svg";
 import ROUND from "../assets/round.svg";
 import THREED from "../assets/3d.jpg";
+import Shadow from './Shadow';
 
 export const Hero = () => {
   return (
@@ -97,6 +98,19 @@ export const Hero = () => {
             <p className='text-white font-thin opacity-75 '> We focus on building real-world projects that help you apply what you’ve learned. You will work on practical examples that solve actual problems, giving you hands-on experience.</p>
           </div>
         </div>
+      </div>
+
+      <div>
+      <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-4xl block mb-10 tracking-[2px]'>Understand Workflow</h1>
+       <div className='w-full min-h-96 flex items-center flex-col '>
+           <div className='h-[100px] w-[40%] relative flex items-center justify-center border-2 text-5xl font-medium border-green-300 text-linear border-r-1 bordered-r-sm rounded-t-[10px]'>request course
+             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -left-3'></span>
+             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -right-3'></span>
+             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -left-3'></span>
+             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -right-3'></span>
+             <div className='h-full w-full border-[0.3px] border-gray-300 absolute -top-[0.1] opacity-60 '>hii</div>
+           </div>
+       </div>
       </div>
     </>
 
