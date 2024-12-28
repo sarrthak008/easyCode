@@ -62,19 +62,19 @@ export const Footer = () => {
 
                             <ul class="mt-6 space-y-4">
                                 <li>
-                                    <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
+                                    <a href="#" title="" class="flex text-base  text-gray-300 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
+                                    <a href="#" title="" class="flex text-base  text-gray-300 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Works </a>
+                                    <a href="#" title="" class="flex text-base  text-gray-300 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Works </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Career </a>
+                                    <a href="#" title="" class="flex text-base  text-gray-300 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Career </a>
                                 </li>
                             </ul>
                         </div>
@@ -88,15 +88,11 @@ export const Footer = () => {
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" class="flex text-base text-gray-300 transition-all duration-200 hover:text-green-400 focus:text-green-400"> Delivery Details </a>
+                                    <a href="#" title="" class="flex text-base  text-gray-300 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Terms & Conditions </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Terms & Conditions </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
+                                    <a href="#" title="" class="flex text-base  text-gray-300 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
                                 </li>
                             </ul>
                         </div>
