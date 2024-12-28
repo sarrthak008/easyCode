@@ -4,6 +4,7 @@ import CIRCLE from "../assets/circle.svg";
 import ROUND from "../assets/round.svg";
 import THREED from "../assets/3d.jpg";
 import Shadow from './Shadow';
+import ARROW1 from "../assets/arrow2.svg";
 
 export const Hero = () => {
   return (
@@ -101,15 +102,19 @@ export const Hero = () => {
       </div>
 
       <div>
-      <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-4xl block mb-10 tracking-[2px]'>Understand Workflow</h1>
-       <div className='w-full min-h-96 flex items-center flex-col '>
-           <div className='h-[100px] w-[40%] relative flex items-center justify-center border-2 text-5xl font-medium border-green-300 text-linear border-r-1 bordered-r-sm rounded-t-[10px]'>request course
-             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -left-3'></span>
-             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -right-3'></span>
+      <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-3xl block mb-10 tracking-[2px]'>Understand Workflow</h1>
+       <div className='w-full min-h-96  relative'>
+           <div className='m-auto h-[80px] sm:h-[100px] w-[90%] sm:w-[40%] cursor-wait relative flex items-center  justify-center border-2 text-4xl sm:text-5xl font-medium border-green-300 text-linear border-r-1 bordered-r-sm rounded-t-[10px]'>request course
+             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -left-3 shadow-green'></span>
+             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -right-3 shadow-lg shadow-green-400'></span>
              <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -left-3'></span>
-             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -right-3'></span>
-             <div className='h-full w-full border-[0.3px] border-gray-300 absolute -top-[0.1] opacity-60 '>hii</div>
+             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -right-3 shadow-green'></span>
+             <div className='h-[90%] w-[99%] border-[0.3px] border-gray-300 absolute -top-[0.1] opacity-60 '></div>
            </div>
+          <div className=' w-[70px] h-[70px] m-auto'><img src={ARROW1} className='h-full object-contain w-full '/></div>
+          <div className='m-auto h-8 w-[90%] text-center text-white mt-2'><span className='bg-gradient-to-tr to-gray-800 from-slate-500 py-1  sm:px-7  px-2  rounded-md text-2xl opacity-75 font-thin shaow-lg shadow-gray-100'>our assitant call you</span></div>
+          <div className='m-auto h-8 w-[90%] text-center text-white mt-6'><span className='bg-gradient-to-tr to-gray-800 from-slate-500 py-1  sm:px-7  px-2 rounded-md text-2xl opacity-75 font-thin shaow-lg shadow-gray-100'>pay & attend live lectures</span></div>
+         <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b to-black from-transparent'></div>
        </div>
       </div>
     </>
