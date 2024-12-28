@@ -12,7 +12,7 @@ const API_URL = import.meta.env.VITE_SERVER_URI
 
 const Login = () => {
 
-
+  const [passtype, setPassType] = useState('password')
   const { enqueueSnackbar } = useSnackbar()
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -65,7 +65,7 @@ const Login = () => {
 
 
         <div className="w-full h-full flex justify-center items-center ">
-          <div className="  sm:w-96 h-[70%] rounded-lg p-8 bg-gray-900">
+          <div className="w-[85%] h-[70%] rounded-lg p-8 bg-gray-900">
             <h1 className="text-4xl font-bold text-center text-white">Login</h1>
             <p className="text-center text-gray-400 text-sm mt-2">
               Start your journey with EasyCode...
@@ -77,7 +77,7 @@ const Login = () => {
                 value={userInfo.email}
                 onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })
                 } />
-              <Appinput type="password"
+              <Appinput type={passtype}
                 title="Enter your Password"
                 value={userInfo.password}
                 onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
