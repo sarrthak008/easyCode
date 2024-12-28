@@ -1,4 +1,4 @@
-import { Box, Stepper, Step, StepLabel } from '@mui/material';
+import { Box, Stepper, Step, StepLabel  } from '@mui/material';
 
 const steps = ['add basic information', 'setup password', 'OTP verification'];
 
