@@ -9,6 +9,7 @@ import { closeSnackbar, useSnackbar } from 'notistack'
 const API_URL = import.meta.env.VITE_SERVER_URI
 
 
+
 const Login = () => {
 
 
@@ -30,6 +31,7 @@ const Login = () => {
       })
       if (responce.data.success) {
         enqueueSnackbar(`${responce.data.message}`, { variant: "success" })
+        window.location.href = '/'
 
       }
       else {
@@ -62,8 +64,8 @@ const Login = () => {
         </div>
 
 
-        <div className="w-1/2 h-full flex justify-center items-center">
-          <div className="w-96 h-[70%] rounded-lg p-8 bg-gray-900">
+        <div className="w-full h-full flex justify-center items-center ">
+          <div className="  sm:w-96 h-[70%] rounded-lg p-8 bg-gray-900">
             <h1 className="text-4xl font-bold text-center text-white">Login</h1>
             <p className="text-center text-gray-400 text-sm mt-2">
               Start your journey with EasyCode...
@@ -88,6 +90,9 @@ const Login = () => {
                 <input
                   type="checkbox"
                   className="text-green-40 float-left w-4 checked:text-green-400"
+                  onChange={(e) => {
+                    e.target.checked ? setPassType("text") : setPassType("password")
+                  }}
 
                 />
                 <span className="block text-white opacity-75">Show password</span>
@@ -107,4 +112,3 @@ const Login = () => {
 };
 
 export default Login;
-  
