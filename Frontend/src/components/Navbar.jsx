@@ -30,8 +30,9 @@ const Navbar = () => {
                   <span><i className="ri-close-line float-right text-4xl text-green cursor-pointer" onClick={()=>setshowmenu(false)}></i></span>
         <div className='flex flex-col items-center justify-center gap-7 h-full'>
           <Link to={'/'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Home</span></Link>
-         <Link><span className='text-white text-2xl cursor-pointer opacity-75 '>Courses</span></Link>
-         <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '> sign In<i className="ri-arrow-right-up-line"></i></span></Link>     
+         <Link to={'/course'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Courses</span></Link>
+         <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Login</span></Link>
+         <Link to={'/signin'}><span className='text-white text-2xl cursor-pointer opacity-75 '> sign In<i className="ri-arrow-right-up-line"></i></span></Link>     
         </div>
      </div> : null}
     </>
