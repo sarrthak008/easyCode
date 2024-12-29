@@ -99,14 +99,14 @@ const Signup = () => {
 
 
   return (
-    <div className='mt-12 w-[80%] '>
+    <div className='mt-12 w-[90%] '>
       <h1 className='font-bold text-3xl text-white opacity-75'>Sign In</h1>
       <div className='flex flex-col mt-4 h-full w-full items-center justify-center text-white'>
         <Steper pnum={processnumber} />
-        <div className='h-96 w-full bg-gray-900 rounded-lg mt-4'>
+        <div className='h-96 w-full bg-gray-900 rounded-lg mt-4 '>
 
           {processnumber == 0 ?
-            <div className='sm:w-[60%]  w-full px-1 m-auto h-full flex flex-col justify-center gap-10'>
+            <div className='sm:w-[60%]  w-full px-1 m-auto h-full flex px-3 flex-col justify-center gap-10'>
               <Appinput
                 type="text"
                 title="Enter your name"
