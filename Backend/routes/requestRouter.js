@@ -6,6 +6,6 @@ import { verifyJWTAssitant, verifyJWTOwner, verifyJwtUser } from "../middlewares
 
 requestRouter.post("/reqcourse/:courseid",verifyJwtUser,postrequest)
 requestRouter.post('/acceptreq',verifyJWTOwner,acceptrequest)
-requestRouter.post('/rejectreq',verifyJWTAssitant,rejectrequest)
+requestRouter.post('/rejectreq',verifyJWTOwner,rejectrequest)
 
 export {requestRouter}
