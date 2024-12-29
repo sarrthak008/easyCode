@@ -61,7 +61,7 @@ const acceptrequest = async (req, res) => {
         return responder(res, true, "user add in course sucessfully", null, 200);
 
     } catch (error) {
-        return responder(res, false, error.message, responece, 400);
+        return responder(res, false, error.message, null, 400);
     }
 }
 
@@ -83,7 +83,7 @@ const rejectrequest = async (req, res) => {
             return responder(res, false, "something went wrong", responece, 200);
         }
     } catch (error) {
-        return responder(res, false, error.message, responece, 400);
+        return responder(res, false, error.message, null, 400);
     }
 
 }
