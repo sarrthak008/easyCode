@@ -1,29 +1,52 @@
 import React from 'react'
+import Appbtn from './Appbtn'
+import { Link, } from 'react-router-dom'
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
-const CourseCard = ({courses}) => {
-     
-    
 
+const CourseCard = ({ courses }) => {
+  console.log(courses)
 
   return (
-   
-        <div className='flex flex-wrap justify-evenly gap-4 mt-8 p-4 '>
-            {courses.map((course) => (
-            <div key={course._id} className='bg-gray-950 shadow-lg rounded-lg w-96'>
-                <img src={course.image} alt='course' className='rounded-t-lg w-full h-64' />
-                <div className='p-6'>
-                <h2 className='text-2xl text-white font-bold'>{course.name}</h2>
-                <p className='mt-4 text-gray-400 font-bold'> Prise : {course.prise}</p>
-                <div className='mt-8'>
-                    <a href='#' className='text-gray-600 hover:text-green-600 font-semibold'>Learn more</a>
-                </div>
-                </div>
+
+    <div className='flex flex-wrap justify-evenly gap-4 mt-8 p-4 '>
+      {courses.map((course) => (
+        <div key={course._id} className='bg-gray-900 shadow-lg rounded-lg w-80 mx-5'>
+          <img src={course.image} alt='course' className='rounded-t-lg w-full h-48 object-fill' />
+          <div className='h-[2px] w-full bg-green-400 relative'>
+            <div className='h-[50px] w-full bg-green-500 absolute  left-1 blur-[80px]	'></div>
+          </div>
+          <div className='p-6 gap-2'>
+            <h2 className='text-3xl text-white font-bold tracking-tighter'>{course.name}  </h2>
+
+            <div className='flex justify-between items-center '>
+              <div>
+                <span className='mt-4 text-white font-bold text-2xl'>< CurrencyRupeeIcon />{course.prise}</span>
+                <del className='text-gray-500 text-xl'>< CurrencyRupeeIcon />9999</del>
+              </div>
+              <span className='px-3  bg-slate-100 rounded-sm font-medium'>29%OFF</span>
             </div>
-            ))}
+
+
+            <div className=' flex flex-wrap justify-center  gap-4 text-white mt-2  w-full '>
+              <Link to={`/course/${course._id}`}>
+                <button className='bg-green-600  px-10 py-2  w-72 rounded-md text-xl text-gray-800 font-bold  '>Detiles</button>
+              </Link>
+              <Link to={`/course/${course._id}`}>
+                <button className='bg-green-600  px-10 py-2  w-72 rounded-md text-xl text-gray-800 font-bold '>Add to cart</button>
+              </Link>
+            </div>
+
+
+
+
+          </div>
         </div>
+      ))}
+    </div>
 
 
-   
+
   )
 }
 

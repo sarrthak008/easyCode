@@ -11,9 +11,12 @@ const Courses = () => {
 
        const fetchCourses = async () => { 
         const response =  await axios.get("http://localhost:3000/api/course/getcourse")
-        console.log(response.data.data)
-        setCourses(response.data.data)
+        localStorage.setItem('courses', JSON.stringify(response.data.data))
+         setCourses(response.data.data)
+        
        }
+      
+
        useEffect(() => {
           fetchCourses()
         }, [])
