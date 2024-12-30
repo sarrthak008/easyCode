@@ -1,6 +1,10 @@
 import { Schema, model } from "mongoose";
 
 const couserSchema = new Schema({
+    image:{
+       type:String,
+       required:true
+    },
     name: {
         type: String,
         required: true
