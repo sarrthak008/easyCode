@@ -9,22 +9,22 @@ const CourseCard = ({ courses }) => {
 
   return (
 
-    <div className='flex flex-wrap justify-evenly gap-4 mt-8 p-4 '>
+    <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4 '>
       {courses.map((course) => (
-        <div key={course._id} className='bg-gray-900 shadow-lg rounded-lg w-80 mx-5'>
+        <div key={course._id} className='bg-gray-900 shadow-lg rounded-lg w-80 mx-5 h-2/3'>
           <img src={course.image} alt='course' className='rounded-t-lg w-full h-48 object-fill' />
           <div className='h-[2px] w-full bg-green-400 relative'>
             <div className='h-[50px] w-full bg-green-500 absolute  left-1 blur-[80px]	'></div>
           </div>
-          <div className='p-6 gap-2'>
-            <h2 className='text-3xl text-white font-bold tracking-tighter'>{course.name}  </h2>
+          <div className='p-6 flex flex-col gap-5 bg-slate-900'>
+            <h2 className='text-2xl text-white font-thin tracking-tighter'>{course.name}  </h2>
 
             <div className='flex justify-between items-center '>
-              <div>
+              <div >
                 <span className='mt-4 text-white font-bold text-2xl'>< CurrencyRupeeIcon />{course.prise}</span>
-                <del className='text-gray-500 text-xl'>< CurrencyRupeeIcon />9999</del>
+                <del className='text-gray-500 text-xl ml-2'>< CurrencyRupeeIcon />9999</del>
               </div>
-              <span className='px-3  bg-slate-100 rounded-sm font-medium'>29%OFF</span>
+              <span className='px-3  bg-slate-100 rounded-sm font-medium '>29%OFF</span>
             </div>
 
 
