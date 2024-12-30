@@ -13,6 +13,10 @@ const userSchma = new Schema({
         trim: true,
         maxlenght:10
     },
+    profilePic:{
+        type:String,
+        default:'http://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png',
+    } ,
     email: {
         type: String,
         unique: true,

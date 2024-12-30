@@ -16,15 +16,13 @@ import { responder } from "./utils/responder.js";
 import { authRouter } from "./routes/userAuth.js";
 import {courseRouter} from "./routes/courseRoute.js";
 import { requestRouter } from "./routes/requestRouter.js";
+import { uploadRouter } from "./routes/uploadRouter.js";
 
 //import middle wares
 
-
-
-
 //middlewares....
  app.use(express.json());
- app.use(urlencoded({extended:true}))
+ app.use(urlencoded({extended:false}))
  app.use(cors())
  app.use(cookieParser())
  
@@ -33,6 +31,7 @@ import { requestRouter } from "./routes/requestRouter.js";
 app.use('/api/auth',authRouter);
 app.use('/api/course',courseRouter);
 app.use('/api/request',requestRouter)
+app.use('/api/image',uploadRouter);
 
 
 app.get('/health',(req,res)=>{
