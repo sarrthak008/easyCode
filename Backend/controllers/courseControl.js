@@ -21,16 +21,18 @@ const getcourses = async (req, res) => {
 }
 
 const postcourse = async (req, res) => {
-    const { name, startingDate, instructor, prise } = req.body
+    const { name, startingDate, instructor, prise,image } = req.body
+    console.log(req.file)
     try {
-        if (!name || !startingDate || !instructor || !prise) {
+        if (!name || !startingDate || !instructor || !prise || !image) {
             return responder(res, false, "All fields are required", 400);
         }
         const newcouse = new course({
             name,
             startingDate,
             instructor,
-            prise
+            prise,
+            image
         })
         if (!newcouse) {
             return responder(res, false, "course not created", 400)
