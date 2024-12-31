@@ -17,6 +17,14 @@ const couserSchema = new Schema({
         type:Number,
         required:true
     },
+    originalprise:{
+        type:Number,
+        required:true
+    },
+    discount:{
+        type:Number,
+        required:true
+    },
     instructor: [
       {
             type: Schema.Types.ObjectId,
