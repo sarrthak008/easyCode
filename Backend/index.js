@@ -25,7 +25,7 @@ import { quizRouter } from "./routes/quizRouter.js";
 app.use(express.json());
 app.use(urlencoded({ extended: false }))
 app.use(cors({
-     origin: ["http://localhost:5173","https://easycode.support"],
+     origin: ["http://localhost:5173","https://www.easycode.support"],
     credentials: true
 }))
 app.use(cookieParser())

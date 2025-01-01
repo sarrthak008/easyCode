@@ -55,7 +55,7 @@ const Signup = () => {
         mobile: userInfo.mobile,
         email: userInfo.email,
         password: userInfo.password
-      },{withCredentials:true})
+      }, { withCredentials: true })
 
       if (responce.data.success) {
 
