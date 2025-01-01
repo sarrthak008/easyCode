@@ -17,6 +17,7 @@ import { authRouter } from "./routes/userAuth.js";
 import { courseRouter } from "./routes/courseRoute.js";
 import { requestRouter } from "./routes/requestRouter.js";
 import { uploadRouter } from "./routes/uploadRouter.js";
+import { quizRouter } from "./routes/quizRouter.js";
 
 //import middle wares
 
@@ -35,7 +36,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/course', courseRouter);
 app.use('/api/request', requestRouter)
 app.use('/api/image', uploadRouter);
-
+app.use('/api/quiz',quizRouter);
 
 app.get('/health', (req, res) => {
      responder(res, true, 'server is running healthy', null, 200);
