@@ -3,18 +3,25 @@ import Navbar from "../components/Navbar"
 import Shadow from '../components/Shadow'
 import CourseCard from '../components/CourseCard'
 import axios from 'axios'
+const API_URL = import.meta.env.VITE_SERVER_URI
 
 
 
 const Courses = () => {
-       const [courses, setCourses] = useState([])
+      
+        const [courses, setCourses] = useState([])  
+      
 
-       const fetchCourses = async () => { 
-        const response =  await axios.get("http://localhost:3000/api/course/getcourse")
-        localStorage.setItem('courses', JSON.stringify(response.data.data))
-         setCourses(response.data.data)
-        
-       }
+        const fetchCourses = async () => { 
+          console.log(API_URL)
+           try{
+              let responce = await axios.get(`${API_URL}/api/course/getcourse/`)
+              setCourses(responce.data.data)
+              localStorage.setItem("courses",JSON.stringify(responce.data.data))
+           }catch(error){
+              console.log(error)
+           }
+        }
       
 
        useEffect(() => {
@@ -29,7 +36,6 @@ const Courses = () => {
        <CourseCard 
         courses={courses}
        />
-
        <Shadow/>
     </div>
   )

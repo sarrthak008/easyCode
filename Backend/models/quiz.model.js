@@ -15,6 +15,7 @@ const quizSchema = new Schema({
                  {
                     type:String,
                     required:true,
+                    _id :false
                  }
            ],
             correctAns:{

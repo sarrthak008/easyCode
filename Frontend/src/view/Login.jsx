@@ -7,6 +7,7 @@ import Appbtn from '../components/Appbtn';
 import axios from 'axios';
 import { closeSnackbar, useSnackbar } from 'notistack'
 const API_URL = import.meta.env.VITE_SERVER_URI
+import Cookies from 'js-cookie';
 
 
 
@@ -20,33 +21,32 @@ const Login = () => {
   })
 
   const handelLogin = async () => {
-    if (userInfo.email.length == 0 || userInfo.password.length == 0) {
-      enqueueSnackbar('please fill all filds', { variant: 'error' })
-      return false
+    if (userInfo.email.length === 0 || userInfo.password.length === 0) {
+      enqueueSnackbar('Please fill all fields', { variant: 'error' });
+      return false;
     }
+
     try {
-      const responce = await axios.post(`${API_URL}/api/auth/login`, {
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
         email: userInfo.email,
         password: userInfo.password
-      })
-      if (responce.data.success) {
-        enqueueSnackbar(`${responce.data.message}`, { variant: "success" })
-        window.location.href = '/'
+      }, { withCredentials: true });
 
+      if (response.data.success) {
+        enqueueSnackbar(`${response.data.message}`, { variant: "success" });
+        //console.log(response.data); 
+        Cookies.set('token', response.data.data);
+      } else {
+        enqueueSnackbar(`${response.data.message}`, { variant: "error" });
       }
-      else {
-        enqueueSnackbar(`${responce.data.message}`, { variant: "error" })
-      }
-
-
-
-      console.log(responce)
+    } catch (err) {
+      // Handle the error and display an appropriate message
+      const errorMessage = err.response && err.response.data ? err.response.data.message : 'An error occurred';
+      enqueueSnackbar(errorMessage, { variant: 'error' });
+      console.log(err);
     }
-    catch (err) {
-      enqueueSnackbar(responce.data.message, { variant: 'error' })
+  };
 
-    }
-  }
 
   return (
     <div>
@@ -81,9 +81,6 @@ const Login = () => {
                 title="Enter your Password"
                 value={userInfo.password}
                 onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
-
-
-
               />
 
               <div className="flex items-center gap-2">

@@ -133,7 +133,6 @@ const postVerifyEmail = async (req, res) => {
             return responder(res, false, `invalid OTP`, null, 400);
         }
 
-
     } catch (error) {
         return responder(res, false, `invalid OTP`, null, 400);
     }

@@ -5,7 +5,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 
 const CourseCard = ({ courses }) => {
-  console.log(courses)
+//  console.log(courses)
 
   return (
 
