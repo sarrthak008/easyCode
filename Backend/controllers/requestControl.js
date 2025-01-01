@@ -88,5 +88,21 @@ const rejectrequest = async (req, res) => {
 
 }
 
+const getallreq = async (req, res) => {
+    let { courseid } = req.params
+    if (!courseid) {
+        return responder(res, false, 'courseid is required', null, 400);
+    }
+    try {
+        let allreq = await request.find({ requestedCourse: courseid }).populate('userId',"profilePic _id name mobile email")
+        if (!allreq) {
+            return responder(res, false, "no request found", null, 400)
+        }
+        return responder(res, true, "all request found", allreq, 200)
+    } catch (error) {
+        return responder(res, false, error.message, null, 400);
+    }
 
-export { postrequest, acceptrequest, rejectrequest }
+}
+
+export { postrequest, acceptrequest, rejectrequest ,getallreq }

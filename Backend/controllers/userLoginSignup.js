@@ -133,7 +133,6 @@ const postVerifyEmail = async (req, res) => {
             return responder(res, false, `invalid OTP`, null, 400);
         }
 
-
     } catch (error) {
         return responder(res, false, `invalid OTP`, null, 400);
     }
@@ -163,8 +162,8 @@ const postLogin = async (req, res) => {
             email: LoginUser.email
         }, process.env.JWT_SERECT, { expiresIn: '1w' })
 
-        res.cookie('token', token)
         return responder(res, true, "login sucessfully", token, 200);
+        
     } catch (error) {
         return responder(res, false, `${error.message}`, null, 400);
     }
