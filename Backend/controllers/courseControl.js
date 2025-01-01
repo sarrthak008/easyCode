@@ -21,10 +21,10 @@ const getcourses = async (req, res) => {
 }
 
 const postcourse = async (req, res) => {
-    const { name, startingDate, instructor, prise,image } = req.body
-    console.log(req.file)
+    const { name, startingDate, instructor, prise,image,originalprise,discount } = req.body
+    
     try {
-        if (!name || !startingDate || !instructor || !prise || !image) {
+        if (!name || !startingDate || !instructor || !prise || !image || !originalprise || !discount) {
             return responder(res, false, "All fields are required", 400);
         }
         const newcouse = new course({
@@ -32,7 +32,9 @@ const postcourse = async (req, res) => {
             startingDate,
             instructor,
             prise,
-            image
+            image,
+            originalprise,
+            discount
         })
         if (!newcouse) {
             return responder(res, false, "course not created", 400)
@@ -92,11 +94,26 @@ const putcourse = async (req, res) => {
     }
     const courseUpdate = await course.findByIdAndUpdate(courseId, req.body, { new: true })
     return responder(res, true, "Course updated", courseUpdate, 200)
-
-    
-      
-    
-
-  
 }
-export { getcourses, postcourse, getmycourse, getcoursesStudent, putcourse }
+
+const postSyallbus = async (req, res) => {
+   const {courseId} = req.body
+   const findedcourse = await course.findById(courseId)
+    if(!findedcourse){
+         return responder(res,false,"Course not found",null,404)
+    }   
+    const {title,description} = req.body
+    const newSyllabus = {
+        title,
+        description
+    }
+    findedcourse.Syllabus.push(newSyllabus)
+    await findedcourse.save()
+    return responder(res,true,"Syllabus added",findedcourse,200)
+ 
+    
+    
+
+   
+}
+export { getcourses, postcourse, getmycourse, getcoursesStudent, putcourse, postSyallbus }
