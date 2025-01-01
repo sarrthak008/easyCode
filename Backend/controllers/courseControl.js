@@ -85,4 +85,18 @@ const getcoursesStudent = async (req, res) => {
 
 }
 
-export { getcourses, postcourse, getmycourse, getcoursesStudent }
+const putcourse = async (req, res) => {
+    const courseId = req.body.courseId
+    if (!courseId) {
+        return responder(res, false, "Course not found",null, 404)
+    }
+    const courseUpdate = await course.findByIdAndUpdate(courseId, req.body, { new: true })
+    return responder(res, true, "Course updated", courseUpdate, 200)
+
+    
+      
+    
+
+  
+}
+export { getcourses, postcourse, getmycourse, getcoursesStudent, putcourse }
