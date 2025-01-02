@@ -7,6 +7,7 @@ import Signupp from './view/Signup.jsx';
 import Courses from './view/Courses.jsx';
 import Login from './view/Login.jsx';
 import Detiles from './view/Detiles.jsx';
+import Admin from './view/Admin';
 import { Storeprovider } from './context/Store.jsx';
 import 'remixicon/fonts/remixicon.css'
 import { SnackbarProvider, useSnackbar } from 'notistack';
@@ -22,6 +23,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/course' element={<Courses />} />
             <Route path='/course/:id' element={<Detiles />} />
+            <Route path='/admin' element={<Admin />} />
           </Routes>
         </SnackbarProvider>
       </Storeprovider>
