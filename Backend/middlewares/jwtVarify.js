@@ -19,7 +19,7 @@ const verifyJwtUser = (req, res, next) => {
     }
 }
 
-const verifyJWTOwner = async (req, res, next) => {
+const verifyJWTAdmin = async (req, res, next) => {
     try {
         let token = req?.cookies?.token
         if (!token) {
@@ -32,7 +32,7 @@ const verifyJWTOwner = async (req, res, next) => {
         }
         const checkRole = await user.findOne({ _id: userInfo._id });
 
-        if (checkRole.role.toLowerCase() !== "owner") {
+        if (checkRole.role.toLowerCase() !== "admin") {
             return responder(res, false, 'you dont have permisson to add new course', null, 400);
         }
         req.user = userInfo
@@ -43,28 +43,28 @@ const verifyJWTOwner = async (req, res, next) => {
     }
 }
 
-const verifyJWTAssitant = async (req,res,next) =>{
-    try {
-        let token = req?.cookies?.token
-        if (!token) {
-            return responder(res, false, 'unauthrized user', null, 400);
-        }
-        const userInfo = jwt.verify(token, process.env.JWT_SERECT);
-        //console.log(user)
-        if (!userInfo) {
-            return responder(res, false, 'unauthrized user', null, 400);
-        }
-        const checkRole = await user.findOne({ _id: userInfo._id });
+// const verifyJWTAssitant = async (req,res,next) =>{
+//     try {
+//         let token = req?.cookies?.token
+//         if (!token) {
+//             return responder(res, false, 'unauthrized user', null, 400);
+//         }
+//         const userInfo = jwt.verify(token, process.env.JWT_SERECT);
+//         //console.log(user)
+//         if (!userInfo) {
+//             return responder(res, false, 'unauthrized user', null, 400);
+//         }
+//         const checkRole = await user.findOne({ _id: userInfo._id });
 
-        if (checkRole.role.toLowerCase() !== "assitant") {
-            return responder(res, false, 'you are not able to perform these action', null, 400);
-        }
-        req.user = userInfo
-        next()
+//         if (checkRole.role.toLowerCase() !== "assitant") {
+//             return responder(res, false, 'you are not able to perform these action', null, 400);
+//         }
+//         req.user = userInfo
+//         next()
 
-    } catch (error) {
-        return responder(res, false,`${error.message}`, null, 400)
-    }
-}
+//     } catch (error) {
+//         return responder(res, false,`${error.message}`, null, 400)
+//     }
+// }
 
-export { verifyJwtUser, verifyJWTOwner ,verifyJWTAssitant}
+export { verifyJwtUser, verifyJWTAdmin}

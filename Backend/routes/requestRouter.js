@@ -2,11 +2,11 @@ import { Router } from "express";
 const requestRouter = Router()
 
 import { postrequest ,acceptrequest,rejectrequest ,getallreq} from "../controllers/requestControl.js";
-import { verifyJWTAssitant, verifyJWTOwner, verifyJwtUser } from "../middlewares/jwtVarify.js";
+import { verifyJWTAdmin, verifyJwtUser } from "../middlewares/jwtVarify.js";
 
 requestRouter.post("/reqcourse/:courseid",verifyJwtUser,postrequest)
-requestRouter.post('/acceptreq',verifyJWTOwner,acceptrequest);
-requestRouter.post('/rejectreq',verifyJWTOwner,rejectrequest);
-requestRouter.get('/getallreq/:courseid',verifyJWTOwner,getallreq);
+requestRouter.post('/acceptreq',verifyJWTAdmin,acceptrequest);
+requestRouter.post('/rejectreq',verifyJWTAdmin,rejectrequest);
+requestRouter.get('/getallreq/:courseid',verifyJWTAdmin,getallreq);
 
 export {requestRouter}

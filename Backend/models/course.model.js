@@ -41,7 +41,7 @@ const couserSchema = new Schema({
     Syllabus:[
         {
             title: String,
-            description:String,
+            description:String
         }
     ]
 
