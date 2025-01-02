@@ -162,7 +162,7 @@ const postLogin = async (req, res) => {
             email: LoginUser.email
         }, process.env.JWT_SERECT, { expiresIn: '1w' })
 
-        res.set('token', token)
+        res.cookie('token', token)
         return responder(res, true, "login sucessfully", token, 200);
         
     } catch (error) {
