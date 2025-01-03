@@ -3,8 +3,7 @@ import Navbar from '../components/Navbar'
 import axios from 'axios'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import Speeddial from '../components/Speeddial'
-import DoughnutChart from '../components/DoughnutChart '
-import SERVER from "../assets/Server.png"
+import Mainadmincomp from "../components/Mainadmincomp"
 
 const Admin = () => {
 
@@ -20,10 +19,17 @@ const Admin = () => {
   loadAllcourses()
 
   return (
-    <div className='h-screen w-screen relative'>
+    <div className='h-screen w-screen relative   '>
       <Navbar />
-      <div className="h-screen w-[99%] absolute top-0 right-0 m-auto flex flex-col mt-0" ></div>
-      <Speeddial />
+      <div className="w-full absolute top-0 right-0 m-auto flex flex-col mt-0 overflow-x-hidden overflow-y-scroll hide-scroll-bar" >
+        <Mainadmincomp />
+
+
+
+      </div>
+       <div className='fixed bottom-10 right-10'>
+        <Speeddial />
+       </div>
     </div>
   )
 }
