@@ -48,7 +48,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .text-linear{
-    background:linear-gradient(to left ,green,#ffffff9f,#ffffff45);
+    background:linear-gradient(to left ,#04f304,#ffffffef,#9e9e9eae);
     background-clip: text;
     color: transparent;
 }

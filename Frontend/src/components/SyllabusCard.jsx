@@ -6,11 +6,10 @@ const SyllabusCard = ({syllabus}) => {
     const [para,setpara] = useState(false);
 
   return (
-    <div className=' transition-transform duration-[3000] ease-out py-5 w-[90%] flex flex-col justify-center items-start bg-slate-900 mx-auto border-t-2 relative border-t-gray-600 border-b-2 border-b-gray-600 mt-3 cursor-pointer overflow-hidden' onClick={()=>{setpara(!para)}}>  
-       <div className='text-white text-center text-sm sm:text-3xl ml-4 hover:text-green-400'>{syllabus?.title} {para ? <i class="ri-arrow-up-line absolute right-0 text-xl"></i> :<i class="ri-arrow-down-line absolute right-0 text-xl"></i>}</div>
-       {para ? <div>
-        <p className='text-gray-500 block ml-12 text-sm sm:text-xl mt-5'>{syllabus.description}</p>
-       </div>: null}
+    <div className='w-[90%] h-[250px]  border-[1px] border-l-0 border-r-0 border-b-0 '>
+         <div className='text-gray-200 text-xl sm:text-3xl ml-7 mt-5 capitalize '>{syllabus?.title}</div>
+         <p  className='text-gray-400 block w-[90%] sm:w-[80%] ml-10 sm:ml-20 mt-5 sm:mt-10 text-[14px] sm:text-xl font-thin'>{syllabus?.description?.split(".")[0]}{syllabus?.description?.split(".")[0]}</p>
+         <div className='text-green ml-7 sm:ml-20 mt-5 cursor-pointer text-[15px] sm:text-xl group'>Know more <i className="ri-arrow-right-line group-hover:ml-2 transition-all"></i></div>
     </div>
   )
 }
