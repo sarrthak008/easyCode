@@ -1,4 +1,5 @@
 import Quiz from "./../models/quiz.model.js";
+import { responder } from "../utils/responder.js";
 
 
 const postquiz = async (req, res) => {
@@ -35,4 +36,38 @@ const postquiz = async (req, res) => {
 
 
 };
-export { postquiz };
+
+
+
+
+//update quiz
+
+const updateQuiz = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, allquestions } = req.body;
+
+        // Find the quiz by ID and update
+        const updatedQuiz = await Quiz.findByIdAndUpdate(
+            id,
+            { name, allquestions },
+            { new: true, runValidators: true }
+        );
+
+        // If quiz is not found
+        if (!updatedQuiz) {
+            return responder(res, false, "Quiz not found", null, 404);
+        }
+
+
+        responder(res, true, "Quiz updated successfully", updatedQuiz, 200);
+    } catch (error) {
+
+
+        console.error("Error updating quiz:", error);
+        responder(res, false, "Failed to update quiz", error.message, 500);
+    }
+};
+
+
+export { postquiz, updateQuiz };
