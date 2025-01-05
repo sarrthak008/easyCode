@@ -164,7 +164,7 @@ const postLogin = async (req, res) => {
 
          res.cookie("token",token,{
             sameSite: 'None',
-            secure: false
+            secure: true
          });
         
         return responder(res, true, "login sucessfully", token, 200);
