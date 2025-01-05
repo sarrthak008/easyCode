@@ -34,9 +34,11 @@ const Courses = () => {
        <div className='text-gray-700 text-2xl mt-20 text-center'>
           <span>We belive on <br/> <span className='text-green font-bold text-9xl hevy '>Skills</span> <br/> not on certificate.</span>
        </div>
-       <CourseCard 
-        courses={courses}
-       />
+       <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4'>
+          {courses.map((course, index) => (
+        <CourseCard key={index} course={course} index={index} /> // Pass course and index correctly
+           ))}
+       </div>
        <Shadow/>
     </div>
   )
