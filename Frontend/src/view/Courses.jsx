@@ -17,6 +17,7 @@ const Courses = () => {
            try{
               let responce = await axios.get(`${API_URL}/api/course/getcourse/`)
               setCourses(responce.data.data)
+              responce.data.data.map((course)=>course.requetes = false)
               localStorage.setItem("courses",JSON.stringify(responce.data.data))
            }catch(error){
               console.log(error)

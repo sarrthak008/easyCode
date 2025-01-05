@@ -2,16 +2,51 @@ import React from 'react'
 import Appbtn from './Appbtn'
 import { Link, } from 'react-router-dom'
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import Cookies from 'js-cookie';
+import { useSnackbar } from 'notistack';
+import axios from 'axios';
+const API_URL = import.meta.env.VITE_SERVER_URI
 
 
 const CourseCard = ({ courses }) => {
 //  console.log(courses)
 
+
+   const { enqueueSnackbar } = useSnackbar()
+
+ const  handelRequest = async (course) => {
+     try{
+         const token = Cookies.get('token')
+         if(!token){
+          return  enqueueSnackbar("login to send course request",{variant:'error'});
+         }
+
+        //  if(!course.requetes){
+        //   return  enqueueSnackbar("alredy requested please wait",{variant:'error'});
+        //  }
+
+         try {
+            const responce =await axios.post(`${API_URL}/api/request/reqcourse/${course._id}`, null, {
+              withCredentials: true  // Important to send cookies
+          })
+
+            console.log(responce.data)
+
+         } catch (error) {
+           console.log(error)
+         }
+
+     }catch(err){
+        console.log(err)
+     }
+ }
+
+
   return (
 
     <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4 '>
       {courses.map((course) => (
-        <div key={course.id} className='bg-gray-800 w-[350px] h-[500px] rounded-lg  p-1 text-white relative'>
+        <div key={course._id} className='bg-gray-800 w-[350px] h-[500px] rounded-lg  p-1 text-white relative'>
             <img src={course.image} alt={course.name} className='w-full h-[200px] rounded-md'/>
           <div className='flex  mt-4 flex-col h-[120px] justify-between'>
               <h2 className='text-2xl text-center text-gray-300'>{course.name}</h2>
@@ -21,7 +56,7 @@ const CourseCard = ({ courses }) => {
             </div>
           </div>
           <div className='mt-6 flex flex-col gap-4 m-auto'>
-               <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 '>request course</button>
+                <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 ' onClick={()=>handelRequest(course)}>request course</button>
                 <Link to={`/course/${course._id}`} className='w-full px-4'><button className='bg-[#00DB80] text-white w-[90%] mx-auto py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 '>view details</button></Link>
             </div>
             <span className="bg-green-600 py-1 px-1 absolute -top-1 z-20 overflow-hidden  -right-4 rounded-md shadow-md shadow-black">{course.discount}% off</span>

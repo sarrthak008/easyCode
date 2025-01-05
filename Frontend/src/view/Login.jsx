@@ -35,7 +35,7 @@ const Login = () => {
       if (response.data.success) {
         enqueueSnackbar(`${response.data.message}`, { variant: "success" });
         //console.log(response.data); 
-        Cookies.set('token', response.data.data);
+        Cookies.set('token', response.data.data, { expires: 7 });
       } else {
         enqueueSnackbar(`${response.data.message}`, { variant: "error" });
       }
