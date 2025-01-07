@@ -169,7 +169,7 @@ const postLogin = async (req, res) => {
         return responder(res, true, "login sucessfully", token, 200);
         
     } catch (error) {
-        return responder(res, false, `${error.message}`, null, 400);
+        return responder(res, false, `${error.message}`, null, 404);
     }
 }
 
