@@ -1,7 +1,6 @@
 import React from 'react'
 import DoughnutChart from "./DoughnutChart "
 import SEREVER_IMG from "../assets/Server.png"
-import serverpingline from "./ServerPingLine"
 import ServerPingLine from './ServerPingLine'
 
 

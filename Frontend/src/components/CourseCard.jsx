@@ -53,17 +53,15 @@ const CourseCard = ({ course, index }) => {
   }
 
 
-  return (
-
-
-
+  return ( 
     <div key={course._id} className='bg-gray-800 w-[350px] h-[500px] rounded-lg  p-1 text-white relative'>
       <img src={course.image} alt={course.name} className='w-full h-[200px] rounded-md' />
       <div className='flex  mt-4 flex-col h-[120px] justify-between'>
         <h2 className='text-2xl text-center text-gray-300'>{course.name}</h2>
         <div className='flex gap-2 mt-5 items-center mx-2 ' >
           <span className='text-3xl text-center font-semibold text-gray-300'><CurrencyRupeeIcon className='mb-[3px] ' />{course.prise}</span>
-          <span className='text-[20px] text-center font-semibold mt-[10px] ml-14 text-gray-500'><del><CurrencyRupeeIcon className='mb-[3px] ' sx={{ fontSize: '20px' }} />{course.originalprise}</del></span>
+          <span className='text-[15px] text-center font-semibold mt-[10px] ml-1 text-green'><del><CurrencyRupeeIcon className='mb-[3px] ' sx={{ fontSize: '15px' }} />{course.originalprise}</del></span>
+          <span className='text-[16px] text-center mt-2 ml-3  text-gray-300'><i className="ri-calendar-schedule-line"></i> {course?.startingDate?.split("T")[0]}</span>
         </div>
       </div>
       <div className='mt-6 flex flex-col gap-4 m-auto'>

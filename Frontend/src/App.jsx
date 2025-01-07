@@ -11,6 +11,7 @@ import Admin from './view/Admin';
 import { Storeprovider } from './context/Store.jsx';
 import 'remixicon/fonts/remixicon.css'
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import Settings from './view/Settings.jsx';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/course' element={<Courses />} />
             <Route path='/course/:id' element={<Detiles />} />
             <Route path='/admin' element={<Admin />} />
+            <Route path='/seeting' element={<Settings/>} />
           </Routes>
         </SnackbarProvider>
       </Storeprovider>
