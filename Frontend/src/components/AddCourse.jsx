@@ -57,7 +57,7 @@ const AddCourse = () => {
     return (
         <div className="w-full h-full flex flex-col justify-center items-center mt-28">
             <h1 className="text-3xl text-white mb-4 font-bold">Add Course</h1>
-            <div className="w-[90%] h-[70%] sm:w-[60%] rounded-lg p-8 bg-gray-900 flex flex-col gap-7">
+            <div className="w-[90%] h-[70%] sm:w-[60%] rounded-lg p-8 bg-gray-900 flex flex-col gap-7 text-white">
                 <Appinput
                     type="text"
                     title="Enter Course Name"
