@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useStore } from '../../context/Store'
 const API_URL = import.meta.env.VITE_SERVER_URI
-import RequestCard from './requestCard'
+import RequestCard from './RequestCard'
 
 const AllcourseRequest = () => {
 
