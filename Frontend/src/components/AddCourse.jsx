@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Appinput from '../Appinput';
-import Appbtn from '../Appbtn';
+import Appinput from './Appinput';
+import Appbtn from './Appbtn';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
