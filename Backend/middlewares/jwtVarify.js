@@ -4,7 +4,7 @@ import user from "../models/user.model.js"
 
 const verifyJwtUser = (req, res, next) => {
     try {
-        console.log(req.cookies)
+        //console.log(req.cookies)
         //console.log(req.headers.authorization)
         let token = req?.cookies?.token
         if (!token) {
@@ -23,7 +23,7 @@ const verifyJwtUser = (req, res, next) => {
 
 const verifyJWTAdmin = async (req, res, next) => {
     try {
-        console.log( req.headers)
+        //console.log( req.headers)
         let token = req?.cookies?.token
         if (!token) {
             return responder(res, false, 'unauthrized user', null, 400);

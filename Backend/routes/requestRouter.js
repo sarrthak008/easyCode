@@ -7,6 +7,6 @@ import { verifyJWTAdmin, verifyJwtUser } from "../middlewares/jwtVarify.js";
 requestRouter.post("/reqcourse/:courseid",verifyJwtUser,postrequest)
 requestRouter.post('/acceptreq',verifyJWTAdmin,acceptrequest);
 requestRouter.post('/rejectreq',verifyJWTAdmin,rejectrequest);
-requestRouter.get('/getallreq/:courseid',verifyJWTAdmin,getallreq);
+requestRouter.post('/getallreq/:courseid',verifyJWTAdmin,getallreq);
 
 export {requestRouter}

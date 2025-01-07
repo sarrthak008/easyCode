@@ -109,7 +109,7 @@ const postVerifyEmail = async (req, res) => {
         // checks the OTP and email are provide or not...
         for (const element of requireddata) {
             if (!req.body[element]) {
-                return responder(res, false, `${element} is required`, null, 400);
+                return responder(res, false,`${element} is required`, null, 400);
             }
         }
 
@@ -163,8 +163,7 @@ const postLogin = async (req, res) => {
         }, process.env.JWT_SERECT, { expiresIn: '1w' })
 
          res.cookie("token",token,{
-            sameSite: 'None',
-            secure: true
+            sameSite: 'None'
          });
         
         return responder(res, true, "login sucessfully", token, 200);
