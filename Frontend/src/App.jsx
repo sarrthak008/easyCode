@@ -25,7 +25,7 @@ function App() {
             <Route path='/course' element={<Courses />} />
             <Route path='/course/:id' element={<Detiles />} />
             <Route path='/admin' element={<Admin />} />
-            <Route path='/seeting' element={<Settings/>} />
+            <Route path='/setting' element={<Settings/>} />
           </Routes>
         </SnackbarProvider>
       </Storeprovider>

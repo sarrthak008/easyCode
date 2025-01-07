@@ -1,9 +1,18 @@
 import React from 'react'
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { useStore } from '../context/Store';
+import { useNavigate, useNavigation } from 'react-router-dom';
 
-const AdminCourseCard = ({course}) => {
+const AdminCourseCard = ({ course }) => {
 
+  const navigate = useNavigate()
+  const { setsettingCourse } = useStore()
+
+  const gotosetting = () => {
+    setsettingCourse(course._id)  
+    navigate('/setting')         
+  }
+  
   return (
     <div key={course._id} className='bg-gray-800 w-[350px] h-[450px] rounded-lg  p-1 text-white relative'>
       <img src={course.image} alt={course.name} className='w-full h-[200px] rounded-md' />
@@ -17,7 +26,7 @@ const AdminCourseCard = ({course}) => {
       </div>
       <div className='mt-6 flex flex-col gap-4 m-auto'>
 
-            <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 '>open settings</button>
+        <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 ' onClick={()=>gotosetting()}>open settings</button>
       </div>
       <span className="bg-green-600 py-1 px-1 absolute -top-1 z-20 overflow-hidden  -right-4 rounded-md shadow-md shadow-black">{course.discount}% off</span>
     </div>
