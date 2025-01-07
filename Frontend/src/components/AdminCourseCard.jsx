@@ -14,7 +14,7 @@ const AdminCourseCard = ({ course }) => {
   }
   
   return (
-    <div key={course._id} className='bg-gray-800 w-[350px] h-[450px] rounded-lg  p-1 text-white relative'>
+    <div key={course._id} className='bg-gray-800 w-[320px] h-[450px] rounded-lg  p-1 text-white relative mb-5'>
       <img src={course.image} alt={course.name} className='w-full h-[200px] rounded-md' />
       <div className='flex  mt-4 flex-col h-[120px] justify-between'>
         <h2 className='text-2xl text-center text-gray-300'>{course.name}</h2>
@@ -28,7 +28,7 @@ const AdminCourseCard = ({ course }) => {
 
         <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 ' onClick={()=>gotosetting()}>open settings</button>
       </div>
-      <span className="bg-green-600 py-1 px-1 absolute -top-1 z-20 overflow-hidden  -right-4 rounded-md shadow-md shadow-black">{course.discount}% off</span>
+      <span className="bg-green-600 py-1 px-1 absolute -top-1 z-[] overflow-hidden  -right-4 rounded-md shadow-md shadow-black">{course.discount}% off</span>
     </div>
   )
 }

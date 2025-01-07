@@ -2,7 +2,6 @@ import React from 'react'
 
 const RequestCard = ({user}) => {
   const {userId} = user
-
   return (
     <div className=' w-80 sm:w-96 bg-gray-900 backdrop-blur-md p-4'>
       <div className='flex text-gray-400 gap-4'>
