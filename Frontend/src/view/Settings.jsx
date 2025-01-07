@@ -9,9 +9,9 @@ const Settings = () => {
   const {settingCourse} = useStore()
 
   return (
-    <div className='h-screen w-screen overflow-hidden relative'>
+    <div className='h-screen w-screen  relative'>
       <Sidebar/>
-      <div className='w-full min-h-screen ml-12 overflow-y-scroll relative z-20'>
+      <div className='w-full min-h-screen ml-12  relative z-20'>
           <AllcourseRequest/>
       </div>
 
