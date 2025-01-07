@@ -32,7 +32,7 @@ const CourseCard = ({ course, index }) => {
 
       try {
         const responce = await axios.post(`${API_URL}/api/request/reqcourse/${course._id}`,null,{
-          withCredentials: true  // Important to send cookies
+          withCredentials: true  
         })
 
         if (responce?.data?.success) {
