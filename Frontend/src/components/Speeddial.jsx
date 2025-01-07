@@ -7,15 +7,18 @@ import AddCommentIcon from '@mui/icons-material/AddComment';
 import PersonIcon from '@mui/icons-material/Person';
 import QuizIcon from '@mui/icons-material/Quiz';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
+import HomeIcon from '@mui/icons-material/Home';
+
 
 const actions = [
+  {icon:<HomeIcon/> , name:'status '},
+  { icon: <CastForEducationIcon/>, name: 'ALL Courses' },
   { icon: <AddCommentIcon />, name: 'Add Course' },
   { icon: <PersonIcon />, name: 'All User' },
   { icon: <QuizIcon />, name: 'Add Quiz' },
-  { icon: <CastForEducationIcon/>, name: 'ALL Courses' },
 ];
 
-export default function Speeddial() {
+export default function Speeddial({operationNum}) {
   return (
     <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
       <SpeedDial
@@ -23,11 +26,12 @@ export default function Speeddial() {
         //sx={{ position: 'fixed', bottom: "-80%", right: "5%"  }}
         icon={<SpeedDialIcon/>}
       >
-        {actions.map((action) => (
+        {actions.map((action,index) => (
           <SpeedDialAction
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
+            onClick={()=>{operationNum(index)}}
           />
         ))}
       </SpeedDial>

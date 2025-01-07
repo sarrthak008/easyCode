@@ -14,7 +14,7 @@ const AdminCourseCard = ({ course }) => {
   }
   
   return (
-    <div key={course._id} className='bg-gray-800 w-[320px] h-[450px] rounded-lg  p-1 text-white relative mb-5'>
+    <div key={course._id} className='bg-gray-800 w-[340px] h-[450px] rounded-lg  p-1 text-white relative mb-5'>
       <img src={course.image} alt={course.name} className='w-full h-[200px] rounded-md' />
       <div className='flex  mt-4 flex-col h-[120px] justify-between'>
         <h2 className='text-2xl text-center text-gray-300'>{course.name}</h2>
