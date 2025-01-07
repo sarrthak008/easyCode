@@ -12,7 +12,6 @@ import { Storeprovider } from './context/Store.jsx';
 import 'remixicon/fonts/remixicon.css'
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import Settings from './view/Settings.jsx';
-import AddCourse from './components/settingComponents/AddCourse.jsx';
 
 function App() {
   return (
@@ -27,7 +26,7 @@ function App() {
             <Route path='/course/:id' element={<Detiles />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/setting' element={<Settings/>} />
-            <Route path='/addcourse' element={<AddCourse/>} />
+          
 
           </Routes>
         </SnackbarProvider>
