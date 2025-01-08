@@ -1,13 +1,15 @@
 import React from 'react'
-import DoughnutChart from "./DoughnutChart "
+import DoughnutChart from "../components/DoughnutChart "
 import SEREVER_IMG from "../assets/Server.png"
-import ServerPingLine from './ServerPingLine'
-
+import ServerPingLine from '../components/ServerPingLine'
+import Speeddial from '../components/Speeddial'
+import Navbar from '../components/Navbar'
 
 const Mainadmincomp = () => {
   return (
     <>
-      <div className='min-h-[100vh] w-[100vw] mt-16 flex flex-col gap-6'>
+    <Navbar/>
+      <div className='min-h-[100vh] w-[100vw] mt-16 flex flex-col gap-6 relative'>
         <div className="h-full sm:h-[90%]  md:h-[50%]  w-full flex flex-wrap mt-8 items-center gap-3 sm:gap-2 justify-evenly">
           <div className='h-60 w-96 sm:w-60 bg-gray-800 p-2 rounded-md flex items-center justify-center'>
             <DoughnutChart />
@@ -34,6 +36,9 @@ const Mainadmincomp = () => {
                    <ServerPingLine/>
              </div>
         </div>
+      </div>
+      <div className='fixed bottom-16 right-10'>
+          <Speeddial/>
       </div>
     </>
   )

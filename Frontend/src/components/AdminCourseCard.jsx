@@ -10,7 +10,7 @@ const AdminCourseCard = ({ course }) => {
 
   const gotosetting = () => {
     setsettingCourse(course._id)  
-    navigate('/setting')         
+    navigate('/edit')         
   }
   
   return (

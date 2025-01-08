@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import Appinput from './Appinput';
-import Appbtn from './Appbtn';
+import Appinput from '../components/Appinput';
+import Appbtn from '../components/Appbtn';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import Shadow from '../components/Shadow'
+import Speeddial from '../components/Speeddial';
 
 const API_URL = import.meta.env.VITE_SERVER_URI; // Use environment variable for API URL
 
 const AddCourse = () => {
     const { enqueueSnackbar } = useSnackbar();
-    
+
     const [formData, setFormData] = useState({
         courseName: "",
         courseImg: "",
@@ -38,16 +39,16 @@ const AddCourse = () => {
             instructor
         };
         console.log(data);
-        
+
         try {
-            const response = await axios.post(`${API_URL}/api/course/addcourse`, data,{
-                withCredentials: true 
-            }); 
+            const response = await axios.post(`${API_URL}/api/course/addcourse`, data, {
+                withCredentials: true
+            });
 
             if (response.data.success) {
-                enqueueSnackbar(response.data.message, { variant: "success" }); 
+                enqueueSnackbar(response.data.message, { variant: "success" });
             } else {
-                enqueueSnackbar(response.data.message, { variant: "error" }); 
+                enqueueSnackbar(response.data.message, { variant: "error" });
             }
         } catch (error) {
             console.log(error);
@@ -115,7 +116,10 @@ const AddCourse = () => {
                     <Appbtn title="Add Course" onClick={handleSubmit} />
                 </div>
             </div>
-            <Shadow/>
+            <Shadow />
+            <div className='fixed bottom-16 right-10'>
+                <Speeddial />
+            </div>
         </div>
     );
 };
