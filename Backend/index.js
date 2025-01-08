@@ -29,6 +29,7 @@ import { courseRouter } from "./routes/courseRoute.js";
 import { requestRouter } from "./routes/requestRouter.js";
 import { uploadRouter } from "./routes/uploadRouter.js";
 import { quizRouter } from "./routes/quizRouter.js";
+import { roleRouter } from "./routes/roleRoute.js";
 
 // Utility Functions
 import { responder } from "./utils/responder.js";
@@ -39,6 +40,7 @@ app.use('/api/course', courseRouter);
 app.use('/api/request', requestRouter);
 app.use('/api/image', uploadRouter);
 app.use('/api/quiz', quizRouter);
+app.use('/api/role', roleRouter);
 
 // Health Check Routes
 app.get('/health', (req, res) => {
