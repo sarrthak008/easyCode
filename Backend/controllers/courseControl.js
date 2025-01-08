@@ -70,9 +70,9 @@ const getcoursesStudent = async (req, res) => {
         if (!courseId) {
             return responder(res, false, "Course not found",null, 404)
         }
-        const courseStudent = await course.find({ _id: courseId }).populate('students')
+        const courseStudent = await course.find({ _id: courseId }).populate('students', '-password -courses -validateUser -createdAt -updatedAt -__v').select('students')
 
-        console.log (courseStudent)
+        //console.log (courseStudent)
 
         if (!courseStudent) {
             return responder(res, false, "No student found",null, 404)
