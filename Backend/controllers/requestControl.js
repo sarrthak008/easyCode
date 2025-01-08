@@ -15,6 +15,11 @@ const postrequest = async (req, res) => {
             return responder(res, false, "cant find course", null, 400)
         }
 
+        let responece = await request.findOne({ $and: [{ userId: user._id }, { requestedCourse: courseid }] })
+        if(responece){
+            return responder(res, false, "already requested please wait ", null, 400)
+        }
+
         let newrequest = new request({
             userId: user._id,
             requestedCourse: joiningcourse._id
@@ -58,6 +63,7 @@ const acceptrequest = async (req, res) => {
         requestedUser.courses.push(reqcourse._id);
         await reqcourse.save();
         await requestedUser.save()
+        await request.deleteOne({ $and: [{ userId: requestedUser._id }, { requestedCourse: reqcourse._id }] })
         return responder(res, true, "user add in course sucessfully", null, 200);
 
     } catch (error) {

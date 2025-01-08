@@ -3,9 +3,8 @@ import Navbar from '../components/Navbar'
 import axios from 'axios'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import Speeddial from '../components/Speeddial'
-import Mainadmincomp from "../components/Mainadmincomp";
-import CourseOpe from '../components/CourseOpe'
-import AddCourse from "../components/AddCourse"
+import CourseOpe from './CourseOpe'
+import AddCourse from "./AddCourse"
 
 const Admin = () => {
 
@@ -29,11 +28,6 @@ const Admin = () => {
        {/* <Mainadmincomp />  */}
          {/* <CourseOpe />  */}
 
-         {
-
-          operationNumber == 0 ? <Mainadmincomp/> : operationNumber == 1 ? <CourseOpe/> : operationNumber == 2 ? <AddCourse/> : null
-
-         }
       </div>
        <div className='fixed bottom-10 right-10'>
         <Speeddial operationNum={setOperationnumber}/>

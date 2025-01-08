@@ -12,6 +12,9 @@ import { Storeprovider } from './context/Store.jsx';
 import 'remixicon/fonts/remixicon.css'
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import Settings from './view/Settings.jsx';
+import Mainadmincomp from './view/Mainadmincomp.jsx';
+import AddCourse from './view/AddCourse.jsx';
+import CourseOpe from './view/CourseOpe.jsx';
 
 function App() {
   return (
@@ -25,9 +28,10 @@ function App() {
             <Route path='/course' element={<Courses />} />
             <Route path='/course/:id' element={<Detiles />} />
             <Route path='/admin' element={<Admin />} />
-            <Route path='/setting' element={<Settings/>} />
-          
-
+            <Route path='/setting' element={<CourseOpe/>} />
+            <Route path='/homesetting' element={<Mainadmincomp/>}/>
+            <Route path='/addcourse' element={<AddCourse/>}/>
+            <Route path="/edit" element={<Settings/>} />
           </Routes>
         </SnackbarProvider>
       </Storeprovider>

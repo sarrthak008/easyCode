@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import Appinput from './Appinput';
-import Appbtn from './Appbtn';
+import React, { useEffect, useState } from 'react';
+import Appinput from '../components/Appinput';
+import Appbtn from '../components/Appbtn';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import Shadow from '../components/Shadow'
-
-const API_URL = import.meta.env.VITE_SERVER_URI; // Use environment variable for API URL
+import Speeddial from '../components/Speeddial';
+const API_URL = import.meta.env.VITE_SERVER_URI; 
 
 const AddCourse = () => {
     const { enqueueSnackbar } = useSnackbar();
-    
     const [formData, setFormData] = useState({
         courseName: "",
         courseImg: "",
@@ -19,6 +18,9 @@ const AddCourse = () => {
         discount: "",
         instructor: "",
     });
+    const [options,setoptions] = useState([])
+
+
 
     const handleSubmit = async () => {
         if (!formData.startingDate || !formData.courseName || !formData.courseImg || !formData.prise || !formData.originalprise || !formData.discount || !formData.instructor) {
@@ -37,17 +39,17 @@ const AddCourse = () => {
             discount,
             instructor
         };
-        console.log(data);
-        
+    //console.log(data)
+
         try {
-            const response = await axios.post(`${API_URL}/api/course/addcourse`, data,{
-                withCredentials: true 
-            }); 
+            const response = await axios.post(`${API_URL}/api/course/addcourse`, data, {
+                withCredentials: true
+            });
 
             if (response.data.success) {
-                enqueueSnackbar(response.data.message, { variant: "success" }); 
+                enqueueSnackbar(response.data.message, { variant: "success" });
             } else {
-                enqueueSnackbar(response.data.message, { variant: "error" }); 
+                enqueueSnackbar(response.data.message, { variant: "error" });
             }
         } catch (error) {
             console.log(error);
@@ -55,9 +57,26 @@ const AddCourse = () => {
         }
     };
 
+    const AllAdmin = async () => {
+        try{
+            const response = await axios.get(`${API_URL}/api/admin/alladmin`)
+            console.log(response)
+            setoptions(response?.data?.data)
+
+        }
+        catch(error){
+            enqueueSnackbar(`${error.message}`,{variant:'error'})
+
+        }
+    }
+
+    useEffect(()=>{
+        AllAdmin()
+    },[])
+
     return (
         <div className="w-full h-screen flex flex-col justify-center items-center mt-10">
-            <h1 className="text-4xl text-white mb-4 font-bold">Add Course</h1>
+            <h1 className="text-4xl text-white opacity-60 mb-4 font-bold">Add Course</h1>
             <div className="w-[90%] h-[70%] sm:w-[60%] rounded-lg p-8 bg-gray-900 flex flex-col gap-7 text-white py-6 ">
                 <Appinput
                     type="text"
@@ -103,19 +122,37 @@ const AddCourse = () => {
                         />
                     </div>
                 </div>
-                <Appinput
-                    type="text"
-                    title="Enter Course Instructor"
-                    onChange={(e) => setFormData({ ...formData, instructor: e.target.value })}
-                    value={formData.instructor}
-                />
+                {/* <Appinput
+                            type="text"
+                            title="instrutor"
+                            onChange={(e) => setFormData({ ...formData, instructor: e.target.value })}
+                            value={formData.instructor}
+                        /> */}
+                 <label>
+          Select an option:
+          <select value={formData.instructor} onChange={(e) => setFormData({ ...formData, instructor: e.target.value })} className=' bg-slate-600  p-2 w-full outline-none border-0 border-b-2 border-b-green-400 h-12 '>
+             {<>
+                <option value="">Please choose an option</option>
+                 {
+                 options?.map((option)=>(
+                  <option value={option._id}>{option.name}</option>
+                ))
+                }
+
+                </>
+             }
+          </select>
+        </label> 
             </div>
             <div className="w-[90%] flex justify-start ">
                 <div className="sm:w-[50%] flex justify-start  mt-4 mx-auto text-white">
                     <Appbtn title="Add Course" onClick={handleSubmit} />
                 </div>
             </div>
-            <Shadow/>
+            <Shadow />
+            <div className='fixed bottom-16 right-10'>
+                <Speeddial />
+            </div>
         </div>
     );
 };
