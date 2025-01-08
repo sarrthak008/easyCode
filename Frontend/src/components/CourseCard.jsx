@@ -31,8 +31,8 @@ const CourseCard = ({ course, index }) => {
       }
 
       try {
-        const responce = await axios.post(`${API_URL}/api/request/reqcourse/${course._id}`,null,{
-          withCredentials: true  
+        const responce = await axios.post(`${API_URL}/api/request/reqcourse/${course._id}`, null, {
+          withCredentials: true
         })
 
         if (responce?.data?.success) {
@@ -41,6 +41,8 @@ const CourseCard = ({ course, index }) => {
           courses[index].requetes = true
           setrequested(true)
           localStorage.setItem("courses", JSON.stringify(courses))
+        } else {
+          enqueueSnackbar(responce.data.message, { variant: 'info' });
         }
 
       } catch (error) {
@@ -53,7 +55,7 @@ const CourseCard = ({ course, index }) => {
   }
 
 
-  return ( 
+  return (
     <div key={course._id} className='bg-gray-800 w-[350px] h-[500px] rounded-lg  p-1 text-white relative'>
       <img src={course.image} alt={course.name} className='w-full h-[200px] rounded-md' />
       <div className='flex  mt-4 flex-col h-[120px] justify-between'>
@@ -67,7 +69,7 @@ const CourseCard = ({ course, index }) => {
       <div className='mt-6 flex flex-col gap-4 m-auto'>
         {
           isrequested ?
-            <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 ' onClick={() => handelRequest(course, index)}>requested</button> 
+            <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 ' onClick={() => handelRequest(course, index)}>requested</button>
             :
             <button className='bg-[#00DB80] text-white w-[81%] ml-4 py-2 text-2xl text-black rounded-sm hover:bg-green-700 shadow-lg shadow-gray-900 ' onClick={() => handelRequest(course, index)}>request course</button>
         }
@@ -76,9 +78,6 @@ const CourseCard = ({ course, index }) => {
       <span className="bg-green-600 py-1 px-1 absolute -top-1 z-20 overflow-hidden  -right-4 rounded-md shadow-md shadow-black">{course.discount}% off</span>
     </div>
   )
-
-
-
 
 
 }
