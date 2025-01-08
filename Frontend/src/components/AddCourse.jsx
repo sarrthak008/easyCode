@@ -3,6 +3,7 @@ import Appinput from './Appinput';
 import Appbtn from './Appbtn';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
+import Shadow from '../components/Shadow'
 
 const API_URL = import.meta.env.VITE_SERVER_URI; // Use environment variable for API URL
 
@@ -55,9 +56,9 @@ const AddCourse = () => {
     };
 
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center mt-28">
-            <h1 className="text-3xl text-white mb-4 font-bold">Add Course</h1>
-            <div className="w-[90%] h-[70%] sm:w-[60%] rounded-lg p-8 bg-gray-900 flex flex-col gap-7 text-white">
+        <div className="w-full h-screen flex flex-col justify-center items-center mt-10">
+            <h1 className="text-4xl text-white mb-4 font-bold">Add Course</h1>
+            <div className="w-[90%] h-[70%] sm:w-[60%] rounded-lg p-8 bg-gray-900 flex flex-col gap-7 text-white py-6 ">
                 <Appinput
                     type="text"
                     title="Enter Course Name"
@@ -109,11 +110,12 @@ const AddCourse = () => {
                     value={formData.instructor}
                 />
             </div>
-            <div className="w-full flex justify-center">
-                <div className="w-[50%] flex justify-center gap-4 mt-4 text-white">
+            <div className="w-[90%] flex justify-start ">
+                <div className="sm:w-[50%] flex justify-start  mt-4 mx-auto text-white">
                     <Appbtn title="Add Course" onClick={handleSubmit} />
                 </div>
             </div>
+            <Shadow/>
         </div>
     );
 };
