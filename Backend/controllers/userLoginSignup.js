@@ -157,9 +157,10 @@ const postLogin = async (req, res) => {
         const token = jwt.sign({
             _id: LoginUser._id,
             role: LoginUser.role,
-            courses: LoginUser.courses,
             validateUser: LoginUser.validateUser,
-            email: LoginUser.email
+            email: LoginUser.email,
+            name:LoginUser.name,
+            mobile:LoginUser.mobile
         }, process.env.JWT_SERECT, { expiresIn: '1w' })
 
          res.cookie("token",token,{
