@@ -164,7 +164,7 @@ const postLogin = async (req, res) => {
 
          res.cookie("token",token,{
             sameSite: 'None',
-            secure: false,
+            secure: true,
             maxAge: 604800000,
             path:'/'
          });
