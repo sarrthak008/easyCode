@@ -6,11 +6,9 @@ import { useNavigate, useNavigation } from 'react-router-dom';
 const AdminCourseCard = ({ course }) => {
 
   const navigate = useNavigate()
-  const { setsettingCourse } = useStore()
 
   const gotosetting = () => {
-    setsettingCourse(course._id)  
-    navigate('/edit')         
+    navigate(`/edit/${course._id}`)         
   }
   
   return (

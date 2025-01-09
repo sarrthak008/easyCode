@@ -15,6 +15,7 @@ import Settings from './view/Settings.jsx';
 import Mainadmincomp from './view/Mainadmincomp.jsx';
 import AddCourse from './view/AddCourse.jsx';
 import CourseOpe from './view/CourseOpe.jsx';
+import Notfound from './view/Notfound.jsx';
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
             <Route path='/setting' element={<CourseOpe/>} />
             <Route path='/homesetting' element={<Mainadmincomp/>}/>
             <Route path='/addcourse' element={<AddCourse/>}/>
-            <Route path="/edit" element={<Settings/>} />
+            <Route path="/edit/:id" element={<Settings/>} />
+            <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>
       </Storeprovider>

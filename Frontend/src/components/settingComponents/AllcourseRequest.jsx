@@ -5,15 +5,14 @@ const API_URL = import.meta.env.VITE_SERVER_URI
 import RequestCard from './RequestCard'
 import { enqueueSnackbar, useSnackbar } from 'notistack'
 
-const AllcourseRequest = () => {
+const AllcourseRequest = ({courseId}) => {
 
-  const { settingCourse } = useStore()
   const { enqueueSnackbar } = useSnackbar()
   const [requestedusers, setrequesteduser] = useState()
 
   const loadRequest = async () => {
     try {
-      const responce = await axios.post(`${API_URL}/api/request/getallreq/${settingCourse}`, null, {
+      const responce = await axios.post(`${API_URL}/api/request/getallreq/${courseId}`, null, {
         withCredentials: true
       })
       setrequesteduser(responce.data.data)
