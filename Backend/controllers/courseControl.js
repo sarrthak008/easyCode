@@ -88,29 +88,40 @@ const getcoursesStudent = async (req, res) => {
 }
 
 const putcourse = async (req, res) => {
+   try{
     const courseId = req.body.courseId
     if (!courseId) {
         return responder(res, false, "Course not found",null, 404)
     }
     const courseUpdate = await course.findByIdAndUpdate(courseId, req.body, { new: true })
     return responder(res, true, "Course updated", courseUpdate, 200)
+   }
+    catch (error) {
+        return responder(res, false, `${error.message}`, 500)
+    }
 }
 
 const postSyallbus = async (req, res) => {
-   const {courseId} = req.body
-   const findedcourse = await course.findById(courseId)
-    if(!findedcourse){
-         return responder(res,false,"Course not found",null,404)
-    }   
-    const {title,description} = req.body
-    const newSyllabus = {
-        title,
-        description
+ try{
+    const {courseId} = req.body
+    const findedcourse = await course.findById(courseId)
+     if(!findedcourse){
+          return responder(res,false,"Course not found",null,404)
+     }   
+     const {title,description} = req.body
+     const newSyllabus = {
+         title,
+         description
+     }
+     findedcourse.Syllabus.push(newSyllabus)
+     await findedcourse.save()
+     return responder(res,true,"Syllabus added",findedcourse,200)
+  
+
+ }
+    catch (error) {
+        return responder(res, false, `${error.message}`, 500)
     }
-    findedcourse.Syllabus.push(newSyllabus)
-    await findedcourse.save()
-    return responder(res,true,"Syllabus added",findedcourse,200)
- 
     
     
 

@@ -29,6 +29,8 @@ import { courseRouter } from "./routes/courseRoute.js";
 import { requestRouter } from "./routes/requestRouter.js";
 import { uploadRouter } from "./routes/uploadRouter.js";
 import { quizRouter } from "./routes/quizRouter.js";
+import { roleRouter } from "./routes/roleRoute.js";
+import { adminRouter } from "./routes/adminRouter.js";
 
 // Utility Functions
 import { responder } from "./utils/responder.js";
@@ -39,7 +41,8 @@ app.use('/api/course', courseRouter);
 app.use('/api/request', requestRouter);
 app.use('/api/image', uploadRouter);
 app.use('/api/quiz', quizRouter);
-
+app.use('/api/role', roleRouter);
+app.use('/api/admin',adminRouter)
 // Health Check Routes
 app.get('/health', (req, res) => {
     responder(res, true, 'Server is running healthy', null, 200);
