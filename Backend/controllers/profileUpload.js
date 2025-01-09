@@ -17,14 +17,13 @@ const postUploadrpofilePic = async (req, res) => {
         await user1.save();
         return responder(res, true, "profie photo updated sucessfully.", 200);
     } catch (error) {
-
+         responder(res,false,'uploading error',error.message,400)
     }
 }
 
 const getUserProfilePic = async (req, res) => {
     const { id } = req.params
     if (!id) {
-
          return responder(res, false, 'missing parameter', 404) 
     }
     try{
