@@ -158,7 +158,6 @@ const postLogin = async (req, res) => {
             _id: LoginUser._id,
             role: LoginUser.role,
             courses: LoginUser.courses,
-            profile:LoginUser.profilePic,
             validateUser: LoginUser.validateUser,
             email: LoginUser.email
         }, process.env.JWT_SERECT, { expiresIn: '1w' })
