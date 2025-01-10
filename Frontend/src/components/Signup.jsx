@@ -6,6 +6,7 @@ import Appinput from './Appinput'
 import Appbtn from './Appbtn'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
 
@@ -22,6 +23,7 @@ const Signup = () => {
     otp: ""
   })
 
+  const navigate = useNavigate()
 
   const handelbsicInfoValidation = () => {
     if (userInfo.name.length == 0 || userInfo.email.length == 0 || userInfo.mobile.length == 0) {
@@ -86,11 +88,13 @@ const Signup = () => {
         enqueueSnackbar(responce.data.message, { variant: 'success' })
         closeSnackbar(id)
         setProccessNumber(3)
+        navigate('/login')
       } else {
         enqueueSnackbar(responce.data.message, { variant: 'error' })
         closeSnackbar(id)
         setProccessNumber(1)
       }
+   
 
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
@@ -172,7 +176,6 @@ const Signup = () => {
                     setUserInfo({ ...userInfo, otp: e.target.value })} />
                 <Appbtn title='verify otp' onClick={handelOtpVerification} />
               </div> : null
-
           }
 
         </div>
