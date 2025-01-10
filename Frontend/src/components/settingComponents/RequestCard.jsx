@@ -12,9 +12,9 @@ const RequestCard = ({user,acceptRequest,rejectRequest}) => {
            <img src={userId?.profilePic}/>
          </div>
          <div>
-           <span className='text-[16px] line-clamp-1'>{userId.name}</span>
-           <span className='text-[16px] line-clamp-1'>{userId.email}</span>
-           <span className='text-[16px] line-clamp-1'>{userId.mobile}</span>
+           <span className='text-[16px] line-clamp-1'>{userId?.name}</span>
+           <span className='text-[16px] line-clamp-1'>{userId?.email}</span>
+           <span className='text-[16px] line-clamp-1'>{userId?.mobile}</span>
          </div>
       </div>
       <div className='text-gray-400 mt-1'>requested at : {user?.createdAt?.split("T")[0]}</div>
