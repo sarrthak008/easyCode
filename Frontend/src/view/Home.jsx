@@ -10,7 +10,7 @@ const API_URl = import.meta.env.VITE_SERVER_URI
 
 const Home = () => {
  
-    console.log(API_URl)
+   // console.log(API_URl)
   
     const { enqueueSnackbar } = useSnackbar()
 
