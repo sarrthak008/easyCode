@@ -5,8 +5,84 @@ import ROUND from "../assets/round.svg";
 import THREED from "../assets/3d.jpg";
 import Shadow from './Shadow';
 import ARROW1 from "../assets/arrow2.svg";
+import Feedback from './Feedback';
 
 export const Hero = () => {
+
+  const items = [
+    { 
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Aarav", 
+      description: "This is a description for item 1." 
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Vihaan", 
+      description: "This is a longer description for item 2 to demonstrate varying heights in the grid.",
+    },
+    { 
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Ananya", 
+      description: "Another item." 
+    },
+    { 
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Ishaan", 
+      description: "Short description." 
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Myra", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Aadhya", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Vivaan", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Arjun", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Kiara", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Riya", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Aditya", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Tara", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Aryan", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+    {
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
+      name: "Meera", 
+      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
+    },
+  ];
+  
+
   return (
     <>
       <div className='h-96 text-white w-full flex justify-center items-center flex-col relative bg-[url("./assets/bg.svg")] bg-center bg-cover bg-no-repeat'>
@@ -102,20 +178,27 @@ export const Hero = () => {
       </div>
 
       <div>
-      <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-3xl block mb-10 tracking-[2px]'>Understand Workflow</h1>
-       <div className='w-full min-h-96  relative'>
-           <div className='m-auto h-[80px] sm:h-[100px] w-[90%] sm:w-[40%] cursor-wait relative flex items-center  justify-center border-2 text-4xl sm:text-5xl font-medium border-green-300 text-linear border-r-1 bordered-r-sm rounded-t-[10px]'>request course
-             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -left-3 shadow-green'></span>
-             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -right-3 shadow-lg shadow-green-400'></span>
-             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -left-3'></span>
-             <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -right-3 shadow-green'></span>
-             <div className='h-[90%] w-[99%] border-[0.3px] border-gray-300 absolute -top-[0.1] opacity-60 '></div>
-           </div>
-          <div className=' w-[70px] h-[70px] m-auto'><img src={ARROW1} className='h-full object-contain w-full '/></div>
+        <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-3xl block mb-10 tracking-[2px]'>Understand Workflow</h1>
+        <div className='w-full min-h-96  relative'>
+          <div className='m-auto h-[80px] sm:h-[100px] w-[90%] sm:w-[40%] cursor-wait relative flex items-center  justify-center border-2 text-4xl sm:text-5xl font-medium border-green-300 text-linear border-r-1 bordered-r-sm rounded-t-[10px]'>request course
+            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -left-3 shadow-green'></span>
+            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -right-3 shadow-lg shadow-green-400'></span>
+            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -left-3'></span>
+            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -right-3 shadow-green'></span>
+            <div className='h-[90%] w-[99%] border-[0.3px] border-gray-300 absolute -top-[0.1] opacity-60 '></div>
+          </div>
+          <div className=' w-[70px] h-[70px] m-auto'><img src={ARROW1} className='h-full object-contain w-full ' /></div>
           <div className='m-auto h-8 w-[90%] text-center text-white mt-2'><span className='bg-gradient-to-tr to-gray-800 from-slate-500 py-1  sm:px-7  px-2  rounded-md text-2xl opacity-75 font-thin shaow-lg shadow-gray-100'>our assitant call you</span></div>
           <div className='m-auto h-8 w-[90%] text-center text-white mt-6'><span className='bg-gradient-to-tr to-gray-800 from-slate-500 py-1  sm:px-7  px-2 rounded-md text-2xl opacity-75 font-thin shaow-lg shadow-gray-100'>pay & attend live lectures</span></div>
-         <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b to-black from-transparent'></div>
-       </div>
+          <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b to-black from-transparent'></div>
+        </div>
+      </div>
+      <div className='text-white w-full bg-gradient-to-t to-black from-transparent relative'>
+        <h1 className='hevy text-7xl text-center mb-5'>SpeakEasy</h1>
+        <div className="min-h-screen w-full overflow-hidden ">
+          <Feedback items={items} />
+        </div>
+        <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b to-black from-transparent'></div>
       </div>
     </>
 
