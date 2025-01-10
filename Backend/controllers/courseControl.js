@@ -54,7 +54,7 @@ const getmycourse = async (req, res) => {
         if (!userId) {
             return responder(res, false, "User not found", 404)
         }
-        const mycoures =  await user.findById(userId).populate('courses -prise -originalprise -discount -instructor -students')   
+        const mycoures =  await user.findById(userId).populate('courses','-prise -instructor -students -Syllabus -discount -originalprise -updatedAt -createdAt -__v').select('courses')   
         return responder(res, true, "My courses", mycoures, 200)
     }
     catch (error) {
