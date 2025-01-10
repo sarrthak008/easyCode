@@ -80,7 +80,8 @@ const Quizganarator = ({ setTotalQuestion, totalQuestion, quizname }) => {
                 viewQuiz ?
                     <div className='h-screen w-screen absolute top-0 left-0  backdrop-blur-md flex items-center justify-center bg-blur-gray'>
                         <div className="h-[90%] w-[80%] bg-gray-700 mt-20 overflow-hidden">
-                            <span className='flex justify-end text-5xl text-gray-400 md:mr-2 cursor-pointer' onClick={() => { setViewQuiz(false) }}><i className="ri-close-line "></i></span>
+                            <span className='flex justify-end text-5xl text-gray-400 md:mr-2 cursor-pointer' onClick={() => { setViewQuiz(false) }}><i className="ri-close-line "></i>
+                            </span>
                             <div className='h-full w-full overflow-y-scroll hide-scroll-bar'>
                                 {
                                     allquestion.map((que, index) => (
@@ -93,11 +94,9 @@ const Quizganarator = ({ setTotalQuestion, totalQuestion, quizname }) => {
                                                 <span className='text-gray-400 '><i className="ri-circle-fill text-sm"></i> <span className='text-2xl'>{que?.options[3]}</span></span>
                                             </div>
                                             <div className='h-4 w-full mt-5 ml-8'>
-
                                                 <span className='bg-gray-700 p-2 mr-2 rounded-md'>Correct Ans </span>
                                                 : <span className='text-2xl'>{que?.correctAns}</span>
                                             </div>
-
                                         </div>
                                     ))
                                 }
