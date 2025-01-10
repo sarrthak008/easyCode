@@ -8,7 +8,7 @@ const RequestCard = ({user,acceptRequest,rejectRequest}) => {
   return (
     <div className=' w-80 sm:w-96 bg-gray-900 backdrop-blur-md p-4 ml-2 sm:ml-0'>
       <div className='flex text-gray-400 gap-4 '>
-         <div className='h-[65px] w-[65px] bg-red-300 rounded-full'>
+         <div className='h-[65px] w-[65px] bg-red-300 rounded-full overflow-hidden'>
            <img src={userId?.profilePic}/>
          </div>
          <div>
