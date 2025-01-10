@@ -15,7 +15,7 @@ const NavProfile = ({userPicUrl,userInfo}) => {
       {
         showMenu ?
          <div className='h-[200px] w-[350px] absolute bg-gray-800 right-14 top-20 rounded-md shadow-md shadow-gray-950'>
-          <span className='text-2xl uppercase text-center block'>hey <span>{userInfo?.name.split(" ")[0]}</span></span>
+          <span className='text-2xl uppercase text-center block'>hey <span>{userInfo?.name?.split(" ")[0]}</span></span>
           <span className='block text-md text-center text-gray-500'>{userInfo?.role}</span>
           <span className='ml-3 block text-gray-400 mt-2'>{userInfo?.email}</span>
           <span className='ml-3 block text-gray-400 mt-2'>{userInfo?.mobile}</span>
