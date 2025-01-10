@@ -64,3 +64,7 @@ input[type=number]::-webkit-outer-spin-button {
 .hide-scroll-bar::-webkit-scrollbar {
     display: none;
 }
+
+.bg-blur-gray{
+    background-color: rgba(31, 30, 30, 0.479);
+}

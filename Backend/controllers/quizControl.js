@@ -5,21 +5,16 @@ import { responder } from "../utils/responder.js";
 const postquiz = async (req, res) => {
     try {
         const { name, allquestions } = req.body;
-
         // if question name and question is not available
-
         if (!name || !Array.isArray(allquestions) || allquestions.length == 0) {
             return res.json({
                 success: false,
                 message: "Quiz name and questions are required, and questions must be an array",
             });
         }
-
         // create quiz
-
         const newQuiz = new Quiz({ name, allquestions });
         await newQuiz.save();
-
         res.json({
             success: true,
             message: "Quiz created successfully",
@@ -69,5 +64,25 @@ const updateQuiz = async (req, res) => {
     }
 };
 
+const getallquiz = async (req,res) =>{
 
-export { postquiz, updateQuiz };
+   try{
+
+    const allQuiz = await Quiz.find()
+    if(!allQuiz){
+        return responder(res,false,'no quize ')
+    }
+
+        return  responder(res,true,'All Quize finded..',allQuiz,202)
+
+   }catch(error){
+        console.log(error)
+        
+     return   responder(res, false, error.message, 500);
+        
+   }
+    
+
+}
+
+export { postquiz, updateQuiz, getallquiz};
