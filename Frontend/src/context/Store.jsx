@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { jwtDecode } from "jwt-decode"
 import Cookies from "js-cookie"
 import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
 
 
 const store = createContext()
@@ -11,6 +12,7 @@ const Storeprovider = ({ children }) => {
 
      //
      const {enqueueSnackbar} =useSnackbar()
+     const navigate = useNavigate()
 
 
     //get current user..
@@ -29,10 +31,21 @@ const Storeprovider = ({ children }) => {
         window.location.href="/"
     }
 
+    //autonavigate on basis role
+
+    const autoNavigate =()=>{
+        if(currentUser()?.role=='admin'){
+          navigate('/homesetting')
+         }
+         if(currentUser()?.role=="user"){
+           navigate('/dashboard')
+         }
+      }
+
     const [isLoggedIn,setIsLoggedin] = useState(false)
 
     return (
-        <store.Provider value={{currentUser,setIsLoggedin,isLoggedIn,logOut}}>
+        <store.Provider value={{currentUser,setIsLoggedin,isLoggedIn,logOut,autoNavigate}}>
             {children}
         </store.Provider>
     )

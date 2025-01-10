@@ -8,17 +8,26 @@ import axios from 'axios';
 import { closeSnackbar, useSnackbar } from 'notistack'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import Cookies from 'js-cookie';
+import { useStore } from '../context/Store';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Login = () => {
 
+  const {autoNavigate} = useStore()
+  const navigate = useNavigate()
   const [passtype, setPassType] = useState('password')
   const { enqueueSnackbar } = useSnackbar()
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   })
+
+  
+  useEffect(()=>{
+     autoNavigate() 
+  },[])
 
   const handelLogin = async () => {
     if (userInfo.email.length === 0 || userInfo.password.length === 0) {
@@ -39,6 +48,7 @@ const Login = () => {
         //console.log(response.data); 
         Cookies.set('token', response.data.data, { expires: 7 });
         closeSnackbar(snackid)
+        autoNavigate()
       } else {
         enqueueSnackbar(`${response.data.message}`, { variant: "error" });
         closeSnackbar(snackid)

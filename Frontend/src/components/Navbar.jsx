@@ -14,6 +14,7 @@ const Navbar = () => {
   const [userPicUrl, setUserPic] = useState('https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png')
   const { currentUser, setIsLoggedin, isLoggedIn } = useStore()
   const [userInfo, setUserInfo] = useState({})
+    const {autoNavigate} =useStore()
 
   const loadUserInfo = async () => {
 
@@ -51,7 +52,7 @@ const Navbar = () => {
             <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Home</span></Link>
             <Link to={'/course'}><span className='cursor-pointer hover:text-green-400'>Courses</span></Link>
             {
-              isLoggedIn ? <div>dashboard</div> :
+              isLoggedIn ? <div className='cursor-pointer' onClick={()=>autoNavigate()}>dashboard</div> :
                 <Link to={'/login'}><span className='cursor-pointer hover:text-green-400'>Login</span></Link>
             }
             {

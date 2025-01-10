@@ -17,6 +17,7 @@ import AddCourse from './view/AddCourse.jsx';
 import CourseOpe from './view/CourseOpe.jsx';
 import Notfound from './view/Notfound.jsx';
 import AddQuiz from './view/AddQuiz.jsx';
+import Dashboard from './view/Dashboard.jsx';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path='/addcourse' element={<AddCourse/>}/>
             <Route path="/edit/:id" element={<Settings/>} />
             <Route path='/addquiz' element={<AddQuiz/>}/>
+            <Route path='/dashboard' element={<Dashboard/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>
