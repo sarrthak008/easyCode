@@ -67,8 +67,8 @@ const Dashboard = () => {
 
   return (
     <>
+     <Navbar />
     <div className='h-screen w-screen relative'>
-      <Navbar />
       <div className='h-screen w-screen flex items-center justify-center flex-wrap mt-24'>
         {
           mycourses?.map((course) => (

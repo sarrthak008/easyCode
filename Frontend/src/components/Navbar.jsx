@@ -14,12 +14,12 @@ const Navbar = () => {
   const [userPicUrl, setUserPic] = useState('https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png')
   const { currentUser, setIsLoggedin, isLoggedIn } = useStore()
   const [userInfo, setUserInfo] = useState({})
-    const {autoNavigate} =useStore()
+  const { autoNavigate } = useStore()
 
   const loadUserInfo = async () => {
 
     if (!currentUser()) {
-      setIsLoggedin(false) 
+      setIsLoggedin(false)
     } else {
 
       try {
@@ -52,24 +52,36 @@ const Navbar = () => {
             <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Home</span></Link>
             <Link to={'/course'}><span className='cursor-pointer hover:text-green-400'>Courses</span></Link>
             {
-              isLoggedIn ? <div className='cursor-pointer' onClick={()=>autoNavigate()}>dashboard</div> :
+              isLoggedIn ? <div className='cursor-pointer' onClick={() => autoNavigate()}>dashboard</div> :
                 <Link to={'/login'}><span className='cursor-pointer hover:text-green-400'>Login</span></Link>
             }
             {
-              isLoggedIn ? <NavProfile userPicUrl={userPicUrl} userInfo={userInfo}/> : 
+              isLoggedIn ? <NavProfile userPicUrl={userPicUrl} userInfo={userInfo} /> :
                 <Link to={'/singup'}> <button className="border py-[3px] px-10 rounded-xl text-green hover:bg-green-400 hover:text-white  shadow-md shadow-gray-700 hover:shadow-2xl hover:shadow-green-400 transition-all">Sign In</button></Link>
             }
           </div>
 
         </div>
       </div>
-      {showmenu ? <div className='bg-dark h-lvh w-lvw absolute top-0 left-0 z-50 sm:hidden'>
+      {showmenu ? <div className='bg-dark h-screen w-screen absolute top-0 left-0 z-50 sm:hidden'>
         <span><i className="ri-close-line float-right text-4xl text-green cursor-pointer" onClick={() => setshowmenu(false)}></i></span>
-        <div className='flex flex-col items-center justify-center gap-7 h-full'>
+        <div className='flex flex-col items-center mt-[40%] gap-7 h-full'>
           <Link to={'/'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Home</span></Link>
           <Link to={'/course'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Courses</span></Link>
-          <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Login</span></Link>
-          <Link to={'/singup'}><span className='text-white text-2xl cursor-pointer opacity-75 '> sign In<i className="ri-arrow-right-up-line"></i></span></Link>
+          {
+
+            isLoggedIn ? <Link to={'/dashboard'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Dashboard</span></Link> : <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Login</span></Link>
+          }
+          {
+            isLoggedIn ?
+              <div className='flex items-center gap-5'>
+                <div className='h-[30px] w-[30px] rounded-full bg-green-600 overflow-hidden cursor-pointer'>
+                      <img src={userPicUrl} className='object-fill h-full w-full' />
+                 </div>
+                 <div className='text-white text-2xl cursor-pointer opacity-75 '>Logout</div>
+              </div> :
+              <Link to={'/singup'}><span className='text-white text-2xl cursor-pointer opacity-75 '> sign In<i className="ri-arrow-right-up-line"></i></span></Link>
+          }
         </div>
       </div> : null}
     </>

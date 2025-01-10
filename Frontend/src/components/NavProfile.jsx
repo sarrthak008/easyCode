@@ -75,9 +75,9 @@ const NavProfile = ({ userPicUrl, userInfo }) => {
 
                 <label
                   htmlFor="fileInput"
-                  className=' ml-2 py-1 cursor-pointer  px-14 mt-6  border-2 block border-green-500 shadow-md shadow-gray-900 hover:bg-green-800 '
+                  className=' ml-2 py-1 cursor-pointer  px-10 mt-6  border-2 block border-green-500 shadow-md shadow-gray-900 hover:bg-green-800 '
                 >
-                  upload
+                  upload <i className="ri-upload-2-line"></i>
                 </label>
               </form>
             </div>
