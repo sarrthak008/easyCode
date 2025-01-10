@@ -27,6 +27,8 @@ const Login = () => {
     }
 
     try {
+      
+      let snackid = enqueueSnackbar('login...', { variant: "info" });
       const response = await axios.post(`${API_URL}/api/auth/login`, {
         email: userInfo.email,
         password: userInfo.password
@@ -36,8 +38,10 @@ const Login = () => {
         enqueueSnackbar(`${response.data.message}`, { variant: "success" });
         //console.log(response.data); 
         Cookies.set('token', response.data.data, { expires: 7 });
+        closeSnackbar(snackid)
       } else {
         enqueueSnackbar(`${response.data.message}`, { variant: "error" });
+        closeSnackbar(snackid)
       }
     } catch (err) {
       // Handle the error and display an appropriate message

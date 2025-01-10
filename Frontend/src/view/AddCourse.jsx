@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Appinput from '../components/Appinput';
 import Appbtn from '../components/Appbtn';
 import axios from 'axios';
-import { useSnackbar } from 'notistack';
+import { closeSnackbar, useSnackbar } from 'notistack';
 import Shadow from '../components/Shadow'
 import Speeddial from '../components/Speeddial';
 const API_URL = import.meta.env.VITE_SERVER_URI; 
@@ -42,14 +42,18 @@ const AddCourse = () => {
     //console.log(data)
 
         try {
-            const response = await axios.post(`${API_URL}/api/course/addcourse`, data, {
+            
+             let snackid = enqueueSnackbar('adding new course...', { variant: "info" });
+             const response = await axios.post(`${API_URL}/api/course/addcourse`, data, {
                 withCredentials: true
             });
 
             if (response.data.success) {
                 enqueueSnackbar(response.data.message, { variant: "success" });
+                 closeSnackbar(snackid)
             } else {
                 enqueueSnackbar(response.data.message, { variant: "error" });
+                closeSnackbar(snackid)
             }
         } catch (error) {
             console.log(error);
@@ -60,7 +64,7 @@ const AddCourse = () => {
     const AllAdmin = async () => {
         try{
             const response = await axios.get(`${API_URL}/api/admin/alladmin`)
-            console.log(response)
+           // console.log(response)
             setoptions(response?.data?.data)
 
         }
@@ -134,8 +138,8 @@ const AddCourse = () => {
              {<>
                 <option value="">Please choose an option</option>
                  {
-                 options?.map((option)=>(
-                  <option value={option._id}>{option.name}</option>
+                 options?.map((option,index)=>(
+                  <option value={option._id} key={index}>{option.name}</option>
                 ))
                 }
 
