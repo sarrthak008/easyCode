@@ -29,11 +29,11 @@ const Quizganarator = ({ setTotalQuestion, totalQuestion, quizname }) => {
         setAllquestion([...allquestion, curentQuestion])
         setTotalQuestion([...totalQuestion, Math.random() * 100])
 
-        //  setCurrentQuestion({
-        //      question:'',
-        //      options:['','','',''],
-        //      correctAns:''
-        //  })
+           setCurrentQuestion({
+            question:'',
+            options:['','','',''],
+             correctAns:''
+         })
 
     }
 
