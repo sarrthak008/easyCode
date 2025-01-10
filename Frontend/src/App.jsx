@@ -15,7 +15,7 @@ import Settings from './view/Settings.jsx';
 import Mainadmincomp from './view/Mainadmincomp.jsx';
 import AddCourse from './view/AddCourse.jsx';
 import CourseOpe from './view/CourseOpe.jsx';
-import AddQuiz from './view/AddQuiz.jsx';
+
 
 function App() {
   return (
@@ -33,7 +33,6 @@ function App() {
             <Route path='/homesetting' element={<Mainadmincomp/>}/>
             <Route path='/addcourse' element={<AddCourse/>}/>
             <Route path="/edit" element={<Settings/>} />
-            <Route path='/addquiz' element={<AddQuiz/>} />
           </Routes>
         </SnackbarProvider>
       </Storeprovider>
