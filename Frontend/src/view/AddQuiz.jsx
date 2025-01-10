@@ -7,6 +7,7 @@ import Quizganarator from '../components/Quizganarator';
 const AddQuiz = () => {
 
     const [totalQuestion,setTotalQuestion] = useState([])
+    const [quizname,setquizname] = useState("")
 
     return (
         <>
@@ -16,8 +17,12 @@ const AddQuiz = () => {
                 <h1 className="text-4xl text-white opacity-60 mb-4 font-bold">Add Course</h1>
                 <div className="w-[90%] h-[100%] sm:w-[60%] rounded-lg p-8 bg-gray-900 flex flex-col gap-7 text-white py-6">
                     <div className='flex justify-between w-full border-b-2 pb-7 border-white'>
-                      <div className='w-[60%]'><Appinput title='enter the quiz name'/></div>
-                      <div className='w-[30%]'><Appbtn title='save'/></div>
+                      <div className='w-[60%]'><Appinput
+                       title='enter the quiz name'
+                       value={quizname}
+                       onChange={(e)=>{setquizname(e.target.value )}}
+                      /></div>
+                      
                     </div>
                     <div className='w-full h-12 flex'>
                         {
@@ -27,7 +32,7 @@ const AddQuiz = () => {
                         }
                     </div>
                     {/* ADD QUIZ GANARATOR.... */}
-                    <Quizganarator setTotalQuestion={setTotalQuestion} totalQuestion={totalQuestion}/>
+                    <Quizganarator setTotalQuestion={setTotalQuestion} totalQuestion={totalQuestion} quizname={quizname}/>
                 </div>
             </div >
         
