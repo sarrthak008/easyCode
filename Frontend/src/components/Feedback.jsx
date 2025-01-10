@@ -7,7 +7,7 @@ const Feedback = ({ items }) => {
     default: 4, // 4 columns for large screens
     1024: 3,    // 3 columns for medium screens
     768: 2,     // 2 columns for small screens
-    640: 1,     // 1 column for very small screens
+    640: 2,     // 1 column for very small screens
   };
 
   return (
@@ -19,7 +19,7 @@ const Feedback = ({ items }) => {
       {items.map((item, index) => (
         <div
           key={index}
-          className="bg-gray-900 p-4 rounded-lg shadow"
+          className="bg-gray-900 p-4  rounded-lg shadow-md shadow-blue-400 border-b-2 border-b-green-400"
         >
          <div className="flex gap-2 items-center">
           <div className="h-[30px] w-[30px] bg-gray-400 rounded-full">

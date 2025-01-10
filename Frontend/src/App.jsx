@@ -16,6 +16,7 @@ import Mainadmincomp from './view/Mainadmincomp.jsx';
 import AddCourse from './view/AddCourse.jsx';
 import CourseOpe from './view/CourseOpe.jsx';
 import Notfound from './view/Notfound.jsx';
+import AddQuiz from './view/AddQuiz.jsx';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path='/homesetting' element={<Mainadmincomp/>}/>
             <Route path='/addcourse' element={<AddCourse/>}/>
             <Route path="/edit/:id" element={<Settings/>} />
+            <Route path='/addquiz' element={<AddQuiz/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>

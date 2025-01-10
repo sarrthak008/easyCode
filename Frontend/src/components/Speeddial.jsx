@@ -19,7 +19,7 @@ const actions = [
   { icon: <QuizIcon />, name: 'Add Quiz' },
 ];
 
-const NAVIGATION_LOCATION =['/homesetting','/setting','/addcourse','/','/']
+const NAVIGATION_LOCATION =['/homesetting','/setting','/addcourse','/','/addquiz']
 
 export default function Speeddial({operationNum}) {
 
