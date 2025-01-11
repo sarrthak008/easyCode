@@ -33,8 +33,6 @@ const postquiz = async (req, res) => {
 };
 
 
-
-
 //update quiz
 
 const updateQuiz = async (req, res) => {
