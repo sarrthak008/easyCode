@@ -3,7 +3,7 @@ import { Schema , model } from "mongoose";
 const otpSchema = new Schema({
     userId:{
         type: Schema.Types.ObjectId,
-        ref:'user',
+        ref:'unverifiedUser',
         required:true
     },
     otp:{

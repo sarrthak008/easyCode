@@ -1,5 +1,6 @@
 import user from "../models/user.model.js";
 import otp from "../models/otp.model.js";
+import unverifiedUser from "../models/unverifieduser.model.js"
 import bcrypt from "bcrypt"
 import nodemailer from "nodemailer"
 import jwt from "jsonwebtoken"
@@ -30,9 +31,9 @@ const postSignup = async (req, res) => {
 
     try {
 
-        let { email, password ,name,mobile} = req.body;
-        const requiredData = ["email", "password","name","mobile"];
-        // checks the req.body cntainig given data or not...
+        let { email, password, name, mobile } = req.body;
+        const requiredData = ["email", "password", "name", "mobile"];
+
         for (const element of requiredData) {
             if (!req.body[element]) {
                 return responder(res, false, `${element} is required`, null, 400)
@@ -53,15 +54,17 @@ const postSignup = async (req, res) => {
 
         // storing the user into db
 
-        const newUser = new user({
+        const newUser = new unverifiedUser({
             email: email,
             password: hashPass,
-            name:name,
-            mobile:mobile
+            name: name,
+            mobile: mobile
         });
 
         const createduser = await newUser.save();
         //checks the user is successfully created or not ...
+
+        //console.log(createduser)
 
         if (!createduser) {
             return responder(res, false, 'something went wrong', null, 400);
@@ -87,7 +90,7 @@ const postSignup = async (req, res) => {
 
             const sendedOTP = await newOtp.save()
             if (!sendedOTP) {
-                await user.findByIdAndDelete(createduser._id);
+                await unverifiedUser.findByIdAndDelete(createduser._id);
                 return responder(res, false, 'cant send mail try again', null, 400)
             }
 
@@ -101,42 +104,57 @@ const postSignup = async (req, res) => {
 }
 
 const postVerifyEmail = async (req, res) => {
-
     let { email, myotp } = req.body;
     try {
         const requireddata = ["email", "myotp"];
 
-        // checks the OTP and email are provide or not...
+        // Validate input
         for (const element of requireddata) {
             if (!req.body[element]) {
-                return responder(res, false,`${element} is required`, null, 400);
+                return responder(res, false, `${element} is required`, null, 400);
             }
         }
 
-        let findedUser = await user.findOne({ email })
+        // Find the unverified user
+        let findedUser = await unverifiedUser.findOne({ email });
         if (!findedUser) {
-            return responder(res, false, `cant found your account`, null, 400);
+            return responder(res, false, `Account not found`, null, 400);
         }
 
-        let allOTpInfo = await otp.findOne({ otp: myotp }).populate("userId", '_id')
-        if (!allOTpInfo) {
-            return responder(res, false, `invalid OTP`, null, 400);
+        // Find the OTP
+        let otpInfo = await otp.findOne({ otp: myotp, userId: findedUser._id });
+        if (!otpInfo) {
+            return responder(res, false, `Invalid OTP`, null, 400);
         }
 
-
-        if (!(allOTpInfo?.expireAt > Date.now) && myotp === allOTpInfo?.otp) {
-            findedUser.validateUser = true
-            await otp.deleteOne({ _id: allOTpInfo._id })
-            await findedUser.save()
-            return responder(res, true, `account create successfully`, null, 200);
-        } else {
-            return responder(res, false, `invalid OTP`, null, 400);
+        // Check if OTP is expired
+        if (otpInfo.expireAt <= new Date()) {
+            await otp.deleteOne({ _id: otpInfo._id });
+            return responder(res, false, `OTP has expired`, null, 400);
         }
 
+        // Save the user in main user db
+        const mainUser = new user({
+            name: findedUser.name,
+            email: findedUser.email,
+            password: findedUser.password,
+            mobile: findedUser.mobile,
+        });
+
+        await mainUser.save();
+
+        // Delete unverified user and OTP
+        await unverifiedUser.deleteOne({ _id: findedUser._id });
+        await otp.deleteOne({ _id: otpInfo._id });
+
+        return responder(res, true, `Account verified successfully`, null, 200);
     } catch (error) {
-        return responder(res, false, `invalid OTP`, null, 400);
+        console.error(error);
+        return responder(res, false, `Something went wrong`, null, 500);
     }
-}
+};
+
+
 
 const postLogin = async (req, res) => {
 
@@ -159,19 +177,19 @@ const postLogin = async (req, res) => {
             role: LoginUser.role,
             validateUser: LoginUser.validateUser,
             email: LoginUser.email,
-            name:LoginUser.name,
-            mobile:LoginUser.mobile
+            name: LoginUser.name,
+            mobile: LoginUser.mobile
         }, process.env.JWT_SERECT, { expiresIn: '1w' })
 
-         res.cookie("token",token,{
+        res.cookie("token", token, {
             sameSite: 'None',
             secure: true,
             maxAge: 604800000,
-            path:'/'
-         });
-        
+            path: '/'
+        });
+
         return responder(res, true, "login sucessfully", token, 200);
-        
+
     } catch (error) {
         return responder(res, false, `${error.message}`, null, 404);
     }
