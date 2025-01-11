@@ -8,6 +8,7 @@ const AddQuiz = () => {
 
     const [totalQuestion,setTotalQuestion] = useState([])
     const [quizname,setquizname] = useState("")
+    
 
     return (
         <>
