@@ -5,6 +5,7 @@ import AllcourseRequest from '../components/settingComponents/AllcourseRequest';
 import CourseStudent from '../components/settingComponents/CourseStudent';
 import { useStore } from '../context/Store';
 import { useParams } from 'react-router-dom';
+import AddSyallbus from '../components/AddSyallbus';
 
 const Settings = () => {
 
@@ -16,7 +17,7 @@ const Settings = () => {
       <Sidebar setOperationNumber={setOperationNumber}/>
       <div className='w-full min-h-screen ml-12  relative z-20'>
            {
-             operationNum == 0 ? <AllcourseRequest courseId={id}/> : operationNum == 1 ? <CourseStudent/> : null
+             operationNum == 0 ? <AllcourseRequest courseId={id}/> : operationNum == 1 ? <CourseStudent/> : operationNum == 2 ? <AddSyallbus/> : null
            }
       </div>
 
