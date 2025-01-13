@@ -8,26 +8,24 @@ import PersonIcon from '@mui/icons-material/Person';
 import QuizIcon from '@mui/icons-material/Quiz';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import HomeIcon from '@mui/icons-material/Home';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 const actions = [
-  { icon: <HomeIcon/> , name:'status '},
-  { icon: <CastForEducationIcon/>, name: 'ALL Courses' },
-  { icon: <AddCommentIcon />, name: 'Add Course' },
-  { icon: <PersonIcon />, name: 'All User' },
-  { icon: <QuizIcon />, name: 'Add Quiz' },
+    { icon: <HomeIcon />, name: 'Status' },
+    { icon: <CastForEducationIcon />, name: 'All Courses' },
+    { icon: <AddCommentIcon />, name: 'Add Course' },
+    { icon: <PersonIcon />, name: 'All Users' },
+    { icon: <QuizIcon />, name: 'Add Quiz' },
 ];
 
-const NAVIGATION_LOCATION =['/homesetting','/setting','/addcourse','/','/addquiz']
+const NAVIGATION_LOCATION = ['/dashboard', '/', '/', '/', '/'];
 
-export default function Speeddial({operationNum}) {
+export default function UserSpeedDialer({ operationNum }) {
+    const navigate = useNavigate();
 
-   const navigate = useNavigate()
-
-  return (
-    <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
-      <SpeedDial
+    return (
+        <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+            <SpeedDial
                 ariaLabel="SpeedDial basic example"
                 //sx={{ position: 'fixed', bottom: "-80%", right: "5%"  }}
                 icon={<SpeedDialIcon />}
@@ -41,15 +39,15 @@ export default function Speeddial({operationNum}) {
                     },
                 }}
             >
-        {actions.map((action,index) => (
-        <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-            onClick={()=>navigate(`${NAVIGATION_LOCATION[index]}`)}
-          /> 
-        ))}
-      </SpeedDial>
-    </Box>
-  );
+                {actions.map((action, index) => (
+                    <SpeedDialAction
+                        key={action.name}
+                        icon={action.icon}
+                        tooltipTitle={action.name}
+                        onClick={() => navigate(`${NAVIGATION_LOCATION[index]}`)}
+                    />
+                ))}
+            </SpeedDial>
+        </Box>
+    );
 }

@@ -13,6 +13,7 @@ const NavProfile = ({ userPicUrl, userInfo }) => {
 
   const handleFileChange = async (event) => {
     event.preventDefault();
+    event.stopPropagation()
 
     const file = event.target.files[0];
     if (file) {
@@ -56,13 +57,14 @@ const NavProfile = ({ userPicUrl, userInfo }) => {
       </div>
       {
         showMenu ?
-          <div className='h-[200px] w-[350px] absolute bg-gray-800 right-14 top-20 rounded-md shadow-md shadow-gray-950'>
+          <div className='h-screen w-screen cursor-pointer z-[20] bg-blur-gray absolute top-0 left-0' onClick={(e) => {   
+            setShowMenu(!showMenu) }}>
+            <div className='h-[200px] w-[350px] z-0 absolute bg-gray-800 right-14 top-20 rounded-md shadow-md shadow-gray-950' onClick={(e)=>{e.stopPropagation()}}>
             <span className='text-2xl uppercase text-center block'>hey <span>{userInfo?.name?.split(" ")[0]}</span></span>
             <span className='block text-md text-center text-gray-500'>{userInfo?.role}</span>
             <span className='ml-3 block text-gray-400 mt-2'>{userInfo?.email}</span>
             <span className='ml-3 block text-gray-400 mt-2'>{userInfo?.mobile}</span>
             <div className='flex items-center'>
-              <button className='bg-green-500 ml-2 py-1 px-9 mt-6  border-2 border-green-500 shadow-md shadow-gray-900 hover:bg-green-800 ' onClick={() => logOut()}>logout <i className="ri-logout-box-r-line"></i></button>
               <form enctype="multipart/form-data" method="post">
                 <input
                   type="file"
@@ -80,8 +82,9 @@ const NavProfile = ({ userPicUrl, userInfo }) => {
                   upload <i className="ri-upload-2-line"></i>
                 </label>
               </form>
+              <button className='bg-green-500 ml-2 py-1 px-9 mt-6  border-2 border-green-500 shadow-md shadow-gray-900 hover:bg-green-800 ' onClick={() => logOut()}>logout <i className="ri-logout-box-r-line"></i></button>
             </div>
-          </div> : null
+          </div> </div>: null  
       }
     </div>
   )
