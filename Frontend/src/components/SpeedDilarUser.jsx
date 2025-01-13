@@ -20,7 +20,7 @@ const actions = [
 
 const NAVIGATION_LOCATION = ['/dashboard', '/', '/', '/', '/'];
 
-export default function UserSpeedDialer({ operationNum }) {
+export default function SpeedDilarUser() {
     const navigate = useNavigate();
 
     return (
