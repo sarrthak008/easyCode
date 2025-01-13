@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
 import { closeSnackbar, useSnackbar } from 'notistack'
-import Appbtn from '../components/Appbtn'
 import { Link } from 'react-router-dom'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import Shadow from "../components/Shadow"
