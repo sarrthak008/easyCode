@@ -5,6 +5,7 @@ import { closeSnackbar, useSnackbar } from 'notistack'
 import { Link } from 'react-router-dom'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import Shadow from "../components/Shadow"
+import UserSpeedDialer from '../components/userSpeedDialer'
 
 const CourseCard = ({ course }) => {
   return (
@@ -111,10 +112,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* <Shadow />
+      <Shadow />
       <div className='fixed bottom-20 right-14'>
         <UserSpeedDialer />
-      </div> */}
+      </div>
     </>
   )
 }
