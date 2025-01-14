@@ -57,7 +57,7 @@ const NavProfile = ({ userPicUrl, userInfo }) => {
       </div>
       {
         showMenu ?
-          <div className='h-screen w-screen cursor-pointer z-[20] bg-blur-gray absolute top-0 left-0' onClick={(e) => {   
+          <div className='h-screen w-screen cursor-pointer z-[20] bg-blur-gray  absolute top-0 left-0' onClick={(e) => {   
             setShowMenu(!showMenu) }}>
             <div className='h-[200px] w-[350px] z-0 absolute bg-gray-800 right-14 top-20 rounded-md shadow-md shadow-gray-950' onClick={(e)=>{e.stopPropagation()}}>
             <span className='text-2xl uppercase text-center block'>hey <span>{userInfo?.name?.split(" ")[0]}</span></span>
