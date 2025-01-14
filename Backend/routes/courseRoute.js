@@ -12,7 +12,7 @@ courseRouter.post('/addcourse',verifyJWTAdmin,postcourse)
 courseRouter.post('/getMycourse',verifyJwtUser,getmycourse)
 courseRouter.put('/putcourse',verifyJWTAdmin,putcourse)
 courseRouter.post('/postSyallbus',verifyJWTAdmin,postSyallbus)
-courseRouter.get('/getcoursstudent',getcoursesStudent)
+courseRouter.post('/getcoursstudent',getcoursesStudent)
 
 
 
