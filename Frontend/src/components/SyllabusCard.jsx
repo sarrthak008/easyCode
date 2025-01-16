@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { use } from 'react'
 
 const SyllabusCard = ({syllabus}) => {
-    
+   
+  //console.log(syllabus)
+
     const [para,setpara] = useState(false);
 
   return (

@@ -13,7 +13,7 @@ const Courses = () => {
       
 
         const fetchCourses = async () => { 
-          console.log(API_URL)
+          //console.log(API_URL)
            try{
               let responce = await axios.get(`${API_URL}/api/course/getcourse/`)
               setCourses(responce.data.data)
