@@ -18,6 +18,7 @@ import CourseOpe from './view/CourseOpe.jsx';
 import Notfound from './view/Notfound.jsx';
 import AddQuiz from './view/AddQuiz.jsx';
 import Dashboard from './view/Dashboard.jsx';
+import Feedback from './view/Feedback.jsx';
 
 
 
@@ -39,6 +40,7 @@ function App() {
             <Route path="/edit/:id" element={<Settings/>} />
             <Route path='/addquiz' element={<AddQuiz/>}/>
             <Route path='/dashboard' element={<Dashboard/>}/>
+            <Route path='/feedback' element={<Feedback/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>

@@ -113,7 +113,7 @@ const Dashboard = () => {
       </div>
 
       <Shadow />
-      <div className='fixed bottom-20 right-14'>
+      <div className='fixed bottom-0 right-14'>
          <SpeedDilarUser/>
       </div>
     </>

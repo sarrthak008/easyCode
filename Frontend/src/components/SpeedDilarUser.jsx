@@ -11,14 +11,14 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
 
 const actions = [
-    { icon: <HomeIcon />, name: 'Status' },
-    { icon: <CastForEducationIcon />, name: 'All Courses' },
-    { icon: <AddCommentIcon />, name: 'Add Course' },
-    { icon: <PersonIcon />, name: 'All Users' },
-    { icon: <QuizIcon />, name: 'Add Quiz' },
+    { icon: <i className="ri-dashboard-fill text-xl"></i>, name: 'Dashboard' },
+    { icon: <i className="ri-feedback-fill text-xl"></i>, name: 'feedback' },
+    { icon: <i className="ri-group-fill text-xl"></i>, name: 'batchmates' },
+    // { icon: <PersonIcon />, name: 'All Users' },
+    // { icon: <QuizIcon />, name: 'Add Quiz' },
 ];
 
-const NAVIGATION_LOCATION = ['/dashboard', '/', '/', '/', '/'];
+const NAVIGATION_LOCATION = ['/dashboard', '/feedback', '/', '/', '/'];
 
 export default function SpeedDilarUser() {
     const navigate = useNavigate();

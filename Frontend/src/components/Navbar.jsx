@@ -57,7 +57,11 @@ const Navbar = () => {
             }
             {
               isLoggedIn ? <NavProfile userPicUrl={userPicUrl} userInfo={userInfo} /> :
-                <Link to={'/singup'}> <button className="border py-[3px] px-10 rounded-xl text-green hover:bg-green-400 hover:text-white  shadow-md shadow-gray-700 hover:shadow-2xl hover:shadow-green-400 transition-all">Sign In</button></Link>
+              <Link to={'/singup'}> 
+               <button className="button-8" role="button">
+                   <span className="text">Sign in</span>
+                </button>
+              </Link>
             }
           </div>
 
@@ -80,7 +84,11 @@ const Navbar = () => {
                  </div>
                  <div className='text-white text-2xl cursor-pointer opacity-75 '>Logout</div>
               </div> :
-              <Link to={'/singup'}><span className='text-white text-2xl cursor-pointer opacity-75 '> sign In<i className="ri-arrow-right-up-line"></i></span></Link>
+              <Link to={'/singup'}> 
+               <button className="button-8" role="button">
+                   <span className="text">Button 18</span>
+                </button>
+              </Link>
           }
         </div>
       </div> : null}
