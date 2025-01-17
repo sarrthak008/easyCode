@@ -92,7 +92,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .button-8 {
   touch-action: manipulation;
-  background-image: linear-gradient(135deg, rgb(0, 0, 177) 0%, #89f789 50%, #2eb900 100%);
+  background-image: linear-gradient(135deg, rgb(3, 170, 203) 0%, #89f789 50%, #2eb900 100%);
   border-radius: 8px;
   color: #000;
   font-size: 16px;

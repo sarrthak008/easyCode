@@ -8,6 +8,13 @@ import Shadow from "../components/Shadow"
 import SpeedDilarUser from '../components/SpeedDilarUser'
 
 const CourseCard = ({ course }) => {
+
+  const { enqueueSnackbar } = useSnackbar()
+
+  const handelCourseCertification =()=>{
+    enqueueSnackbar('you can able download certificate after course complition',{variant:'info'})
+  }
+
   return (
     <div className='min-h-[300px] w-[90%] md:w-[60%] bg-gray-900 rounded-lg shadow-sm shadow-black m-3 p-2'>
       <div className='w-[95%]  min-h-[210px] px-2 flex flex-col sm:flex-row bg-gray-950 mx-auto py-2 items-center '>
@@ -19,7 +26,9 @@ const CourseCard = ({ course }) => {
 
           <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'>solve quiz</button>
 
-          <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'>certificate</button>
+          <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800' onClick={()=>{
+            handelCourseCertification()
+          }}>certificate</button>
         </div>
       </div>
       <div className='text-gray-500 text-[17px] text-center'><i className="ri-alarm-warning-fill"></i> please attend live lecutures to get certificate . you can ask doubt any time . admin have permission to remove you from online batch if you not attends lectures</div>
