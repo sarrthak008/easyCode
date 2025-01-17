@@ -35,13 +35,15 @@ const Courses = () => {
           <span>We belive on <br/> <span className='text-green font-bold text-9xl hevy '>Skills</span> <br/> not on certificate.</span>
        </div>
 
-       <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4 '>
+       { courses.length ==0  ? 
+         <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4 '>
          {
             numberOfSkelleton.map(()=>(
                <CourseSkelleton/>
             ))
           }
-      </div>
+      </div> : null
+       }
 
        <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4'>
 
