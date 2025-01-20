@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 const API_URL = import.meta.env.VITE_SERVER_URI
@@ -5,8 +6,15 @@ const API_URL = import.meta.env.VITE_SERVER_URI
 
 const ShowQuiz = ({quizdata})=>{
    return(
-    <div className='text-white min-h-[150px] bg-red-200 mt-5 w-[80%] mx-auto'>
-      hello
+    <div className='text-white min-h-[150px] bg-gray-800 mt-5 w-[75%] p-4 rounded-md shadow-sm shadow-green-600 mx-auto'>
+       <div className='text-xl'>{quizdata?.name}</div>
+       <div className='text-sm text-gray-500'>{quizdata?._id}</div>
+       <div className='mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-7'>
+          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>view <i className="ri-eye-fill"></i></button>
+          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>connect <i class="ri-links-fill"></i></button>
+          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>lock <i class="ri-lock-fill"></i></button>
+          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>unlock <i class="ri-lock-unlock-fill"></i></button>
+       </div>
     </div>
    )
 }
