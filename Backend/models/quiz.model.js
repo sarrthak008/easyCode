@@ -26,7 +26,7 @@ const quizSchema = new Schema({
      ],
      isLock :{
         type:Boolean,
-        default:false
+        default:true
      }
 });
 

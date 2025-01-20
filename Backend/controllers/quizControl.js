@@ -94,7 +94,7 @@ const linkQuiz = async (req, res) => {
         }
         findedCourse?.quizs.push(quizId)
         let responce = await findedCourse.save()
-        
+
         if (!responce) {
 
             return responder(res, false, 'something went wrong', null, 400);
@@ -105,6 +105,15 @@ const linkQuiz = async (req, res) => {
     } catch (error) {
         return responder(res, false, `${error.message}`, null, 400)
     }
+}
+
+const lockQuiz = async (req,res) => {
+    let {courseId,quizId} = req.body
+    if (!quizId || !courseId) {
+        return responder(res, false, 'all parametes required', null, 400);
+    }
+    
+
 }
 
 export { postquiz, updateQuiz, getallquiz, linkQuiz };
