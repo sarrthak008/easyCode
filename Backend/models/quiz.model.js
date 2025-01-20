@@ -23,7 +23,11 @@ const quizSchema = new Schema({
                  required:true
             }
          }
-     ]
+     ],
+     isLock :{
+        type:Boolean,
+        default:false
+     }
 });
 
 const Quiz = model("Quiz", quizSchema);
