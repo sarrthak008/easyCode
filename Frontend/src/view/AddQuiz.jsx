@@ -13,12 +13,12 @@ const AddQuiz = () => {
   return (
     <>
       <Navbar />
-      <div className="w-full h-screen flex flex-col   mt-[10%]">
+      <div className="w-full h-screen flex flex-col  mt-[10%]">
 
         <h1 className="text-4xl text-white opacity-60 mb-4 font-bold">Add Quiz</h1>
-        <div className="w-[50%] h-[100%] sm:w-[60%] rounded-lg p-8 bg-gray-900 flex  flex-col gap-7 text-white py-6">
+        <div className="w-[100%] h-[100%] sm:w-[70%]  rounded-lg p-1 sm:p-8 bg-gray-900 flex items-center justify-center flex-col gap-7 text-white py-6 mx-auto">
           <div className='flex justify-between w-full border-b-2 pb-7 border-white'>
-            <div className='w-[60%]'><Appinput
+            <div className='w-full sm:w-[60%]'><Appinput
               title='enter the quiz name'
               value={quizname}
               onChange={(e) => { setquizname(e.target.value) }}

@@ -7,15 +7,15 @@ const API_URL = import.meta.env.VITE_SERVER_URI
 import { closeSnackbar, useSnackbar } from 'notistack'
 
 
-const SyllabusCard = ({syllabus})=>{
-     return(
-        <div className='w-[90%] h-[250px]  border-[1px] border-l-0 border-r-0 border-b-0 '>
-         <div className='text-gray-200  md:text-xl ml-7 mt-5 capitalize  '>{syllabus?.title}</div>
-         <p  className='text-gray-400 block w-[90%] sm:w-[80%] ml-10 sm:ml-20 mt-5 sm:mt-5 text-[10px] sm:text-sm font-thin'>{syllabus?.description?.split(".")[0]}{syllabus?.description?.split(".")[0]}</p>
-         <div className='text-green ml-7 sm:ml-20 mt-5 cursor-pointer text-[10px] sm:text-xl group'>Know more <i className="ri-arrow-right-line group-hover:ml-2 transition-all"></i></div>
-    </div>
-     )
-}
+// const SyllabusCard = ({syllabus})=>{
+//      return(
+//         <div className='w-[90%] h-[250px]  border-[1px] border-l-0 border-r-0 border-b-0 '>
+//          <div className='text-gray-200  md:text-xl ml-7 mt-5 capitalize  '>{syllabus?.title}</div>
+//          <p  className='text-gray-400 block w-[90%] sm:w-[80%] ml-10 sm:ml-20 mt-5 sm:mt-5 text-[10px] sm:text-sm font-thin'>{syllabus?.description?.split(".")[0]}{syllabus?.description?.split(".")[0]}</p>
+//          <div className='text-green ml-7 sm:ml-20 mt-5 cursor-pointer text-[10px] sm:text-xl group'>Know more <i className="ri-arrow-right-line group-hover:ml-2 transition-all"></i></div>
+//     </div>
+//      )
+// }
 
 const AddSyallbus = () => {
     const { enqueueSnackbar } = useSnackbar()
@@ -99,12 +99,14 @@ const AddSyallbus = () => {
                             <Appbtn title='Add' onClick={addSyallbus} />
                         </div>
                 </div>
-
+{/* 
                 <div className=' hidden md:block w-[50%] h-full flex flex-col bg-gray-900 overflow-y-scroll'>
                  {allSyllabus?.map((syllabus,index)=>(
                     <SyllabusCard syllabus={syllabus}/>
                  ))}
-                </div>
+                </div> */}
+
+                
             </div >
         </>
     )

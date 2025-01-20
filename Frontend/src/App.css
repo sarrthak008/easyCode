@@ -84,6 +84,8 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
   text-transform: none;
   vertical-align: baseline;
+  background-size: 200% 200%;
+  animation: rotateColor 3s infinite alternate;
 }
 
 .button-8:focus {
@@ -92,7 +94,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .button-8 {
   touch-action: manipulation;
-  background-image: linear-gradient(135deg, rgb(3, 170, 203) 0%, #89f789 50%, #2eb900 100%);
+  background-image: linear-gradient(135deg, rgb(2, 118, 141) 0%, #89f789 50%, #2eb900 100%);
   border-radius: 8px;
   color: #000;
   font-size: 16px;
@@ -155,3 +157,12 @@ input[type=number]::-webkit-outer-spin-button {
   box-shadow: #000019 0 0, rgba(0, 118, 63, 0.92) 0 9px 21px, rgba(73, 2, 57, .2) 0 0 inset;
 }
 
+
+@keyframes rotateColor {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
