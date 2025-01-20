@@ -43,7 +43,13 @@ const couserSchema = new Schema({
             title: String,
             description:String
         }
-    ]
+    ],
+    quizs:[
+            {
+            type:Schema.Types.ObjectId,
+            ref:'Quiz'
+          }
+        ]
 
 },{timestamps:true})
 

@@ -1,6 +1,6 @@
 import Quiz from "./../models/quiz.model.js";
 import { responder } from "../utils/responder.js";
-
+import course from "../models/course.model.js";
 
 const postquiz = async (req, res) => {
     try {
@@ -32,7 +32,6 @@ const postquiz = async (req, res) => {
 
 };
 
-
 //update quiz
 
 const updateQuiz = async (req, res) => {
@@ -62,25 +61,50 @@ const updateQuiz = async (req, res) => {
     }
 };
 
-const getallquiz = async (req,res) =>{
+const getallquiz = async (req, res) => {
 
-   try{
+    try {
 
-    const allQuiz = await Quiz.find()
-    if(!allQuiz){
-        return responder(res,false,'no quize ')
+        const allQuiz = await Quiz.find()
+        if (!allQuiz) {
+            return responder(res, false, 'no quize ')
+        }
+
+        return responder(res, true, 'All Quize finded..', allQuiz, 202)
+
+    } catch (error) {
+        console.log(error)
+
+        return responder(res, false, error.message, 500);
+
     }
 
-        return  responder(res,true,'All Quize finded..',allQuiz,202)
-
-   }catch(error){
-        console.log(error)
-        
-     return   responder(res, false, error.message, 500);
-        
-   }
-    
 
 }
 
-export { postquiz, updateQuiz, getallquiz};
+const linkQuiz = async (req, res) => {
+    const { quizId, courseId } = req.body
+    if (!quizId || !courseId) {
+        return responder(res, false, 'all parametes required', null, 400);
+    }
+    try {
+        const findedCourse = await course.findById(courseId)
+        if (findedCourse?.quizs.includes(quizId)) {
+            return responder(res, false, 'quiz are alredy connected', null, 400);
+        }
+        findedCourse?.quizs.push(quizId)
+        let responce = await findedCourse.save()
+        
+        if (!responce) {
+
+            return responder(res, false, 'something went wrong', null, 400);
+        }
+
+        return responder(res, true, 'quiz link successfully', responce, 200);
+
+    } catch (error) {
+        return responder(res, false, `${error.message}`, null, 400)
+    }
+}
+
+export { postquiz, updateQuiz, getallquiz, linkQuiz };
