@@ -1,20 +1,54 @@
-import { Button } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 const API_URL = import.meta.env.VITE_SERVER_URI
 
 
 const ShowQuiz = ({quizdata})=>{
+   
+   //console.log(quizdata.allquestions)
+   const [viewQuiz,setViewQuiz] = useState(false)
+  
    return(
     <div className='text-white min-h-[150px] bg-gray-800 mt-5 w-[75%] p-4 rounded-md shadow-sm shadow-green-600 mx-auto'>
        <div className='text-xl'>{quizdata?.name}</div>
        <div className='text-sm text-gray-500'>{quizdata?._id}</div>
        <div className='mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-7'>
-          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>view <i className="ri-eye-fill"></i></button>
+          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 ' onClick={()=>setViewQuiz(true)}>view <i className="ri-eye-fill"></i></button>
           <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>connect <i class="ri-links-fill"></i></button>
           <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>lock <i class="ri-lock-fill"></i></button>
           <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>unlock <i class="ri-lock-unlock-fill"></i></button>
        </div>
+       {
+                viewQuiz ?
+                    <div className='h-screen w-screen absolute top-0 left-0  backdrop-blur-md flex items-center justify-center bg-blur-gray'>
+                        <div className="h-[100%] w-[90%] bg-gray-800 mt-20 overflow-hidden">
+                            <span className='flex justify-end text-5xl text-gray-400 md:mr-2 cursor-pointer' onClick={() => { setViewQuiz(false) }}><i className="ri-close-line "></i>
+                            </span>
+                            <div className='h-full w-full overflow-y-scroll hide-scroll-bar'>
+                                {
+                                    quizdata?.allquestions?.map((que, index) => (
+                            
+                                        <div className='min-h-[230px] w-[80%] m-4 bg-gray-600 mx-auto rounded-md'>
+                                    
+                                            <div className='ml-4 text-xl text-gray-300'>{index + 1}.  {que?.question}</div>
+                                            <div className='flex flex-col ml-10'>
+                                                <span className='text-gray-400 '><i className="ri-circle-fill text-sm"></i> <span className='text-[15px]'>{que?.options[0]}</span></span>
+                                                <span className='text-gray-400 '><i className="ri-circle-fill text-sm"></i> <span className='text-[15px]'>{que?.options[1]}</span></span>
+                                                <span className='text-gray-400 '><i className="ri-circle-fill text-sm"></i> <span className='text-[15px]'>{que?.options[2]}</span></span>
+                                                <span className='text-gray-400 '><i className="ri-circle-fill text-sm"></i> <span className='text-[15px]'>{que?.options[3]}</span></span>
+                                            </div>
+                                            <div className='h-4 w-full mt-5 ml-8'>
+                                                <span className='bg-green-900 p-2 mr-2 rounded-md'>Correct Ans </span>
+                                                : <span className='text-2xl'>{que?.correctAns}</span>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                    </div> : null
+            }
     </div>
    )
 }
