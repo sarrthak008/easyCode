@@ -84,7 +84,6 @@ const getallquiz = async (req, res) => {
 }
 
 
-
 const linkQuiz = async (req, res) => {
     const { quizId, courseId } = req.body;
 
@@ -152,9 +151,9 @@ const patchQuiz = async (req, res) => {
     }
 }
 
-const getquestions = async (req,res)=>{
+const getquestions = async (req, res) => {
     return res.send("hii")
 
 }
 
-export { postquiz, updateQuiz, getallquiz, linkQuiz , patchQuiz ,getquestions };
+export { postquiz, updateQuiz, getallquiz, linkQuiz, patchQuiz, getquestions };

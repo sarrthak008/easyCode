@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 const quizRouter = Router()
-import { postquiz, updateQuiz , getallquiz ,linkQuiz ,patchQuiz } from "../controllers/quizControl.js";
+import { postquiz, updateQuiz , getallquiz ,linkQuiz ,patchQuiz,getquestions } from "../controllers/quizControl.js";
 import { verifyJWTAdmin } from "../middlewares/jwtVarify.js";
 
 
