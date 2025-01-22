@@ -1,7 +1,7 @@
 import Quiz from "./../models/quiz.model.js";
 import { responder } from "../utils/responder.js";
 import course from "../models/course.model.js";
-import mongoose from "mongoose";    
+import mongoose from "mongoose";
 
 const postquiz = async (req, res) => {
     try {
@@ -105,35 +105,56 @@ const linkQuiz = async (req, res) => {
             return responder(res, false, 'Course not found', null, 404);
         }
 
-         let ifexit = findedCourse.quizs?.filter((quiz)=>{
-             return (quiz.quizId.toString() == quizId)
-         })
-    
-            if(ifexit.length>0){   
-                return responder(res, false, 'Quiz already linked', null, 400);
-            }
+        let ifexit = findedCourse.quizs?.filter((quiz) => {
+            return (quiz.quizId.toString() == quizId)
+        })
 
-         findedCourse.quizs.push({ quizId: quizId, isLock: true });
-         await findedCourse.save();
-         return responder(res, true, 'Quiz linked successfully', findedCourse, 200);    
+        if (ifexit.length > 0) {
+            return responder(res, false, 'Quiz already linked', null, 400);
+        }
+
+        findedCourse.quizs.push({ quizId: quizId, isLock: true });
+        await findedCourse.save();
+        return responder(res, true, 'Quiz linked successfully', findedCourse, 200);
 
     } catch (error) {
-         console.error('Error linking quiz:', error);
+        //console.error('Error linking quiz:', error);
         return responder(res, false, 'Failed to link quiz', error.message, 500);
-        
+
     }
 
 };
 
 
 
-const lockQuiz = async (req,res) => {
-    let {courseId,quizId} = req.body
+const patchQuiz = async (req, res) => {
+    let { courseId, quizId } = req.body
     if (!quizId || !courseId) {
         return responder(res, false, 'all parametes required', null, 400);
     }
-    
+    try {
+        let findedCourse = await course.findById(courseId).select('quizs').populate('quizs')
+        if (!findedCourse) {
+            return responder(res, false, 'Course not found', null, 404);
+        }
+        let findedQuiz = findedCourse.quizs.find((quiz) => {
+            return quiz.quizId.toString() == quizId
+        })
+        if (!findedQuiz) {
+            return responder(res, false, 'Quiz not found', null, 404);
+        }
+        findedQuiz.isLock = !findedQuiz.isLock
+        await findedCourse.save();
+        return responder(res, true, 'update quiz status ', findedCourse, 200);
+
+    } catch (error) {
+        return responder(res, false, 'Failed to lock quiz', error.message, 500);
+    }
+}
+
+const getquestions = async (req,res)=>{
+    return res.send("hii")
 
 }
 
-export { postquiz, updateQuiz, getallquiz, linkQuiz };
+export { postquiz, updateQuiz, getallquiz, linkQuiz , patchQuiz ,getquestions };
