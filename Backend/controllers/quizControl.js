@@ -1,6 +1,7 @@
 import Quiz from "./../models/quiz.model.js";
 import { responder } from "../utils/responder.js";
 import course from "../models/course.model.js";
+import mongoose from "mongoose";    
 
 const postquiz = async (req, res) => {
     try {
@@ -82,30 +83,49 @@ const getallquiz = async (req, res) => {
 
 }
 
+
+
 const linkQuiz = async (req, res) => {
-    const { quizId, courseId } = req.body
+    const { quizId, courseId } = req.body;
+
     if (!quizId || !courseId) {
-        return responder(res, false, 'all parametes required', null, 400);
+        return responder(res, false, 'All parameters are required', null, 400);
     }
+
     try {
-        const findedCourse = await course.findById(courseId)
-        if (findedCourse?.quizs.includes(quizId)) {
-            return responder(res, false, 'quiz are alredy connected', null, 400);
-        }
-        findedCourse?.quizs.push(quizId)
-        let responce = await findedCourse.save()
-
-        if (!responce) {
-
-            return responder(res, false, 'something went wrong', null, 400);
+        // Check if the quiz exists
+        const quiz = await Quiz.findById(quizId);
+        if (!quiz) {
+            return responder(res, false, 'Quiz not found', null, 404);
         }
 
-        return responder(res, true, 'quiz link successfully', responce, 200);
+        let findedCourse = await course.findById(courseId).select('quizs').populate('quizs')
+
+        if (!findedCourse) {
+            return responder(res, false, 'Course not found', null, 404);
+        }
+
+         let ifexit = findedCourse.quizs?.filter((quiz)=>{
+             return (quiz.quizId.toString() == quizId)
+         })
+    
+            if(ifexit.length>0){   
+                return responder(res, false, 'Quiz already linked', null, 400);
+            }
+
+         findedCourse.quizs.push({ quizId: quizId, isLock: true });
+         await findedCourse.save();
+         return responder(res, true, 'Quiz linked successfully', findedCourse, 200);    
 
     } catch (error) {
-        return responder(res, false, `${error.message}`, null, 400)
+         console.error('Error linking quiz:', error);
+        return responder(res, false, 'Failed to link quiz', error.message, 500);
+        
     }
-}
+
+};
+
+
 
 const lockQuiz = async (req,res) => {
     let {courseId,quizId} = req.body
