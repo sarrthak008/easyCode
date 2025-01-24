@@ -125,7 +125,6 @@ const linkQuiz = async (req, res) => {
 };
 
 
-
 const patchQuiz = async (req, res) => {
     let { courseId, quizId } = req.body
     if (!quizId || !courseId) {
@@ -151,9 +150,23 @@ const patchQuiz = async (req, res) => {
     }
 }
 
+// api return the  quizes that links with the course
 const getquestions = async (req, res) => {
-    return res.send("hii")
+
+  const {id} = req.params;
+  try {
+    const findedCourse = await course.findById(id).select('quizs').populate('quizs.quizId');
+    if(!findedCourse){
+      return responder(res, false, 'Course not found', null, 404);
+    }else{
+        return responder(res, true, 'Questions finded', findedCourse.quizs, 200);
+    }
+  }catch(error){
+    return responder(res, false, 'Failed to get questions', error.message, 500);
+  }
 
 }
+
+
 
 export { postquiz, updateQuiz, getallquiz, linkQuiz, patchQuiz, getquestions };

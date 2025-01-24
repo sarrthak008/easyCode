@@ -10,6 +10,6 @@ quizRouter.put("/updatequiz/:id", updateQuiz);
 quizRouter.get("/allquize",getallquiz);
 quizRouter.post("/lickquiz",linkQuiz)
 quizRouter.patch("/lockquiz",patchQuiz)
-quizRouter.get('/getquestions/:id',getquestions)
+quizRouter.get('/getquestion/:id',getquestions)
 
  export { quizRouter};
