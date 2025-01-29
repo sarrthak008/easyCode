@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_SERVER_URI
 
 const ShowQuiz = ({ quizdata }) => {
 
-  console.log(quizdata)
+ // console.log(quizdata)
 
   const [viewQuiz, setViewQuiz] = useState(false)
   const { id } = useParams()
@@ -32,16 +32,36 @@ const ShowQuiz = ({ quizdata }) => {
     }
   }
 
+  const updateQuizstatus = async () => {
+    const snakID = enqueueSnackbar('updating quiz status', { variant: 'info' });
+    try {
+      const responce = await axios.patch(`${API_URL}/api/quiz/lockquiz`, {
+        quizId: `${quizdata._id}`,
+        courseId: id 
+      }, { withCredentials: true });
+
+      if (responce.data.success) {
+        closeSnackbar(snakID)
+        enqueueSnackbar(responce.data?.message, { variant: 'success' })
+        console.log(responce.data)
+      } else {
+        return enqueueSnackbar(responce.data.message, { variant: 'error' })
+      }
+    } catch (error) {
+      return enqueueSnackbar(error.message, { variant: 'error' })
+    }
+  }
+
   return (
     <div className='text-white min-h-[150px] bg-gray-800 mt-5 w-[75%] p-4 rounded-md shadow-sm shadow-green-600 mx-auto'>
       <div className='text-xl'>{quizdata?.name}</div>
       <div className='text-sm text-gray-500'>{quizdata?._id}</div>
       <div className='mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-7'>
         <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 ' onClick={() => setViewQuiz(true)}>view <i className="ri-eye-fill"></i></button>
-        <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 ' onClick={() => linkQuiz()}>connect <i class="ri-links-fill"></i></button>
-        {quizdata?.isLock ?
-          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>lock <i class="ri-lock-fill"></i></button> :
-          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 '>unlock <i class="ri-lock-unlock-fill"></i></button>
+        <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 ' onClick={() => linkQuiz()}>connect <i className="ri-links-fill"></i></button>
+        {quizdata?.isLock?
+          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 ' onClick={()=>updateQuizstatus()}>unlock <i className="ri-lock-unlock-fill"></i></button>:
+          <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500 ' onClick={()=>updateQuizstatus()}>lock <i className="ri-lock-fill"></i></button> 
         }
       </div>
       {
