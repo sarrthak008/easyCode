@@ -47,6 +47,9 @@ function StartQuiz() {
 
     const addmarks = async () => {
         try {
+            if(!currentUser() || !score){
+                return;
+            }
             const responce = await axios.post(`${API_URL}/api/marks/addmarks`, {
                 
                     marks: score,
