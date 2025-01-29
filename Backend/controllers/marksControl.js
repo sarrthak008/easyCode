@@ -24,7 +24,7 @@ const postMarks = async (req, res) => {
 
 const getMarks = async (req, res) => {
     try {
-        const { studentId , quizId } = req.query;
+        const { studentId , quizId } = req.body;
         if (!studentId) {
             return responder(res, false, 'studentId is required', null, 400);
         }

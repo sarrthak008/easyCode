@@ -5,7 +5,7 @@ import {postMarks,getMarks,getTopStudentofQuiz} from "../controllers/marksContro
 
 marksRouter.post('/addmarks',postMarks);
 marksRouter.get('/getmarks',getMarks);
-marksRouter.get('/gettopstudent',getTopStudentofQuiz);
+marksRouter.post('/gettopstudent',getTopStudentofQuiz);
 
 
 export {marksRouter}
