@@ -3,7 +3,11 @@ import { useStore } from '../context/Store';
 import axios from 'axios';
 const API_URL = import.meta.env.VITE_SERVER_URI;
 
+import { closeSnackbar, useSnackbar } from 'notistack'
+
 function StartQuiz() {
+    const { enqueueSnackbar } = useSnackbar()
+
     const [userAnswers, setUserAnswers] = useState({});
     const [showscore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
@@ -11,9 +15,7 @@ function StartQuiz() {
 
     
     // Ensure quiz data is loaded and exists before rendering
-    if (!openquiz?.quizId) {
-        return <div>Loading...</div>;
-    }
+   
 
     const handleAnswerChange = (questionId, selectedAnswer) => {
         setUserAnswers(prev => ({
@@ -57,7 +59,14 @@ function StartQuiz() {
                     quizId: openquiz.quizId._id
                    
             }, { withCredentials: true });
-            console.log(responce);
+            if (responce.data.success) {
+                console.log(responce.data.message);
+              return  enqueueSnackbar(`${responce.data.message}`,{variant:'info'})
+            } else {    
+                console.log(responce.data.message);
+              return  enqueueSnackbar(`${responce.data.message}`,{variant:'info'})
+            }
+            
         } catch (error) {
             console.log(error);
         }
@@ -107,8 +116,8 @@ function StartQuiz() {
                 showscore && (
                    <div className='absolute top-0 left-0 h-screen w-screen bg-black bg-opacity-70 flex justify-center items-center backdrop-blur-md' onClick={()=>setShowScore(false)}>
                      <div className=' h-52 w-[50%] bg-gray-700 rounded-md shadow-md flex flex-col items-center justify-center'>
-                        <h1>Congratularion 🎉🎊</h1>
-                        <h2>Your score: {score}</h2>
+                        <h1 className='text-white text-2xl'>Congratularion 🎉🎊</h1>
+                        <h2 className='text-white text-2xl'>Your score: {score}</h2>
 
                     </div>
                     </div>
