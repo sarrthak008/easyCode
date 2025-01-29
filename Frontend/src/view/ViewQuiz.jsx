@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
+import StartQuiz from './StartQuiz';
+import { useStore } from '../context/Store';
 
 const API_URL = import.meta.env.VITE_SERVER_URI;
 
@@ -22,7 +24,7 @@ const ViewQuiz = () => {
     const { id } = useParams();
     const [quizData, setQuizData] = useState([]);
     const [viewQuiz, setViewQuiz] = useState(false); 
-
+    const {openquiz,setOpenquiz} = useStore()
     const responce = async () => {
         try {
             const responseData = await axios.get(`${API_URL}/api/quiz/getquestion/${id}`, { withCredentials: true });
@@ -61,11 +63,11 @@ const ViewQuiz = () => {
                     quizData?.map((quiz) => (
                          
                         <div key={quiz._id} className='text-white min-h-[150px] relative bg-gray-800 mt-5 w-[75%] p-4 rounded-md shadow-sm shadow-green-600 mx-auto'>
-                            {console.log(quiz)}
+                            {/* {console.log(quiz)} */}
                             <div className='text-xl'>{quiz?.quizId?.name}</div>
                             <div className='text-sm text-gray-500'>{quiz?._id}</div>
                             <div className='mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-7'>
-                                <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' >start  <i className="ri-eye-fill"></i></button>
+                               <Link to={'/startquiz'}> <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' onClick={()=>setOpenquiz(quiz)}>start  <i className="ri-eye-fill"></i></button></Link>
                                 <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' >my score  <i className="ri-eye-fill"></i></button>
                                 <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' >leader board <i className="ri-eye-fill"></i></button>
                                 {quiz?.isLock ?

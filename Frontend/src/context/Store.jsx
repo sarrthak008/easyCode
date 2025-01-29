@@ -44,8 +44,10 @@ const Storeprovider = ({ children }) => {
 
     const [isLoggedIn,setIsLoggedin] = useState(false)
 
+    const [openquiz,setOpenquiz] = useState()
+
     return (
-        <store.Provider value={{currentUser,setIsLoggedin,isLoggedIn,logOut,autoNavigate}}>
+        <store.Provider value={{currentUser,setIsLoggedin,isLoggedIn,logOut,autoNavigate,openquiz,setOpenquiz}}>
             {children}
         </store.Provider>
     )
