@@ -44,7 +44,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard/>}/>
             <Route path='/feedback' element={<Feedback/>}/>
             <Route path='/viewquiz/:id' element={<ViewQuiz/>}/>
-            <Route path='/viewquiz/:id' element={<StartQuiz/>}/>
+            <Route path='/startquiz' element={<StartQuiz/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>

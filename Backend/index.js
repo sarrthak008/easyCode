@@ -32,6 +32,7 @@ import { quizRouter } from "./routes/quizRouter.js";
 import { roleRouter } from "./routes/roleRoute.js";
 import { adminRouter } from "./routes/adminRouter.js";
 import { feedbackRouter } from "./routes/feedbackRouter.js";
+import { marksRouter } from "./routes/markRouter.js";   
 
 // Utility Functions
 import { responder } from "./utils/responder.js";
@@ -45,6 +46,7 @@ app.use('/api/quiz', quizRouter);
 app.use('/api/role', roleRouter);
 app.use('/api/admin',adminRouter)
 app.use('/api/feedback',feedbackRouter)
+app.use('/api/marks',marksRouter)   
 // Health Check Routes
 app.get('/health', (req, res) => {
     responder(res, true, 'Server is running healthy', null, 200);
