@@ -31,6 +31,8 @@ const ViewMyScore = ({setMyScoreComp,quizId}) =>{
                 }
                 , { withCredentials: true });
              
+                console.log(response.data)
+                 
                 if (response.data?.success) {
                      //console.log(response.data?.data.marks)
                      setmarks(parseInt(response.data?.data.marks))
@@ -71,7 +73,7 @@ const ViewMyScore = ({setMyScoreComp,quizId}) =>{
                         <img src={ICONPNG} alt="icon" className='h-[80%] w-[80%] animate-bounce'/>
                         <span className='text-gray-300 font-thin'>you solve quiz ? </span>
                      </div> : 
-                    <Doughnut data={data} />}
+                    <Doughnut data={data} /> }
                 </div>
                 <span className='text-2xl text-gray-400 font-semibold'>{marks}</span>
              </div>
