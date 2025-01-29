@@ -166,3 +166,27 @@ input[type=number]::-webkit-outer-spin-button {
     background-position: 100% 50%;
   }
 }
+
+
+
+@keyframes shine {
+  0% {
+    background-position: -100%;
+  }
+  50% {
+    background-position: 200%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.shine-effect {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+  background-size: 200% 100%;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  animation: shine 5s infinite linear;
+}
+
+

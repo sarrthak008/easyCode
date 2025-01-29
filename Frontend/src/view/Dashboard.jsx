@@ -24,7 +24,7 @@ const CourseCard = ({ course }) => {
         <div className='w-full sm:w-[50%] h-full  sm:ml-4 flex flex-col justify-evenly items-center gap-3 mt-5 sm:mt-0'>
           <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'>my progress</button>
 
-          <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'>solve quiz</button>
+        <Link to={`/viewquiz/${course._id}`} className='w-full ml-[20%]'><button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'>solve quiz</button></Link>
 
           <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800' onClick={()=>{
             handelCourseCertification()
