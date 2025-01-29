@@ -1,6 +1,8 @@
 import React from 'react'
 import CodeOffIcon from '@mui/icons-material/CodeOff';
 
+import termsAndConditions from "../../src/terms-and-conditions/terms-and-conditions.pdf"
+
 export const Footer = () => {
     return (
         <div className="bg-red-900 h-96">
@@ -88,7 +90,7 @@ export const Footer = () => {
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" class="flex text-base  text-gray-300 transition-all duration-200 hover:text-green-600 focus:text-green-600"> Terms & Conditions </a>
+                                    <a href= {termsAndConditions} target='blank' class="flex text-base  text-gray-300 transition-all duration-200 hover:text-green-600 focus:text-green-600"> Terms & Conditions </a>
                                 </li>
 
                                 <li>

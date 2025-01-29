@@ -6,7 +6,7 @@ const marksSchema = new Schema({
         ref: 'user',
         required: true
     },
-    courseId: {
+    quizId: {
         type: Schema.Types.ObjectId,
         ref: 'course',
         required: true
