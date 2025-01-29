@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
+import StartQuiz from './StartQuiz';
 
 const API_URL = import.meta.env.VITE_SERVER_URI;
 
@@ -53,7 +54,7 @@ const ViewQuiz = () => {
                             <div className='text-xl'>{quiz?.quizId?.name}</div>
                             <div className='text-sm text-gray-500'>{quiz?._id}</div>
                             <div className='mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-7'>
-                                <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' >start  <i className="ri-eye-fill"></i></button>
+                               <Link to={''}> <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' >start  <i className="ri-eye-fill"></i></button></Link>
                                 <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' >my score  <i className="ri-eye-fill"></i></button>
                                 <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' >leader board <i className="ri-eye-fill"></i></button>
                                 {quiz?.isLock ?

@@ -20,6 +20,7 @@ import AddQuiz from './view/AddQuiz.jsx';
 import Dashboard from './view/Dashboard.jsx';
 import Feedback from './view/Feedback.jsx';
 import ViewQuiz from './view/ViewQuiz.jsx';
+import StartQuiz from './view/StartQuiz.jsx';
 
 
 
@@ -43,6 +44,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard/>}/>
             <Route path='/feedback' element={<Feedback/>}/>
             <Route path='/viewquiz/:id' element={<ViewQuiz/>}/>
+            <Route path='/viewquiz/:id' element={<StartQuiz/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>
