@@ -124,7 +124,7 @@ const linkQuiz = async (req, res) => {
 
 };
 
-
+//update quiz status
 const patchQuiz = async (req, res) => {
     try {
         let { courseId, quizId } = req.body;
@@ -185,6 +185,19 @@ const getquestions = async (req, res) => {
 
 }
 
+const getCourseQuiz = async (req, res) => { 
+    const { courseId } = req.params;
+    try {
+        const foundCourse = await course.findById(courseId).select('quizs').populate('quizs.quizId');
+        if (!foundCourse) {
+            return responder(res, false, 'Course not found', null, 404);
+        }
+        return responder(res, true, 'Quizzes found', foundCourse.quizs, 200);
+    } catch (error) {
+        return responder(res, false, 'Failed to get quizzes', error.message, 500);
+    }
+}
 
 
-export { postquiz, updateQuiz, getallquiz, linkQuiz, patchQuiz, getquestions };
+
+export { postquiz, updateQuiz, getallquiz, linkQuiz, patchQuiz, getquestions ,getCourseQuiz };
