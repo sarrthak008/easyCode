@@ -5,11 +5,23 @@ import { useSnackbar } from 'notistack';
 
 const API_URL = import.meta.env.VITE_SERVER_URI;
 
+
+const ViewMyScore = () =>{
+     
+    return(
+        <div className="h-screen w-screen absolute top-0 left-0 backdrop-blur-md  flex justify-center items-center ">
+             <div className='min-w-96 h-[300px] bg-gray-700' onClick={(e) => e.stopPropagation()}>
+ 
+             </div>
+        </div>
+    )
+}
+
 const ViewQuiz = () => {
     const { enqueueSnackbar } = useSnackbar();
     const { id } = useParams();
     const [quizData, setQuizData] = useState([]);
-    const [viewQuiz, setViewQuiz] = useState(false); // Assuming this is a state you'll use
+    const [viewQuiz, setViewQuiz] = useState(false); 
 
     const responce = async () => {
         try {
@@ -60,13 +72,14 @@ const ViewQuiz = () => {
                                     <span className='bg-green-400 px-3 py-[2px]  text-black text-[18px]  rounded-bl-lg shadow-sm shadow-black hover:bg-green-500 absolute top-0 right-0 shine-effect'>unlock <i className="ri-lock-unlock-fill"></i></span>
                                     :
                                     
-                                    <span className='bg-green-400 px-3 py-[2px] text-black text-[18px]  rounded-bl-lg shadow-sm shadow-black hover:bg-green-500 absolute top-0 right-0 shine-effect'>lock <i className="ri-lock-unlock-fill"></i></span>
+                                    <span className='bg-green-400 px-3 py-[2px] text-black text-[18px]  rounded-bl-lg shadow-sm shadow-black hover:bg-green-500 absolute top-0 right-0 shine-effect'>lock <i className="ri-lock-fill"></i></span>
                                 }
                             </div>
                         </div>
                     ))
                 }
             </div>
+            {viewQuiz ? <ViewMyScore /> : null}
         </div>
     );
 }
