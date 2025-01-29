@@ -126,38 +126,47 @@ const linkQuiz = async (req, res) => {
 
 
 const patchQuiz = async (req, res) => {
-    let { courseId, quizId } = req.body
-    if (!quizId || !courseId) {
-        return responder(res, false, 'all parametes required', null, 400);
-    }
     try {
-        let findedCourse = await course.findById(courseId).select('quizs').populate('quizs')
-        if (!findedCourse) {
+        let { courseId, quizId } = req.body;
+
+        if (!quizId || !courseId) {
+            return responder(res, false, 'All parameters required', null, 400);
+        }
+
+        // Find course and populate quizzes
+        let foundCourse = await course.findById(courseId).select('quizs').populate('quizs');
+
+        if (!foundCourse) {
             return responder(res, false, 'Course not found', null, 404);
         }
-        let findedQuiz = findedCourse.quizs.find((quiz) => {
-            return quiz.quizId.toString() == quizId
-        })
-        if (!findedQuiz) {
+
+        // Find quiz inside the course
+        let foundQuiz = foundCourse.quizs.find(quiz => quiz.quizId.toString() === quizId);
+
+        if (!foundQuiz) {
             return responder(res, false, 'Quiz not found', null, 404);
         }
 
-        //findedQuiz.isLock = !findedQuiz.isLock
-        
-        findedCourse.quizs.map((quiz) => {
-            if (quiz.quizId.toString() == quizId) {
-                quiz.isLock = !quiz.isLock
+        // Toggle the isLock status for both
+        foundQuiz.isLock = !foundQuiz.isLock;
+        foundCourse.markModified('quizs'); // Notify Mongoose about the change
 
-            }   
-        })
-        await findedCourse.save() //&& await findedQuiz.save();
+        // Save the updated course
+        await foundCourse.save();
 
-        return responder(res, true, 'update quiz status ', findedCourse, 200);
+        // Update the referenced Quiz document separately if needed
+        let updatedQuiz = await Quiz.findByIdAndUpdate(
+            quizId,
+            { isLock: foundQuiz.isLock },
+            { new: true, runValidators: true }
+        );
 
+        return responder(res, true, 'Quiz status updated successfully', { foundCourse, updatedQuiz }, 200);
     } catch (error) {
-        return responder(res, false, 'Failed to lock quiz', error.message, 500);
+        return responder(res, false, 'Failed to update quiz status', error.message, 500);
     }
-}
+};
+
 
 // api return the  quizes that links with the course
 const getquestions = async (req, res) => {
