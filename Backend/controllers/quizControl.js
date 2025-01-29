@@ -141,8 +141,17 @@ const patchQuiz = async (req, res) => {
         if (!findedQuiz) {
             return responder(res, false, 'Quiz not found', null, 404);
         }
-        findedQuiz.isLock = !findedQuiz.isLock
-        await findedCourse.save();
+
+        //findedQuiz.isLock = !findedQuiz.isLock
+        
+        findedCourse.quizs.map((quiz) => {
+            if (quiz.quizId.toString() == quizId) {
+                quiz.isLock = !quiz.isLock
+
+            }   
+        })
+        await findedCourse.save() //&& await findedQuiz.save();
+
         return responder(res, true, 'update quiz status ', findedCourse, 200);
 
     } catch (error) {
