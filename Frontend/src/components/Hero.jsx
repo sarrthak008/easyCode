@@ -11,75 +11,26 @@ export const Hero = () => {
 
   const items = [
     { 
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Aarav", 
-      description: "This is a description for item 1." 
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1737807822/sarthak-Photoroom.png.png",
+      name: "Sarthak", 
+      description: " I am proud to offer a platform dedicated to making coding accessible and easy to learn for everyone. Our mission is to simplify complex programming concepts and help students gain practical skills through interactive lessons, real-world examples, and a supportive community. Whether you are a beginner or an experienced coder, EasyCode has something for you. Join us today and start your coding journey!" 
     },
     {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Vihaan", 
-      description: "This is a longer description for item 2 to demonstrate varying heights in the grid.",
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1736518849/IMG_4367.JPG.jpg",
+      name: "krushna", 
+      description: "as a cofounder our mission of making coding accessible to everyone is what drives us. We are committed to providing high-quality content that is easy to understand and engaging. We believe that anyone can learn to code, and we are here to help you every step of the way.",
+    },
+    { 
+      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1736679054/IMG_20220728_104522_enhanced.jpg.png",
+      name: "prathmesh", 
+      description: "It’s been amazing to see how much we've accomplished together, and I’m excited about all the future possibilities we do everything to make coding easy for everyone." 
     },
     { 
       profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Ananya", 
-      description: "Another item." 
+      name: "Neha", 
+      description: " Our mission is to simplify complex programming concepts and help students gain practical skills through interactive lessons" 
     },
-    { 
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Ishaan", 
-      description: "Short description." 
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Myra", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Aadhya", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Vivaan", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Arjun", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Kiara", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Riya", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Aditya", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Tara", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Aryan", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Meera", 
-      description: "A very long description for item 5 to create a taller card and showcase the masonry effect.",
-    },
+    
   ];
   
 

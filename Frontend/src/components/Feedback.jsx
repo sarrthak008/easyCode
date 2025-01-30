@@ -22,7 +22,7 @@ const Feedback = ({ items }) => {
           className="bg-gray-900 p-4  rounded-lg shadow-md shadow-blue-400 border-b-2 border-b-green-400"
         >
          <div className="flex gap-2 items-center">
-          <div className="h-[30px] w-[30px] bg-gray-400 rounded-full">
+          <div className="h-[30px] w-[30px] bg-gray-400 rounded-full overflow-hidden">
              <img src={item.profile} className="h-full w-full object-cover"/>
           </div>
           <h2 className="text-lg font-medium mb-2 text-gray-100">{item.name.split(" ")[0]}</h2>
