@@ -46,7 +46,7 @@ const getTopStudentofQuiz = async (req, res) => {
             return responder(res, false, 'quizId is required', null, 400);
         }
 
-        const topStudent = await Marks.find({ quizId }).sort({ marks: -1 }).limit(3);
+        const topStudent = await Marks.find({ quizId }).populate('studentId','name profilePic').sort({ marks: -1 }).limit(3);
 
         if (!topStudent) {
             return responder(res, false, 'Top student not found', null, 404);
