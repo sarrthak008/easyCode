@@ -55,7 +55,22 @@ const couserSchema = new Schema({
               default:true
             }
         }
+    ],
+    videos:[
+        {
+            video_title: {
+                type: String,
+                required: true
+            },
+            video_url:[
+                {
+                    type: String,
+                    required: true
+                }
+            ]
+        }
     ]
+
 
 }, { timestamps: true })
 
