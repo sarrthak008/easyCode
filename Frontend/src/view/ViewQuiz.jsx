@@ -115,7 +115,7 @@ const ViewMyScore = ({ setMyScoreComp, quizId }) => {
                             topStudent.length > 0 ? 
                             <div className='h-[200px] w-[400px] relative flex items-center justify-center gap-2 md:gap-9'>
                             <div className='flex flex-col'>
-                              <div className='h-[80px] w-[80px] rounded-full bg-gray-800 shadow-2xl shadow-blue-500 overflow-hidden border-2 border-gray-300'>
+                              <div className='h-[80px] w-[80px] rounded-full bg-gray-800 shadow-2xl shadow-blue-500 overflow-hidden border-4 border-gray-100'>
                                   <img src={topStudent[1]?.studentId?.profilePic} alt="icon" className='h-full w-full object-fill'/>
                               </div>
                               
@@ -123,7 +123,7 @@ const ViewMyScore = ({ setMyScoreComp, quizId }) => {
                             </div>
 
                             <div className='flex flex-col'>
-                              <div className='h-[100px] w-[100px] rounded-full bg-gray-800 shadow-2xl shadow-green-500 overflow-hidden border-2 border-gray-300'>
+                              <div className='h-[100px] w-[100px] rounded-full bg-gray-800 shadow-2xl shadow-green-500 overflow-hidden border-4 border-yellow-300'>
                                 <img src={topStudent[0]?.studentId?.profilePic} alt="icon" className='h-full w-full object-fill'/>
                               </div>
                               
@@ -131,7 +131,7 @@ const ViewMyScore = ({ setMyScoreComp, quizId }) => {
                             </div>
 
                             <div className='flex flex-col'>
-                              <div className='h-[80px] w-[80px] rounded-full bg-gray-800 shadow-2xl shadow-blue-500 overflow-hidden border-2 border-gray-300'>
+                              <div className='h-[80px] w-[80px] rounded-full bg-gray-800 shadow-2xl shadow-blue-500 overflow-hidden border-4 border-rose-900'>
                                 <img src={topStudent[2]?.studentId?.profilePic} alt="icon" className='h-full w-full object-fill' />
                               </div>
                               <span className='text-center text-sm text-gray-300 uppercase'>{topStudent[2]?.studentId?.name.split(" ")[0] ? topStudent[2]?.studentId?.name.split(" ")[0] : "loading..."}</span>
