@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import Navbar from '../components/Navbar'
@@ -8,6 +8,7 @@ import { useStore } from '../context/Store';
 import Chart from "chart.js/auto";
 import { Doughnut } from 'react-chartjs-2';
 import ICONPNG from "../assets/emoji.png";
+import { use } from 'react';
 
 
 const API_URL = import.meta.env.VITE_SERVER_URI;
@@ -157,6 +158,7 @@ const ViewMyScore = ({ setMyScoreComp, quizId }) => {
         const { openquiz, setOpenquiz } = useStore()
         const [quizId, setQuizId] = useState()
         const [leatherBoardComp, setleatherBoardComp] = useState(false)
+        const naviage = useNavigate()
 
         const responce = async () => {
             try {
@@ -178,6 +180,10 @@ const ViewMyScore = ({ setMyScoreComp, quizId }) => {
         responce();
     }, []);
 
+  const startQuiz = async (quiz) => {
+    setOpenquiz(quiz) 
+    naviage('/startquiz')
+  }
 
     return (
         <div>
@@ -191,14 +197,22 @@ const ViewMyScore = ({ setMyScoreComp, quizId }) => {
                             <div className='text-xl'>{quiz?.quizId?.name}</div>
                             <div className='text-sm text-gray-500'>{quiz?._id}</div>
                             <div className='mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-7'>
-                                <Link to={'/startquiz'}> <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' onClick={() => setOpenquiz(quiz)}>start  <i className="ri-eye-fill"></i></button></Link>
+                                
+                                    
+                                    
+                                   
+                                <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500'
+                                 onClick={() => {quiz.isLock? startQuiz(quiz) : enqueueSnackbar("quiz is lock",{variant:"error"})}}>start  <i className="ri-eye-fill"></i>
+                                 </button>
+                                 
+                                 
                                 <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' onClick={() => {
                                     setMyScoreComp(true)
-                                    setQuizId(quiz?.quizId._id)
+                                    setQuizId(quiz?.quizId?._id)
                                 }}>my score  <i className="ri-eye-fill"></i></button>
                                 <button className='bg-green-400 px-6 py-1 text-black text-[20px] rounded-sm shadow-sm shadow-black hover:bg-green-500' onClick={()=>{
                                     setleatherBoardComp(true)
-                                    setQuizId(quiz?.quizId._id)
+                                    setQuizId(quiz?.quizId?._id)
                                 }} >leader board <i className="ri-eye-fill"></i></button>
                                 {quiz?.isLock ?
                                     <span className='bg-green-400 px-3 py-[2px]  text-black text-[18px]  rounded-bl-lg shadow-sm shadow-black hover:bg-green-500 absolute top-0 right-0 shine-effect'>unlock <i className="ri-lock-unlock-fill"></i></span>

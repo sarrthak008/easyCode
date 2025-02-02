@@ -4,6 +4,7 @@
     const API_URL = import.meta.env.VITE_SERVER_URI;
 
     import { closeSnackbar, useSnackbar } from 'notistack'
+      import { Link } from 'react-router-dom';
 
     function StartQuiz() {
         const { enqueueSnackbar } = useSnackbar()
@@ -73,6 +74,11 @@
             calculateScore();
             await addmarks();
         };
+
+        const bakcToQuiz = () => {
+            
+            window.history.back()
+        }
         return (
             <div className='h-screen w-screen flex flex-col items-center relative'>
                 <h1 className='text-green-700 text-4xl text-center font-bold'>
@@ -80,6 +86,10 @@
                 </h1>
 
                 <div className='h-full w-[80%] bg-slate-600 rounded-md shadow-md p-4 overflow-y-scroll hide-scroll-bar'>
+                <div className=' h-[35px] w-[35px] absolute top-6 right-24 bg-green-500 rounded-full flex justify-center items-center text-2xl cursor-pointer' onClick={bakcToQuiz}> 
+                    
+                     <i class="ri-close-fill"></i></div> 
+                     {console.log(openquiz)}
                     {openquiz?.quizId?.allquestions.map((que, index) => (
                         <div className='bg-gray-700 p-2 rounded-md mt-4' key={index}>
                             <div className='text-gray-200 text-2xl'>
@@ -120,7 +130,6 @@
                         <div className=' h-52 w-[50%] bg-gray-700 rounded-md shadow-md flex flex-col items-center justify-center'>
                             <h1 className='text-white text-2xl'>Congratularion 🎉🎊</h1>
                             <h2 className='text-white text-2xl'>Your score: {score}</h2>
-                           
                         </div>
                         </div>
                     )
