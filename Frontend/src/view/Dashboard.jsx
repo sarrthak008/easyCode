@@ -48,7 +48,7 @@ const AllVideosComp = ({ setVideoComp, courseinfo }) => {
 
   useEffect(() => {
     setStoreVideo(JSON.parse(localStorage.getItem('video')) || {})
-    console.log(typeof (storeVideo?.video_url))
+   // console.log(typeof (storeVideo?.video_url))
   }, [underVideo])
 
 
@@ -141,7 +141,6 @@ const AddFeedBack = ({ setOpenFeedback }) => {
     </div>
   )
 }
-
 
 
 const Dashboard = () => {

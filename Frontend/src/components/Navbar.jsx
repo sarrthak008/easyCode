@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const [showmenu, setshowmenu] = useState(false)
   const [userPicUrl, setUserPic] = useState('https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png')
-  const { currentUser, setIsLoggedin, isLoggedIn } = useStore()
+  const { currentUser, setIsLoggedin, isLoggedIn ,logOut} = useStore()
   const [userInfo, setUserInfo] = useState({})
   const { autoNavigate } = useStore()
 
@@ -27,7 +27,7 @@ const Navbar = () => {
         setIsLoggedin(true)
         let responce = await axios.get(`${API_URL}/api/image/getprofilepic/${currentUser()._id}`)
         setUserPic(responce.data?.data?.profilePic)
-        console.log(responce?.data?.data?.profilePic)
+       // console.log(responce?.data?.data?.profilePic)
       } catch (error) {
         console.log(error)
       }
@@ -74,7 +74,7 @@ const Navbar = () => {
           <Link to={'/course'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Courses</span></Link>
           {
 
-            isLoggedIn ? <Link to={'/dashboard'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Dashboard</span></Link> : <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Login</span></Link>
+            isLoggedIn ? <div onClick={()=>autoNavigate()}><span className='text-white text-2xl cursor-pointer opacity-75 '>Dashboard</span></div> : <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Login</span></Link>
           }
           {
             isLoggedIn ?
@@ -82,11 +82,11 @@ const Navbar = () => {
                 <div className='h-[30px] w-[30px] rounded-full bg-green-600 overflow-hidden cursor-pointer'>
                       <img src={userPicUrl} className='object-fill h-full w-full' />
                  </div>
-                 <div className='text-white text-2xl cursor-pointer opacity-75 '>Logout</div>
+                 <div className='text-white text-2xl cursor-pointer opacity-75 ' onClick={()=>logOut()}>Logout</div>
               </div> :
               <Link to={'/singup'}> 
                <button className="button-8" role="button">
-                   <span className="text">Button 18</span>
+                   <span className="text">signup</span>
                 </button>
               </Link>
           }
