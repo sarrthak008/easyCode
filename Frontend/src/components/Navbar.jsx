@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import { useStore } from '../context/Store';
 import axios from 'axios';
 import NavProfile from './NavProfile';
+import NotificationPannel from './NotificationPannel';
 const API_URL = import.meta.env.VITE_SERVER_URI
 
 const Navbar = () => {
@@ -15,8 +16,9 @@ const Navbar = () => {
   const { currentUser, setIsLoggedin, isLoggedIn ,logOut} = useStore()
   const [userInfo, setUserInfo] = useState({})
   const { autoNavigate } = useStore()
+  const [showNotification,setNotification] = useState(false)
 
-  const loadUserInfo = async () => {
+const loadUserInfo = async () => {
 
     if (!currentUser()) {
       setIsLoggedin(false)
@@ -51,10 +53,19 @@ const Navbar = () => {
           <div className='hidden  w-1/3 sm:flex justify-evenly items-center text-white text-[17px] font-semibold'>
             <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Home</span></Link>
             <Link to={'/course'}><span className='cursor-pointer hover:text-green-400'>Courses</span></Link>
+
             {
               isLoggedIn ? <div className='cursor-pointer' onClick={() => autoNavigate()}>dashboard</div> :
                 <Link to={'/login'}><span className='cursor-pointer hover:text-green-400'>Login</span></Link>
             }
+
+            {
+               isLoggedIn ? <div className='cursor-pointer h-[30px] w-[30px]  relative' onClick={()=>setNotification(true)}>
+                <i className="ri-notification-fill text-xl "></i>
+                <div className='h-[17px] w-[17px] rounded-full bg-red-600 animate-pulse  text-[10px] font-bold text-center absolute -top-1 -right-0'>20</div>
+              </div> : null 
+            }
+
             {
               isLoggedIn ? <NavProfile userPicUrl={userPicUrl} userInfo={userInfo} /> :
               <Link to={'/singup'}> 
@@ -92,6 +103,10 @@ const Navbar = () => {
           }
         </div>
       </div> : null}
+
+      {
+         showNotification ? <NotificationPannel  setNotification={setNotification}/> : null
+      }
     </>
   )
 }
