@@ -22,6 +22,11 @@ const Sidebar = ({setOperationNumber}) => {
         <div className="w-full flex items-center justify-center h-[50px] cursor-pointer" onClick={()=>{setOperationNumber(3)}}>
               <i className="ri-questionnaire-fill text-2xl cursor-pointer hover:text-green-300"></i>
         </div>
+             
+        <div className="w-full flex items-center justify-center h-[50px] cursor-pointer" onClick={()=>{setOperationNumber(4)}}>
+              <i className="ri-live-line text-2xl cursor-pointer hover:text-green-300"></i>
+        </div>
+
      </div>
   );
 };
