@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import DoughnutChart from "../components/DoughnutChart "
 import SEREVER_IMG from "../assets/Server.png"
 import ServerPingLine from '../components/ServerPingLine'
 import Speeddial from '../components/Speeddial'
 import Navbar from '../components/Navbar'
+import { useStore } from '../context/Store'
 
 const Mainadmincomp = () => {
+
+  const {loadNotificationNumber} =  useStore()
+  useEffect(()=>{
+      loadNotificationNumber()
+  },[])
+
   return (
     <>
     <Navbar/>

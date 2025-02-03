@@ -9,6 +9,7 @@ const AllcourseRequest = ({courseId}) => {
 
   const { enqueueSnackbar } = useSnackbar()
   const [requestedusers, setrequesteduser] = useState()
+  const {notify} = useStore()
 
   const loadRequest = async () => {
     try {
@@ -24,6 +25,7 @@ const AllcourseRequest = ({courseId}) => {
   useEffect(() => { loadRequest() }, [])
 
   const acceptRequest = async (user) => {
+    console.log(user)
     const requestedCourse = user?.requestedCourse
     const userId = user?.userId?._id
     try {
@@ -32,10 +34,11 @@ const AllcourseRequest = ({courseId}) => {
         userId
       }, { withCredentials: true })
 
-      console.log(responce.data)
+      //console.log(responce.data)
       if (responce?.data?.success) {
         enqueueSnackbar(`${responce.data.message}`, { variant: 'success' });
         loadRequest()
+        notify(` add ${user?.userId?.name} into course , ${user?.userId?.name} is now easycode family member..💻❤`)
       } else {
         return enqueueSnackbar(`${responce.data.message}`, { variant: 'info' });
       }

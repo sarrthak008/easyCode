@@ -4,10 +4,12 @@ import Appbtn from './Appbtn'
 import axios from 'axios'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import { closeSnackbar, useSnackbar } from 'notistack'
+import { useStore } from '../context/Store'
 
 const Quizganarator = ({ setTotalQuestion, totalQuestion, quizname }) => {
     const { enqueueSnackbar } = useSnackbar()
     const [viewQuiz, setViewQuiz] = useState(false)
+    const {notify} = useStore()
     const [allquestion, setAllquestion] = useState([])
     const [curentQuestion, setCurrentQuestion] = useState({
         question: '',
@@ -52,6 +54,7 @@ const Quizganarator = ({ setTotalQuestion, totalQuestion, quizname }) => {
             if (response.data.success) {
                 enqueueSnackbar(`${response.data.message}`, { variant: "success" });
                 closeSnackbar(snackid)
+                notify(`is add new quiz..💭`)
             } else {
                 enqueueSnackbar(`${response.data.message}`, { variant: "error" });
                 closeSnackbar(snackid)

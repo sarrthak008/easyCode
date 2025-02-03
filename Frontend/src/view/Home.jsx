@@ -6,6 +6,7 @@ import { Footer } from '../components/Footer'
 import axios from 'axios'
 import { use } from 'react'
 import { useSnackbar } from 'notistack'
+import { useStore } from '../context/Store'
 const API_URl = import.meta.env.VITE_SERVER_URI
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
    // console.log(API_URl)
   
     const { enqueueSnackbar } = useSnackbar()
+    const {loadNotificationNumber} = useStore()
 
    const loadserver = async () =>{
       try {
@@ -28,6 +30,7 @@ const Home = () => {
 
    useEffect(()=>{
     loadserver()
+    loadNotificationNumber()
    },[]);
   
 

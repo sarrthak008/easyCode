@@ -5,12 +5,15 @@ import CourseCard from '../components/CourseCard'
 import axios from 'axios'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import { CourseSkelleton } from '../components/Skelletons'
+import { useStore } from '../context/Store'
 
 
 const Courses = () => {
       
         const [courses, setCourses] = useState([])  
-        const numberOfSkelleton = [1,2,3];
+        const numberOfSkelleton = [1,2];
+        const {loadNotificationNumber} = useStore()
+
 
         const fetchCourses = async () => { 
           //console.log(API_URL)
@@ -27,6 +30,7 @@ const Courses = () => {
 
        useEffect(() => {
           fetchCourses()
+          loadNotificationNumber()
         }, [])
   return (
     <div>

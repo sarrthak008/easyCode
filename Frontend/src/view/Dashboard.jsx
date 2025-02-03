@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import Shadow from "../components/Shadow"
 import SpeedDilarUser from '../components/SpeedDilarUser'
+import { useStore } from '../context/Store'
 
 
 
@@ -150,6 +151,7 @@ const Dashboard = () => {
   const [openFeedback, setOpenFeedback] = useState(false)
   const [feedback, setFeedBack] = useState('')
   const [videoComp, setVideoComp] = useState(false)
+  loadNotificationNumberloadNotificationNumber
 
   const loadMycourses = async () => {
 
@@ -201,6 +203,7 @@ const Dashboard = () => {
   useEffect(() => {
     loadMycourses()
     loadPreviousFeedBack()
+   loadNotificationNumber()
   }, [])
 
   return (
