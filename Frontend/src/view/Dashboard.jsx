@@ -151,8 +151,9 @@ const Dashboard = () => {
   const [openFeedback, setOpenFeedback] = useState(false)
   const [feedback, setFeedBack] = useState('')
   const [videoComp, setVideoComp] = useState(false)
+  const {loadNotificationNumber} = useStore()
 
-  
+
   const loadMycourses = async () => {
 
     let snackId = enqueueSnackbar('loding your courses data..', { variant: "info" })
@@ -203,7 +204,7 @@ const Dashboard = () => {
   useEffect(() => {
     loadMycourses()
     loadPreviousFeedBack()
-   loadNotificationNumber()
+    loadNotificationNumber()
   }, [])
 
   return (
