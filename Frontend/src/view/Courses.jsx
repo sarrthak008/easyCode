@@ -42,8 +42,8 @@ const Courses = () => {
        { courses.length ==0  ? 
          <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4 '>
          {
-            numberOfSkelleton.map(()=>(
-               <CourseSkelleton/>
+            numberOfSkelleton.map((c,index)=>(
+               <CourseSkelleton key={index}/>
             ))
           }
       </div> : null

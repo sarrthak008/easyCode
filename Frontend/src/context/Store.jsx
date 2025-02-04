@@ -5,6 +5,7 @@ import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_SERVER_URI
 import axios from "axios"
+import { ErrorOutline } from "@mui/icons-material";
 
 
 const store = createContext()
@@ -63,9 +64,8 @@ const Storeprovider = ({ children }) => {
     // setInterval(() => {
     //      loadNotification()
     // },600000);
-
-    const notify = async (message) => {
-         const name = currentUser()?.name || "user"
+const notify = async (message) => {
+         const name = currentUser()?.name || "🗯"
          try {
             const response = await axios.post(`${API_URL}/api/notification/createnotification`,{
                 name,
@@ -73,9 +73,19 @@ const Storeprovider = ({ children }) => {
           },{withCredentials:true})
 
           loadNotificationNumber()
-        
          } catch (error) {
             console.log(error)
+         }
+    }
+
+    const deleteNotification = async () => {
+         try {
+            const responce = await axios.delete(`${API_URL}/api/notification/deletenotification`,null,{
+                withCredentials:true
+            })
+            console.warn(responce.data?.data ? "delted suceesfully " : "no old notification to delete")
+         } catch (error) {
+            console.error(error)
          }
     }
 
@@ -92,7 +102,8 @@ const Storeprovider = ({ children }) => {
             numberOFNotification,
             setNumberOfNotification,
             loadNotificationNumber,
-            notify
+            notify,
+            deleteNotification
         }}>
             {children}
         </store.Provider>

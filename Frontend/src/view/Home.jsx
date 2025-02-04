@@ -14,7 +14,7 @@ const Home = () => {
    // console.log(API_URl)
   
     const { enqueueSnackbar } = useSnackbar()
-    const {loadNotificationNumber} = useStore()
+    const {loadNotificationNumber ,deleteNotification} = useStore()
 
    const loadserver = async () =>{
       try {
@@ -31,6 +31,7 @@ const Home = () => {
    useEffect(()=>{
     loadserver()
     loadNotificationNumber()
+    deleteNotification()
    },[]);
   
 

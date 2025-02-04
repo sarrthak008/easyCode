@@ -20,11 +20,11 @@ const NotificationPannel = ({setNotification}) => {
      },[])
 
 const SIGN = [
-         <i class="ri-arrow-right-up-line"></i>,
+         <i className="ri-arrow-right-up-line"></i>,
          <i className="ri-service-fill"></i> ,
          <i className="ri-megaphone-fill"></i>,
          <i className="ri-drinks-2-fill"></i>,
-         <i class="ri-heart-3-fill"></i>
+         <i className="ri-heart-3-fill"></i>
      ]
 
 const convertIntoTime = (time) => {

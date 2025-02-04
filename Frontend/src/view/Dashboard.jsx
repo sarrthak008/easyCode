@@ -151,7 +151,7 @@ const Dashboard = () => {
   const [openFeedback, setOpenFeedback] = useState(false)
   const [feedback, setFeedBack] = useState('')
   const [videoComp, setVideoComp] = useState(false)
-  const {loadNotificationNumber} = useStore()
+  const {loadNotificationNumber,deleteNotification} = useStore()
 
 
   const loadMycourses = async () => {
@@ -204,6 +204,7 @@ const Dashboard = () => {
   useEffect(() => {
     loadMycourses()
     loadPreviousFeedBack()
+    deleteNotification()
     loadNotificationNumber()
   }, [])
 
