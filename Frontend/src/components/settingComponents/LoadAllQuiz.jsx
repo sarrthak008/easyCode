@@ -45,7 +45,7 @@ const ShowQuiz = ({ quizdata }) => {
       if (responce.data.success) {
         closeSnackbar(snakID)
         enqueueSnackbar(responce.data?.message, { variant: 'success' })
-        notify(`is updated quiz now quiz is ${quizdata?.isLock ? "unlock" : "lock"} 🧨`)
+        notify(`is updated quiz now quiz is ${quizdata?.isLock ? "lock" : "unlock"} 🧨`)
         console.log(responce.data)
       } else {
         return enqueueSnackbar(responce.data.message, { variant: 'error' })
