@@ -26,7 +26,7 @@ const getNotification = async (req, res) => {
 
 const deleteNotification = async (req, res) => { 
     try {
-        const result = await notification.deleteMany({ deleteAt: { $lt: Date.now() } });
+        const result = await notification.deleteMany({ deleteAt: { $lt: new Date() } });
 
         if (result.deletedCount === 0) {
             return responder(res, false, "No extra notifications", null, 404);
@@ -38,6 +38,7 @@ const deleteNotification = async (req, res) => {
         return responder(res, false, error.message, null, 500);
     }
 };
+
 
 
 export {addNotification,getNotification,deleteNotification}
