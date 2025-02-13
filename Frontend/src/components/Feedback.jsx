@@ -2,7 +2,7 @@ import React from "react";
 import Masonry from "react-masonry-css";
 
 const Feedback = ({ items }) => {
-    console.log(items)
+   // console.log(items)
   const breakpointColumns = {
     default: 4, // 4 columns for large screens
     1024: 3,    // 3 columns for medium screens

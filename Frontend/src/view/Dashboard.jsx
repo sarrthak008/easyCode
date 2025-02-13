@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import Shadow from "../components/Shadow"
 import SpeedDilarUser from '../components/SpeedDilarUser'
+import { useStore } from '../context/Store'
 
 
 
@@ -48,7 +49,7 @@ const AllVideosComp = ({ setVideoComp, courseinfo }) => {
 
   useEffect(() => {
     setStoreVideo(JSON.parse(localStorage.getItem('video')) || {})
-    console.log(typeof (storeVideo?.video_url))
+   // console.log(typeof (storeVideo?.video_url))
   }, [underVideo])
 
 
@@ -143,7 +144,6 @@ const AddFeedBack = ({ setOpenFeedback }) => {
 }
 
 
-
 const Dashboard = () => {
 
   const [mycourses, setMycourses] = useState([])
@@ -151,6 +151,8 @@ const Dashboard = () => {
   const [openFeedback, setOpenFeedback] = useState(false)
   const [feedback, setFeedBack] = useState('')
   const [videoComp, setVideoComp] = useState(false)
+  const {loadNotificationNumber,deleteNotification} = useStore()
+
 
   const loadMycourses = async () => {
 
@@ -202,6 +204,8 @@ const Dashboard = () => {
   useEffect(() => {
     loadMycourses()
     loadPreviousFeedBack()
+    deleteNotification()
+    loadNotificationNumber()
   }, [])
 
   return (

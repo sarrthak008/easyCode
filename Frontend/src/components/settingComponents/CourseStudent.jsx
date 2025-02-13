@@ -41,7 +41,7 @@ const CourseStudent = () => {
               withCredentials: true
             })
              setBatchStudents(responce.data.data[0].students)
-              console.log(responce.data.data[0].students)
+              //console.log(responce.data.data[0].students)
           } catch (error) {
             console.log(error)
           }

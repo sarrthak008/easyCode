@@ -12,7 +12,7 @@
         const [userAnswers, setUserAnswers] = useState({});
         const [showscore, setShowScore] = useState(false);
         const [score, setScore] = useState(0);
-        const { openquiz ,currentUser} = useStore();
+        const { openquiz ,currentUser ,notify} = useStore();
 
         const handleAnswerChange = (questionId, selectedAnswer) => {
             setUserAnswers(prev => ({
@@ -33,8 +33,8 @@
                 const correctAnswer = question?.correctAns?.trim().toLowerCase();
                 const userAnswer = userAnswers[question._id]?.trim().toLowerCase();
         
-                console.log(`Question: ${question.question}`);
-                console.log(`User Answer: "${userAnswer}", Correct Answer: "${correctAnswer}"`);
+                //console.log(`Question: ${question.question}`);
+               // console.log(`User Answer: "${userAnswer}", Correct Answer: "${correctAnswer}"`);
         
                 if (userAnswer === correctAnswer) {
                     score += 1;
@@ -59,6 +59,7 @@
                 }, { withCredentials: true });
                 if (responce.data.success) {
                     console.log(responce.data.message);
+                    notify('solve the quiz,when you? 🤔')
                 return  enqueueSnackbar(`${responce.data.message}`,{variant:'info'})
                 } else {    
                     console.log(responce.data.message);
@@ -89,7 +90,7 @@
                 <div className=' h-[35px] w-[35px] absolute top-6 right-24 bg-green-500 rounded-full flex justify-center items-center text-2xl cursor-pointer' onClick={bakcToQuiz}> 
                     
                      <i class="ri-close-fill"></i></div> 
-                     {console.log(openquiz)}
+                     {/* {console.log(openquiz)} */}
                     {openquiz?.quizId?.allquestions.map((que, index) => (
                         <div className='bg-gray-700 p-2 rounded-md mt-4' key={index}>
                             <div className='text-gray-200 text-2xl'>

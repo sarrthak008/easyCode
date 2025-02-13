@@ -7,9 +7,11 @@ import Appbtn from './Appbtn'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import {useStore} from "../context/Store"
 
 const Signup = () => {
 
+  const {notify} =  useStore()
   const { enqueueSnackbar } = useSnackbar()
   const [processnumber, setProccessNumber] = useState(0)
   const [passtype, setPassType] = useState('password')
@@ -89,6 +91,7 @@ const Signup = () => {
         closeSnackbar(id)
         setProccessNumber(3)
         navigate('/login')
+        notify(`${userInfo.name} joins the easyCode`);
       } else {
         enqueueSnackbar(responce.data.message, { variant: 'error' })
         closeSnackbar(id)

@@ -4,18 +4,22 @@ import axios from 'axios'
 import FAINT_BG from "../assets/faint.svg"
 import Navbar from '../components/Navbar'
 import SyllabusCard from '../components/SyllabusCard'
+import { useStore } from '../context/Store'
 
 const Detiles = () => {
 
   let { id } = useParams()
   const [courseinfo, setCourseinfo] = useState({})
+   const {loadNotificationNumber} = useStore()
 
   useEffect(()=>{
       try {
          let res= JSON.parse(localStorage.getItem("courses")).filter((courseinfo)=>courseinfo._id ==id)
          setCourseinfo(res[0])
+         loadNotificationNumber()
       } catch (error) {
         console.log(error)
+        loadNotificationNumber()
       }
   },[])
 

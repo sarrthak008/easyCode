@@ -2,16 +2,18 @@ import axios from 'axios'
 import { closeSnackbar, useSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useStore } from '../../context/Store'
 const API_URL = import.meta.env.VITE_SERVER_URI
 
 
 const ShowQuiz = ({ quizdata }) => {
 
- // console.log(quizdata)
+ //console.log(quizdata)
 
   const [viewQuiz, setViewQuiz] = useState(false)
   const { id } = useParams()
   const { enqueueSnackbar } = useSnackbar()
+  const {notify} = useStore()
 
   const linkQuiz = async () => {
     const snakID = enqueueSnackbar('connecting quiz', { variant: 'info' });
@@ -43,6 +45,7 @@ const ShowQuiz = ({ quizdata }) => {
       if (responce.data.success) {
         closeSnackbar(snakID)
         enqueueSnackbar(responce.data?.message, { variant: 'success' })
+        notify(`is updated quiz now quiz is ${quizdata?.isLock ? "lock" : "unlock"} 🧨`)
         console.log(responce.data)
       } else {
         return enqueueSnackbar(responce.data.message, { variant: 'error' })
