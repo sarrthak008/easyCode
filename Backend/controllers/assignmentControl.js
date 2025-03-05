@@ -22,5 +22,15 @@ const postassignment = async (req, res) => {
     }
 }
 
+const getallcourseassignments = async (req, res) => {
+    try{
+        const {courseId} = req.params;
+        const assignments = await assignment.find({courseId});
+        responder(res, true, 'All Assignments', assignments, 200);
+    }
+    catch(error){
+        responder(res, 500, error);
+    }
+}
        
-export { postassignment };
+export { postassignment, getallcourseassignments };
