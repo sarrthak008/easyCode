@@ -120,7 +120,7 @@ const ViewMyScore = ({ setMyScoreComp, quizId }) => {
                                   <img src={topStudent[1]?.studentId?.profilePic} alt="icon" className='h-full w-full object-fill'/>
                               </div>
                               
-                              <span className='text-center text-sm text-gray-300 uppercase'>{topStudent[1]?.studentId?.name.split(" ")[0] ? topStudent[1]?.studentId?.name.split(" ")[0] : "loading..."}</span>
+                              <span className='text-center text-sm text-gray-300 uppercase'>{topStudent[1]?.studentId?.name ? topStudent[1]?.studentId?.name.split(" ")[0] : "loading..."}</span>
                             </div>
 
                             <div className='flex flex-col'>
