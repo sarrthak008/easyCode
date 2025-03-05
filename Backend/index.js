@@ -35,6 +35,8 @@ import { feedbackRouter } from "./routes/feedbackRouter.js";
 import { marksRouter } from "./routes/markRouter.js";  
 import { videoRouter } from "./routes/videoRouter.js"; 
 import {notificationRouter} from "./routes/notificationRouter.js";
+import {assignmentRouter} from "./routes/assignmentRouter.js";
+
 
 // Utility Functions
 import { responder } from "./utils/responder.js";
@@ -51,6 +53,9 @@ app.use('/api/feedback',feedbackRouter)
 app.use('/api/marks',marksRouter)   
 app.use('/api/video', videoRouter);
 app.use('/api/notification',notificationRouter);
+app.use('/api/assignment',assignmentRouter);
+
+
 
 // Health Check Routes
 app.get('/health', (req, res) => {
