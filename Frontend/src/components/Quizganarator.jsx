@@ -46,9 +46,7 @@ const Quizganarator = ({ setTotalQuestion, totalQuestion, quizname }) => {
 
     const handaSubmit = async () => {
         try {
-            if (!curentQuestion.options || !curentQuestion.question || !curentQuestion.correctAns) {
-                return enqueueSnackbar('Please fill all fields', { variant: 'error' });
-            }
+           
             let snackid = enqueueSnackbar('addting Quiz in DB...', { variant: "info" });
             const response = await axios.post(`${API_URL}/api/quiz/addquiz`, { name: quizname, allquestions: allquestion }, { withCredentials: true })
             if (response.data.success) {
