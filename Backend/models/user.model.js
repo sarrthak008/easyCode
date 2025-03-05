@@ -43,8 +43,25 @@ const userSchma = new Schema({
             type:Schema.Types.ObjectId,
             ref:'course'
         }
-    ]
-    
+    ],
+    my_assignments:{
+          courseId:{
+             type:Schema.Types.ObjectId,
+             ref:'course'
+          },
+          assignmentId:{
+            type:Schema.Types.ObjectId,
+            ref:'assignment'
+          },
+          isSubmitted:{
+            type:Boolean,
+            default:false
+          }
+    },
+    isBan:{
+        type:Boolean,
+        default:false
+    }
 },{timestamps:true});
 
 const user  = model('user',userSchma);
