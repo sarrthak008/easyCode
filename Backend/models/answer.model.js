@@ -12,7 +12,7 @@ const answerSchema = new Schema({
     github_URL:{
         type:String,
     },
-    answer_pc:{
+    answer_pic:{
        type:String,
        reuired:true
     },
@@ -21,3 +21,5 @@ const answerSchema = new Schema({
     }
 })
 
+const answer = model("answers",answerSchema);
+export default answer;
