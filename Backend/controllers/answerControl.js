@@ -5,12 +5,12 @@ import { responder } from "../utils/responder.js";
 
 const postassignment = async(req,res) =>{
     try{
-        const {userID,assignmentID,github_URL,answer_pic,host_URL} = req.body;
-        if(!userID || !assignmentID || !github_URL || !answer_pic || !host_URL){
+        const {userID,assignmentID,github_URL,answer_pic,host_URL,courseID} = req.body;
+        if(!userID || !assignmentID || !github_URL || !answer_pic || !host_URL || !courseID){
             return responder(res,false,"Please provide all the required fields",null,400);
         }
         const newAnswer = new answer({
-            userID,assignmentID,github_URL,answer_pic,host_URL
+            userID,assignmentID,github_URL,answer_pic,host_URL,courseID
         })
         await newAnswer.save();
         responder(res,true,"Assignment Posted Successfully",newAnswer,200);

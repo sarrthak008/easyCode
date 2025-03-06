@@ -1,9 +1,14 @@
 import {Schema,model} from "mongoose";
 
+
 const answerSchema = new Schema({
     userID:{
         type:Schema.Types.ObjectId,
         ref:"user"
+    },
+    courseID:{
+        type:Schema.Types.ObjectId,
+        ref:"course"
     },
     assignmentID:{
         type:Schema.Types.ObjectId,

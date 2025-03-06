@@ -1,5 +1,6 @@
 import assignment from '../models/assigment.model.js';
 import { responder } from '../utils/responder.js';
+import answer from '../models/answer.model.js';
 
 const postassignment = async (req, res) => {
     try {
@@ -33,6 +34,19 @@ const getallcourseassignments = async (req, res) => {
     }
 }
 
+const getuserassignments = async (req, res) => {
+    try{
+        const {courseID,userID} = req.params;   
+        const assignments = await answer.find({courseID,userID});
+        responder(res, true, 'All Assignments', assignments, 200);
+        
+        
+    }
+    catch(error){
+        responder(res, 500, error);
+    }
+}
+
     
        
-export { postassignment, getallcourseassignments };
+export { postassignment, getallcourseassignments,   getuserassignments };
