@@ -23,6 +23,14 @@ const answerSchema = new Schema({
     },
     host_URL:{
         type:String
+    },
+    status:{
+        type:String,
+        default:"pending",
+        enum:["pending","approved","rejected","submitted"]
+    },
+    message:{
+        type:String
     }
 })
 
