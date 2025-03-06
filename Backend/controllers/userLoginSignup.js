@@ -178,7 +178,8 @@ const postLogin = async (req, res) => {
             validateUser: LoginUser.validateUser,
             email: LoginUser.email,
             name: LoginUser.name,
-            mobile: LoginUser.mobile
+            mobile: LoginUser.mobile,
+            isBan:LoginUser.isBan
         }, process.env.JWT_SERECT, { expiresIn: '1w' })
 
         res.cookie("token", token, {
