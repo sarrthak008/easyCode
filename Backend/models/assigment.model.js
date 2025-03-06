@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose"
 
 const assignmtnSchme = new Schema({
-    courseId: {
+    courseId:{
         type: Schema.Types.ObjectId,
         ref: "course",
         required: true

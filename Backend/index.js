@@ -37,6 +37,7 @@ import { videoRouter } from "./routes/videoRouter.js";
 import {notificationRouter} from "./routes/notificationRouter.js";
 import {assignmentRouter} from "./routes/assignmentRouter.js";
 import {answerRouter} from "./routes/answerRouter.js";
+import {accessRouter}  from  "./routes/accessRouter.js
 
 
 // Utility Functions
@@ -56,6 +57,8 @@ app.use('/api/video', videoRouter);
 app.use('/api/notification',notificationRouter);
 app.use('/api/assignment',assignmentRouter);
 app.use('/api/answer',answerRouter);
+app.use('/api/access',accessRouter);
+
 
 
 

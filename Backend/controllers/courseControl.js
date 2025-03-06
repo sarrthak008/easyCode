@@ -70,7 +70,7 @@ const getcoursesStudent = async (req, res) => {
         if (!courseId) {
             return responder(res, false, "Course not found",null, 404)
         }
-        const courseStudent = await course.find({ _id: courseId }).select('students').populate('students','_id mobile profilePic email name')
+        const courseStudent = await course.find({ _id: courseId }).select('students').populate('students','_id mobile profilePic email name isBan')
 
         //console.log (courseStudent)
 

@@ -49,7 +49,7 @@ const AllVideosComp = ({ setVideoComp, courseinfo }) => {
 
   useEffect(() => {
     setStoreVideo(JSON.parse(localStorage.getItem('video')) || {})
-   // console.log(typeof (storeVideo?.video_url))
+    // console.log(typeof (storeVideo?.video_url))
   }, [underVideo])
 
 
@@ -81,11 +81,11 @@ const AllVideosComp = ({ setVideoComp, courseinfo }) => {
             storeVideo?.video_url?.map((urls, index) => (
               <a href={urls} target='_blank'>
                 <div className='h-[200px] w-[350px] rounded-lg  bg-gray-900 overflow-hidden flex items-center justify-center relative shadow-sm shadow-green-500' key={index} onClick={(e) => e.stopPropagation()}>
-                <img src={courseinfo?.image} className='h-full w-full object-fill' />
-                 <div className="h-full w-full absolute top-0 left-0 bg-gradient-to-t to-transparent from-black" onClick={() => { setVideoUrls(urls);}}>
-                  <div className="bg-white h-7 w-40 rounded-3xl text-center font-medium text-xl  text-gray-400 absolute bottom-5 right-5 ">{`part${index + 1}`}<i className="ri-play-circle-fill"></i></div>
+                  <img src={courseinfo?.image} className='h-full w-full object-fill' />
+                  <div className="h-full w-full absolute top-0 left-0 bg-gradient-to-t to-transparent from-black" onClick={() => { setVideoUrls(urls); }}>
+                    <div className="bg-white h-7 w-40 rounded-3xl text-center font-medium text-xl  text-gray-400 absolute bottom-5 right-5 ">{`part${index + 1}`}<i className="ri-play-circle-fill"></i></div>
+                  </div>
                 </div>
-              </div>
               </a>
             ))
           }
@@ -93,8 +93,8 @@ const AllVideosComp = ({ setVideoComp, courseinfo }) => {
       </div> : null}
       {
         showIframe ?
-          <div className='h-screen w-screen fixed top-0 left-0 bg-red-50 z-[700]' onClick={()=>setShowIframe(false)}>
-            <iframe src={videoUrls}  className='h-[100%] w-[100%] object-fill'/>
+          <div className='h-screen w-screen fixed top-0 left-0 bg-red-50 z-[700]' onClick={() => setShowIframe(false)}>
+            <iframe src={videoUrls} className='h-[100%] w-[100%] object-fill' />
           </div> : null
       }
     </>
@@ -144,6 +144,24 @@ const AddFeedBack = ({ setOpenFeedback }) => {
 }
 
 
+const BanComp = () => {
+  const { currentUser } = useStore()
+  const [isban, setIsBan] = useState(currentUser().isBan)
+
+  return (
+    <>
+      {
+        isban ? <div className='h-screen w-screen fixed backdrop-blur-md  top-0 left-0 bg-gray-900 opacity-95  z-2000 flex items-center justify-center'>
+          <div className='h-[50vh] w-[90vw] bg-gray-950 rounded-md flex items-center justify-center flex-col'>
+            <div className='flex text-white items-center justify-center text-2xl gap-4'><i className=" mt-1 ri-error-warning-line"></i> access stop </div>
+            <div className='text-white text-sm opacity-75 text-center'>for more information contact easycode team .</div>
+          </div>
+        </div> : null
+      }
+    </>
+  )
+}
+
 const Dashboard = () => {
 
   const [mycourses, setMycourses] = useState([])
@@ -151,7 +169,7 @@ const Dashboard = () => {
   const [openFeedback, setOpenFeedback] = useState(false)
   const [feedback, setFeedBack] = useState('')
   const [videoComp, setVideoComp] = useState(false)
-  const {loadNotificationNumber,deleteNotification} = useStore()
+  const { loadNotificationNumber, deleteNotification } = useStore()
 
 
   const loadMycourses = async () => {
@@ -230,6 +248,8 @@ const Dashboard = () => {
       <div className='fixed bottom-0 right-14'>
         <SpeedDilarUser />
       </div>
+
+      <BanComp />
     </>
   )
 }
