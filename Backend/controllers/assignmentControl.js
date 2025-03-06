@@ -32,5 +32,7 @@ const getallcourseassignments = async (req, res) => {
         responder(res, 500, error);
     }
 }
+
+    
        
 export { postassignment, getallcourseassignments };
