@@ -17,6 +17,13 @@ const postassignment = async (req, res) => {
         if (!userID || !assignmentID || !github_URL || !host_URL || !courseID) {
             return responder(res, false, "Please provide all the required fields", null, 400);
         }
+    
+        let alredySubmitted = await
+            answer.findOne({ userID, assignmentID, courseID });
+        if (alredySubmitted) {
+            return responder(res, false, "You have already submitted the assignment", null, 400);
+        }
+
         const responce = await uploadTocloud(req.file.path, req.file.originalname);
         if (!responce) {
             return responder(res, false, 'could not upload file', null, 500);
@@ -24,7 +31,7 @@ const postassignment = async (req, res) => {
 
         
         const newAnswer = new answer({
-            userID, assignmentID, github_URL, host_URL, courseID, answer_pic: responce.secure_url
+            userID, assignmentID, github_URL, host_URL, courseID, answer_pic: responce.secure_url,status:"submitted"
         })
         await newAnswer.save();
         responder(res, true, "Assignment Posted Successfully", newAnswer, 200);

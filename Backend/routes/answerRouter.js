@@ -6,8 +6,10 @@ const answerRouter = Router()
 import {postassignment,getallanswers} from "../controllers/answerControl.js";
 import upload from "../middlewares/multer.js";
 
+import {verifyJwtUser} from "../middlewares/jwtVarify.js"
+
 // Routes
-answerRouter.post("/addassignment",upload.single("image"), postassignment);
+answerRouter.post("/addassignment",upload.single("image"),verifyJwtUser, postassignment);
 answerRouter.get("/getallanswers/:assignmentID", getallanswers);
 
 
