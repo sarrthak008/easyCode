@@ -21,6 +21,7 @@ const uploadToCloud = async (localImgPath, publicId) => {
             return false;
         }
         fs.unlinkSync(localImgPath);
+        // console.log(fs.unlinkSync(localImgPath))
         return response;
 
     } catch (error) {
