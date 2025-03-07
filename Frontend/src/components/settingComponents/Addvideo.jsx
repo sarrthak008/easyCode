@@ -37,7 +37,7 @@ function Addvideo() {
         const response = await axios.post(`${API_URL}/api/video/uploadvideo`, videoData, { withCredentials: true })
         
         if (response.data.success) {
-            console.log(response.data.message)
+           // console.log(response.data.message)
             enqueueSnackbar(`${response.data.message}`, { variant: "success" });
         }
         else {
@@ -59,7 +59,7 @@ function Addvideo() {
             <div className='w-full h-screen flex justify-center items-center'>
 
                 <div className='w-[50%] h-full  flex flex-col items-center justify-center'>
-                    <h1 className='text-gray-400 text-4xl pb-4 font-medium'>Add video</h1>
+                    <h1 className='text-gray-400 text-4xl pb-4 font-medium'></h1>
                     <div className="w-[80%] h-[70%]  rounded-lg p-8 bg-gray-900 flex flex-col gap-7 text-white py-6 ">
                         <Appinput
                             type="text"

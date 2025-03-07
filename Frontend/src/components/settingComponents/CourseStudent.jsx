@@ -24,7 +24,7 @@ const StudentCards = ({ user }) => {
   }
 
   return (
-    <div className=' w-80 sm:w-96 bg-gray-900 backdrop-blur-md p-4 ml-2 sm:ml-0'>
+    <div className=' w-80 sm:w-96 bg-gray-900 backdrop-blur-md p-4 ml-2 sm:ml-0 relative z-10'>
       <div className='flex text-gray-400 gap-4 '>
         <div className='h-[50px] w-[50px] m-1 sm:h-[65px] sm:w-[65px] rounded-full overflow-hidden'>
           <img src={user?.profilePic} className='object-cover' />

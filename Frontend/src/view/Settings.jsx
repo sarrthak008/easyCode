@@ -8,24 +8,25 @@ import { useParams } from 'react-router-dom';
 import AddSyallbus from '../components/AddSyallbus';
 import LoadAllQuiz from '../components/settingComponents/LoadAllQuiz';
 import Addvideo from '../components/settingComponents/Addvideo';
+import Addassignmet from '../components/settingComponents/Addassignmet';
 
 const Settings = () => {
 
-  const [operationNum , setOperationNumber] = useState(0)
-  const {id} = useParams()
+  const [operationNum, setOperationNumber] = useState(0)
+  const { id } = useParams()
 
   return (
     <div className='h-screen w-screen  relative'>
-      <Sidebar setOperationNumber={setOperationNumber}/>
+      <Sidebar setOperationNumber={setOperationNumber} />
       <div className='w-full min-h-screen ml-12  relative z-20'>
-           {
-             operationNum == 0 ? <AllcourseRequest courseId={id}/> : operationNum == 1 ? <CourseStudent/> : operationNum == 2 ? <AddSyallbus/> : operationNum == 3 ? <LoadAllQuiz/> : operationNum == 4 ? <Addvideo/> : null
-           }
+        {
+          operationNum == 0 ? <AllcourseRequest courseId={id} /> : operationNum == 1 ? <CourseStudent /> : operationNum == 2 ? <AddSyallbus /> : operationNum == 3 ? <LoadAllQuiz /> : operationNum == 4 ? <Addvideo /> : operationNum == 5 ? <Addassignmet /> : null
+        }
       </div>
 
       <div className='h-full w-full flex items-center justify-center text-white absolute top-0 left-0  flex-col opacity-20'>
-       <div className=" text-2xl sm:text-7xl font-bold text-gray-700">easyCode <i className="ri-code-s-slash-line"></i></div>
-       <span className='text-green-900 text-2xl '>settings</span>
+        <div className=" text-2xl sm:text-7xl font-bold text-gray-700">easyCode <i className="ri-code-s-slash-line"></i></div>
+        <span className='text-green-900 text-2xl '>settings</span>
       </div>
     </div>
   )
