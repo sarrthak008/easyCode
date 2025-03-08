@@ -6,8 +6,6 @@ import { useParams } from 'react-router-dom'
 const API_URL = import.meta.env.VITE_SERVER_URI
 import { closeSnackbar, useSnackbar } from 'notistack'
 import axios from 'axios'
-import React from 'react'
-import Appinput from '../Appinput'
 
 
 const Addassignmet = () => {
