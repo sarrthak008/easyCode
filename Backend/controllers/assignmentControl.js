@@ -1,6 +1,7 @@
-import assignment from '../models/assigment.model.js';
+
 import { responder } from '../utils/responder.js';
 import answer from '../models/answer.model.js';
+import assignment from '../models/assigment.model.js';
 
 const postassignment = async (req, res) => {
     try {
@@ -14,7 +15,7 @@ const postassignment = async (req, res) => {
             description,
             assignmetName
         });
-        console.log(newAssignment);
+     
         await newAssignment.save();
         responder(res,true, 'Assignment created successfully', newAssignment,201);
     }
@@ -45,6 +46,21 @@ const getuserassignments = async (req, res) => {
     }
 }
 
+const getassignmentById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const findedassignment = await assignment.findById(id);
+        if (!findedassignment) {
+            return responder(res, false, 'Assignment not found', null, 404);
+        }   
+        responder(res, true, 'Assignment found', findedassignment, 200);
+
+       }
+    catch (error) {
+        responder(res, 500, error);
+    }
+}
+
     
        
-export { postassignment, getallcourseassignments,   getuserassignments };
+export { postassignment, getallcourseassignments,   getuserassignments, getassignmentById };
