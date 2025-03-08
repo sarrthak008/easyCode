@@ -37,7 +37,7 @@ import { videoRouter } from "./routes/videoRouter.js";
 import {notificationRouter} from "./routes/notificationRouter.js";
 import {assignmentRouter} from "./routes/assignmentRouter.js";
 import {answerRouter} from "./routes/answerRouter.js";
-import {accessRouter}  from  "./routes/accessRouter.js
+import {accessRouter}  from  "./routes/accessRouter.js";
 
 
 // Utility Functions
