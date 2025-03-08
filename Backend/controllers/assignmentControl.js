@@ -39,8 +39,6 @@ const getuserassignments = async (req, res) => {
         const {courseID,userID} = req.params;   
         const assignments = await answer.find({courseID,userID});
         responder(res, true, 'All Assignments', assignments, 200);
-        
-        
     }
     catch(error){
         responder(res, 500, error);

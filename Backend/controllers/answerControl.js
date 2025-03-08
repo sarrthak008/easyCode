@@ -71,11 +71,6 @@ const postapprovalassignment = async(req,res) =>{
         answerToUpdate.status = status;
         await answerToUpdate.save();
         responder(res,true,"Answer status updated successfully",answerToUpdate,200);
-
-
-
-
-    
     }
     catch(err){
         responder(res,false,err.message,null,500);
