@@ -55,6 +55,33 @@ const getallanswers = async (req, res) => {
     }
 }
 
+const postapprovalassignment = async(req,res) =>{
+    try{
+        const {_id} = req.params;
+        const {status} = req.body;
 
-export { postassignment, getallanswers }
+        
+        if(!_id || !status){
+            return responder(res,false,"Please provide all the required fields",null,400);
+        }
+        const answerToUpdate = await answer.findById(_id);
+        if(!answerToUpdate){
+            return responder(res,false,"Answer not found",null,404);
+        }
+        answerToUpdate.status = status;
+        await answerToUpdate.save();
+        responder(res,true,"Answer status updated successfully",answerToUpdate,200);
+
+
+
+
+    
+    }
+    catch(err){
+        responder(res,false,err.message,null,500);
+    }
+}
+
+
+export { postassignment, getallanswers ,postapprovalassignment}
 
