@@ -7,7 +7,46 @@ const API_URL = import.meta.env.VITE_SERVER_URI
 import Shadow from "../components/Shadow"
 import SpeedDilarUser from '../components/SpeedDilarUser'
 import { useStore } from '../context/Store'
+import ARROWSVG from '../assets/assignmetnarr.svg'
 
+
+const LoadCourseLectures = ({setAssignmetn, courseinfo}) => {
+ console.log(ARROWSVG)
+  const [assignment,setAssignment] = useState([])
+  
+   const LoadAssignment = async () => {
+     try {
+        let responce = await axios.get(`${API_URL}/api/assignment/getallcourseassignments/${courseinfo?._id}`)
+        console.log(responce.data.data)
+        setAssignment(responce.data.data)
+     } catch (error) {
+      console.log(error)
+     }
+   }
+
+   useEffect(()=>{
+     LoadAssignment()
+   },[])
+
+  return(
+    <>
+      <div className='fixed top-0 left-0 h-screen w-screen  bg-black bg-opacity-70 flex justify-center items-center    backdrop-blur-md z-50 cursor-pointer' onClick={()=>{setAssignmetn(false)}}>
+          <>
+            {
+              assignment.length == 0 ? 
+                <div className='h-[80%] w-[80%] bg-gray-900 opacity-85 flex items-center justify-center flex-col' onClick={(e)=>e.stopPropagation()}>
+                      <img src={ARROWSVG}  className='h-[100px]'/>
+                      <div className='text-2xl text-gray-300 mb-4'>we are add assignment for youhh...</div>
+                      <span className='text-gray-400 text-sm text-center'>"code, create, conquer. Every bug is a lesson, every line is progress. Keep going!" 🚀💻</span>
+                </div>
+              : null
+
+            }
+          </>
+      </div>
+    </>
+  )
+}
 
 
 const AllVideosComp = ({ setVideoComp, courseinfo }) => {
@@ -107,7 +146,7 @@ const CourseCard = ({ course }) => {
 
   const { enqueueSnackbar } = useSnackbar()
   const [videoComp, setVideoComp] = useState(false)
-
+  const [assignmetComp ,setAssignmentComp] = useState(false)
 
 
   return (
@@ -118,7 +157,11 @@ const CourseCard = ({ course }) => {
             <img src={course.image} className='h-full w-full object-fill'></img>
           </div>
           <div className='w-full sm:w-[50%] h-full  sm:ml-4 flex flex-col justify-evenly items-center gap-3 mt-5 sm:mt-0'>
-            <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'>My Progress</button>
+            <button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'
+             onClick={()=> {
+              setAssignmentComp(true)
+             }}
+            >Assignments</button>
 
             <Link to={`/viewquiz/${course._id}`} className='w-full ml-[20%]'><button className='bg-green-500  py-2 font-medium text-xl w-[80%] shadow-md shadow-gray-900 hover:bg-green-800'>Solve Quiz</button></Link>
 
@@ -131,6 +174,7 @@ const CourseCard = ({ course }) => {
       </div>
 
       {videoComp ? <AllVideosComp setVideoComp={setVideoComp} courseinfo={course} /> : null}
+      { assignmetComp ? <LoadCourseLectures  setAssignmetn={setAssignmentComp} courseinfo={course}/> : null }
     </>
   )
 }
