@@ -46,7 +46,7 @@ const Addassignmet = () => {
               type="text"
               title="Enter Question Name"
               value={addinfo.question}
-              onChange={(e) => setaddinfo({ ...addinfo, question: e.target.value })}
+              onChange={(e) => setaddinfo({ ...addinfo, question: e.target.value }) }
             />
            <textarea className=" bg-slate-500  p-2 w-[100%] mx-auto block text-white text-sm  resize-none outline-none border-0 border-b-2 border-b-green-400 h-[60%]" 
             placeholder='Enter  Description '
@@ -67,13 +67,7 @@ const Addassignmet = () => {
 
         </div>
       </div>
-            <div className='text-5xl text-white hevy text-green ml-4 pt-1 '>Add Assignment</div>
-            <div className='h-screen w-screen flex items-center justify-center '>
-                 <div className='h-3/4 w-[70vw] sm:w-3/5 bg-gray-900 shadow-md text-white  shadow-gray-800'>
-                    <Appinput title='enter assignmet title' />
-                 </div>
-            </div>
-
+          
     </>
   )
 }
