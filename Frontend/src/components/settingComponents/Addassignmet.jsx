@@ -45,7 +45,7 @@ const Addassignmet = () => {
               type="text"
               title="Enter Question Name"
               value={addinfo.question}
-              onChange={(e) => setaddinfo({ ...addinfo, question: e.target.value })}
+              onChange={(e) => setaddinfo({ ...addinfo, question: e.target.value }) }
             />
            <textarea className=" bg-slate-500  p-2 w-[100%] mx-auto block text-white text-sm  resize-none outline-none border-0 border-b-2 border-b-green-400 h-[60%]" 
             placeholder='Enter  Description '
