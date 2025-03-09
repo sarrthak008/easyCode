@@ -14,7 +14,7 @@ const NavProfile = ({ userPicUrl, userInfo }) => {
   const handleFileChange = async (event) => {
     event.preventDefault();
     event.stopPropagation()
-
+    
     const file = event.target.files[0];
     if (file) {
       const formData = new FormData();

@@ -11,7 +11,7 @@ import ARROWSVG from '../assets/assignmetnarr.svg'
 
 
 const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
-  //  console.log(ARROWSVG)
+  console.log(courseinfo._id)
   const [assignment, setAssignment] = useState([])
 
   const LoadAssignment = async () => {
@@ -30,7 +30,7 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
 
 
   const HandelAssignmentnOpen = (info) =>{
-     window.open(`http://localhost:5173/view/${info._id}`,"_blank")
+     window.open(`https://www.easycode.support/view/${info._id}/${courseinfo._id}`,"_blank")
   }
 
   return (

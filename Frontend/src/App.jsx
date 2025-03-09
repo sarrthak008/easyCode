@@ -46,7 +46,7 @@ function App() {
             <Route path='/feedback' element={<Feedback/>}/>
             <Route path='/viewquiz/:id' element={<ViewQuiz/>}/>
             <Route path='/startquiz' element={<StartQuiz/>}/>
-            <Route path='/view/:assignmentId' element={<ViewAssignmet/>}/>
+            <Route path='/view/:assignmentId/:courseId' element={<ViewAssignmet/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>
