@@ -18,7 +18,7 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
     try {
       let responce = await axios.get(`${API_URL}/api/assignment/getallcourseassignments/${courseinfo?._id}`)
       console.log(responce.data)
-      setAssignment(responce.data.data)
+      setAssignment(responce.data.data?.reverse())
     } catch (error) {
       console.log(error)
     }
@@ -27,6 +27,11 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
   useEffect(() => {
     LoadAssignment()
   }, [])
+
+
+  const HandelAssignmentnOpen = (info) =>{
+     window.open(`http://localhost:5173/view/${info._id}`,"_blank")
+  }
 
   return (
     <>
@@ -43,14 +48,16 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
               <div className='h-[80%] w-[80%] bg-gray-900 opacity-85 flex items-center justify-center flex-col' onClick={(e) => e.stopPropagation()}>
                 <>
                   {
-                    assignment?.reverse().map((assignmetn_info, index) => (
-                      <div key={index} className='min-h-[60px] w-[80%] bg-gray-600 my-6 mx-auto rounded-lg flex overflow-hidden cursor-pointer shadow-sm hover:scale-[1.01] shadow-green-500'>
-                        <div className='hidden sm:flex sm:w-10 bg-red-200 flex items-center justify-center button-8 '>
+                    assignment?.map((assignmetn_info, index) => (
+                       <div key={index} className='min-h-[60px] w-[80%] bg-gray-600 my-6 mx-auto rounded-lg flex overflow-hidden cursor-pointer shadow-sm hover:scale-[1.01] shadow-green-500' 
+                       onClick={()=>HandelAssignmentnOpen(assignmetn_info)}
+                       >
+                        <div className='hidden sm:flex sm:w-10 bg-red-200 flex items-center justify-center button-8 '
+                        >
                         <i class="ri-code-s-slash-line text-4xl"></i>
                         </div>
                         <div className='w-[90%] flex items-center justify-between px-2 py-3'>
-                          <div className="text-xl text-gray-400 text-center font-medium">{assignmetn_info?.assignmetName
-                          }</div>
+                          <div className="text-xl text-gray-400 text-center font-medium">{assignmetn_info?.assignmetName}</div>
                         </div>
                       </div>
                     ))

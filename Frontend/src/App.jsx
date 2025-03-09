@@ -21,6 +21,7 @@ import Dashboard from './view/Dashboard.jsx';
 import Feedback from './view/Feedback.jsx';
 import ViewQuiz from './view/ViewQuiz.jsx';
 import StartQuiz from './view/StartQuiz.jsx';
+import ViewAssignmet from './view/ViewAssignmet.jsx';
 
 
 
@@ -45,6 +46,7 @@ function App() {
             <Route path='/feedback' element={<Feedback/>}/>
             <Route path='/viewquiz/:id' element={<ViewQuiz/>}/>
             <Route path='/startquiz' element={<StartQuiz/>}/>
+            <Route path='/view/:assignmentId' element={<ViewAssignmet/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>
