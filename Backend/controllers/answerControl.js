@@ -55,7 +55,7 @@ const getallanswers = async (req, res) => {
     }
 }
 
-const postApprovalAssignment = async (req, res) => {
+const postapprovalassignment = async (req, res) => {
     try {
         const { assignmentid } = req.params;
         const { status, userid } = req.body; 
