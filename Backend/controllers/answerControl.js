@@ -55,7 +55,7 @@ const getallanswers = async (req, res) => {
     }
 }
 
-const  postapprovalassignment = async (req, res) => {
+const postApprovalAssignment = async (req, res) => {
     try {
         const { assignmentid } = req.params;
         const { status, userid } = req.body; 
@@ -64,20 +64,21 @@ const  postapprovalassignment = async (req, res) => {
             return responder(res, false, "Please provide all the required fields", null, 400);
         }
 
-        const answersToUpdate = await answer.find({ assignmentID: assignmentid, userID: userid });
+        const answerToUpdate = await answer.findOne({ assignmentID: assignmentid, userID: userid });
 
-        if (answersToUpdate.length === 0) {
-            return responder(res, false, "No answers found for this assignment and user", null, 404);
+        if (!answerToUpdate) {
+            return responder(res, false, "Answer not found", null, 404);
         }
 
         if (status === "rejected") {
-            await answer.deleteMany({ assignmentID: assignmentid, userID: userid });
+            await answer.deleteOne({ assignmentID: assignmentid, userID: userid });
             return responder(res, true, "Rejected successfully", null, 200);
         }
 
-        await answer.updateMany({ assignmentID: assignmentid, userID: userid }, { $set: { status: "approved" } });
+        answerToUpdate.status = "approved"; 
+        await answerToUpdate.save();
 
-        return responder(res, true, "Answer status updated successfully", null, 200);
+        return responder(res, true, "Answer status updated successfully", answerToUpdate, 200);
     } catch (err) {
         return responder(res, false, err.message, null, 500);
     }
