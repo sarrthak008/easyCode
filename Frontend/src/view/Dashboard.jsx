@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import axios from 'axios'
 import { closeSnackbar, useSnackbar } from 'notistack'
 import { Link } from 'react-router-dom'
-const API_URL = import.meta.env.VITE_SERVER_URI
+  const API_URL = import.meta.env.VITE_SERVER_URI
 import Shadow from "../components/Shadow"
 import SpeedDilarUser from '../components/SpeedDilarUser'
 import { useStore } from '../context/Store'
