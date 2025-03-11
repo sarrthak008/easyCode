@@ -55,27 +55,34 @@ const getallanswers = async (req, res) => {
     }
 }
 
-const postapprovalassignment = async(req,res) =>{
-    try{
-        const {_id} = req.params;
-        const {status} = req.body;
+const postapprovalassignment = async (req, res) => {
+    try {
+        const { assignmentid } = req.params;
+        const { status } = req.body;
 
-        
-        if(!_id || !status){
-            return responder(res,false,"Please provide all the required fields",null,400);
+        if (!assignmentid || !status) {
+            return responder(res, false, "Please provide all the required fields", null, 400);
         }
-        const answerToUpdate = await answer.findById(_id);
-        if(!answerToUpdate){
-            return responder(res,false,"Answer not found",null,404);
+
+        const answerToUpdate = await answer.findOne({ assignmentID: assignmentid });
+        if (!answerToUpdate) {
+            return responder(res, false, "Answer not found", null, 404);
         }
-        answerToUpdate.status = status;
+
+        if (status === "rejected") {
+            await answer.deleteMany({ assignmentID: assignmentid });
+            return responder(res, true, "Rejected successfully", null, 200);
+        }
+
+        answerToUpdate.status = "approved"; 
         await answerToUpdate.save();
-        responder(res,true,"Answer status updated successfully",answerToUpdate,200);
+
+        return responder(res, true, "Answer status updated successfully", answerToUpdate, 200);
+    } catch (err) {
+        return responder(res, false, err.message, null, 500);
     }
-    catch(err){
-        responder(res,false,err.message,null,500);
-    }
-}
+};
+
 
 const getUserAssignment = async (req, res) => {
     const {userId,assignmentId} = req.params;
