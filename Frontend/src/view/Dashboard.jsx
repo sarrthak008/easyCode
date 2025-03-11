@@ -63,7 +63,7 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
                     ))
                   }
                 </>
-              </div>
+              </div>  
 
           }
         </>
