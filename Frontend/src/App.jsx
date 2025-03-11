@@ -22,6 +22,8 @@ import Feedback from './view/Feedback.jsx';
 import ViewQuiz from './view/ViewQuiz.jsx';
 import StartQuiz from './view/StartQuiz.jsx';
 import ViewAssignmet from './view/ViewAssignmet.jsx';
+import ApprovedAssignment from './view/ApprovedAssignment.jsx';
+import ShowSubmittedUsers from './view/ShowSubmittedUsers.jsx';
 
 
 
@@ -47,6 +49,8 @@ function App() {
             <Route path='/viewquiz/:id' element={<ViewQuiz/>}/>
             <Route path='/startquiz' element={<StartQuiz/>}/>
             <Route path='/view/:assignmentId/:courseId' element={<ViewAssignmet/>}/>
+            <Route path='/approveAssignment/:courseId' element={<ApprovedAssignment/>}/>
+            <Route path='/showSubmitedUsers/:assignmentId' element= {<ShowSubmittedUsers/>}/>
             <Route path="*" element={<Notfound/>}  />
           </Routes>
         </SnackbarProvider>

@@ -47,7 +47,7 @@ const getallanswers = async (req, res) => {
             return responder(res, false, "Please provide all the required fields", null, 400);
         }
 
-        const answers = await answer.find({ assignmentID });
+        const answers = await answer.find({ assignmentID }).populate("userID", "name mobile profilePic email");
         responder(res, true, "All Answers", answers, 200);
     }
     catch (err) {
