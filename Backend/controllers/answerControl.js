@@ -48,7 +48,7 @@ const getallanswers = async (req, res) => {
         }
 
         const answers = await answer.find({ assignmentID }).populate("userID", "name mobile profilePic email");
-        const onlySubmittedAns = answer.filter((ans)=>ans.status === "submitted");
+        const onlySubmittedAns = answers.filter((ans)=>ans.status === "submitted");
         return responder(res, true, "all submited answer fetch suceesfully.", onlySubmittedAns, 200);
     }
     catch (err) {
@@ -59,7 +59,7 @@ const getallanswers = async (req, res) => {
 const postapprovalassignment = async (req, res) => {
     try {
         const { assignmentid } = req.params;
-        const { status, userid } = req.body; 
+        const { status, userid ,message} = req.body; 
 
         if (!assignmentid || !status || !userid) {
             return responder(res, false, "Please provide all the required fields", null, 400);
@@ -77,6 +77,7 @@ const postapprovalassignment = async (req, res) => {
         }
 
         answerToUpdate.status = "approved"; 
+        answerToUpdate.message = message;
         await answerToUpdate.save();
 
         return responder(res, true, "Answer status updated successfully", answerToUpdate, 200);
