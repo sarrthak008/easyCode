@@ -144,14 +144,14 @@ const ViewAssignmet = () => {
          if (responce.data?.data.length == 0) {
             setassignmentStatus('please submit your assignment')
          } else {
-             setassignmentStatus(loadedData[0].status)
+            setassignmentStatus(responce.data.data[0]?.status)
          }
       } catch (error) {
          console.log(error);
       }
    }
 
-  // console.log(userAnswer)
+//   console.log(userAnswer)
 
    useEffect(() => {
       LoadAssignmentByID()
