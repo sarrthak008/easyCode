@@ -29,7 +29,14 @@ const Addassignmet = () => {
         const response = await axios.post(`${API_URL}/api/assignment/addassignment`, addinfo, { withCredentials: true })
         if (response.data.success) {
             enqueueSnackbar(`${response.data.message}`, { variant: "success" });
+            setaddinfo({
+              question: '',
+              description: '',
+              assignmetName: ''
+          })
         }
+
+       
         else {
             enqueueSnackbar(`${response.data.message}`, { variant: "error" });
         }
