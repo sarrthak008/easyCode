@@ -131,15 +131,12 @@ const ViewAssignmet = () => {
          if (responce.data?.success) {
             setLoadedData(responce.data.data)
          }
-          console.log()
-          setassignmentStatus(loadedData[0].status)
       } catch (error) {
          console.log(error)
       }
    }
 
    const loadUserAssignment = async () => {
-
       try {
          const responce = await axios.get(`${API_URL}/api/answer/getuseranswer/${currentUser()?._id}/${assignmentId}`);
          setuserAnswer(responce.data.data)
@@ -147,8 +144,7 @@ const ViewAssignmet = () => {
          if (responce.data?.data.length == 0) {
             setassignmentStatus('please submit your assignment')
          } else {
-            
-            setassignmentStatus(loadedData[0].status)
+             setassignmentStatus(loadedData[0].status)
          }
       } catch (error) {
          console.log(error);
