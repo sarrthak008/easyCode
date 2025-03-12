@@ -44,7 +44,8 @@ const ShowSubmittedUsers = () => {
         try {
             await axios.post(`${API_URL}/api/answer/postapprovalassignment/${info?.assignmentID}`, {
                 userid: info?.userID._id,
-                status: status
+                status: status,
+                message:extraMsg
             }, { withCredentials: true });
 
             // Remove the submission from localStorage

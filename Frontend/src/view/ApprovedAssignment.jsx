@@ -25,7 +25,7 @@ function ApprovedAssignment() {
     }, [])
 
     const HandelAssignmentnOpen = (info) =>{
-        window.open(`http://localhost:5173/showSubmitedUsers/${info._id}`,"_blank")
+        window.open(`https://www.easycode.support/showSubmitedUsers/${info._id}`,"_blank")
      }
     return (
 
