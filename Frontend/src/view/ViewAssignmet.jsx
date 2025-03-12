@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import { useStore } from '../context/Store'
 import Shadow from '../components/Shadow'
 import { useSnackbar } from 'notistack'
+import INFO from '../utils/comman'
 
 
 const AssignmentForm = ({ courseId, assignmentId, userId, setShowForm }) => {
@@ -140,7 +141,7 @@ const ViewAssignmet = () => {
       try {
          const responce = await axios.get(`${API_URL}/api/answer/getuseranswer/${currentUser()?._id}/${assignmentId}`);
          setuserAnswer(responce.data.data)
-          
+
          if (responce.data?.data.length == 0) {
             setassignmentStatus('please submit your assignment')
          } else {
@@ -151,7 +152,7 @@ const ViewAssignmet = () => {
       }
    }
 
-//   console.log(userAnswer)
+   console.log(userAnswer)
 
    useEffect(() => {
       LoadAssignmentByID()
@@ -196,6 +197,20 @@ const ViewAssignmet = () => {
                         : <div className='min-h-20 w-[90%] '>
                            <h3 className='text-white text-2xl font-bold'> <i className="ri-arrow-right-up-line font-thin"></i> your submission...</h3>
                            <hr className='mt-4'></hr>
+
+                           {
+                              assignmentStatus == "approved" ?
+                                 <div className='flex text-gray-300 gap-1 items-center my-4'>
+                                    <div className='h-[45px] w-[45px] bg-gray-900 mt-3 rounded-full overflow-hidden'>
+                                       <img src={INFO?.PROFILE_URL} />
+                                    </div>
+                                    <div className='flex flex-col '>
+                                       <span className='text-[16px] text-white'>{INFO?.BRAND_NAME}</span>
+                                       <span>{ userAnswer[0].message ? userAnswer[0].message : INFO.DEFAULT_MESSAGE  }</span>
+                                    </div>
+                                 </div> : null
+                           }
+
                            <div className='min-h-52 w-[95%] rounded-md  flex gap-3 flex-wrap mt-4'>
                               <div className='h-[250px] w-[450px] bg-red-500 overflow-hidden rounded-md'>
                                  <img src={userAnswer[0].answer_pic} className='h-full w-full object-cover'></img>
@@ -207,7 +222,7 @@ const ViewAssignmet = () => {
                                  <div className='flex items-center text-md'><i className="ri-pushpin-fill"></i>Assignment Id: {userAnswer[0].assignmentID}</div>
                                  <span className='mt-7 block'><i className="ri-alarm-warning-fill"></i> we <b>approved</b> your assignment please wait . </span>
                               </div>
-                              
+
                            </div>
                         </div>
                   }
