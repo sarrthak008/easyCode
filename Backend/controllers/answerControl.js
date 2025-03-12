@@ -48,7 +48,8 @@ const getallanswers = async (req, res) => {
         }
 
         const answers = await answer.find({ assignmentID }).populate("userID", "name mobile profilePic email");
-        responder(res, true, "All Answers", answers, 200);
+        const onlySubmittedAns = answer.filter((ans)=>ans.status === "submitted");
+        return responder(res, true, "all submited answer fetch suceesfully.", onlySubmittedAns, 200);
     }
     catch (err) {
         responder(res, false, err.message, null, 500);
@@ -65,7 +66,7 @@ const postapprovalassignment = async (req, res) => {
         }
 
         const answerToUpdate = await answer.findOne({ assignmentID: assignmentid, userID: userid });
-
+         
         if (!answerToUpdate) {
             return responder(res, false, "Answer not found", null, 404);
         }
