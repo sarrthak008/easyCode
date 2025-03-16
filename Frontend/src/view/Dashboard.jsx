@@ -8,6 +8,7 @@ import Shadow from "../components/Shadow"
 import SpeedDilarUser from '../components/SpeedDilarUser'
 import { useStore } from '../context/Store'
 import ARROWSVG from '../assets/assignmetnarr.svg'
+import Cookies from 'js-cookie';
 
 
 const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
@@ -239,6 +240,16 @@ const Dashboard = () => {
   const [videoComp, setVideoComp] = useState(false)
   const { loadNotificationNumber, deleteNotification } = useStore()
 
+  const LoadTokenFromURl =()=>{
+     const url = new URL(window.location.href)
+     const token = url.searchParams.get('token')
+     if(token){
+        Cookies.set('token', token, { expires: 7 });
+     }else{
+       console.warn("you are login from email or pass either something went wrong inform developers")
+     }
+  }
+
 
   const loadMycourses = async () => {
 
@@ -288,6 +299,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
+    LoadTokenFromURl()
     loadMycourses()
     loadPreviousFeedBack()
     deleteNotification()

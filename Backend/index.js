@@ -5,8 +5,8 @@ dotenv.config();
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
-import googleStrategyConfig from "./config/googleStrategy.js";
-googleStrategyConfig(passport)
+import googleStatargy from "./config/googleStatargy.js";
+googleStatargy(passport);
 
 
 const app = express();
@@ -24,8 +24,6 @@ app.use(session({
     cookie: { secure: false, httpOnly: false, maxAge:30 * 24 * 60 * 60 * 1000 }
   }))
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 // CORS Configuration
 app.use(cors({
@@ -51,7 +49,7 @@ import {notificationRouter} from "./routes/notificationRouter.js";
 import {assignmentRouter} from "./routes/assignmentRouter.js";
 import {answerRouter} from "./routes/answerRouter.js";
 import {accessRouter}  from  "./routes/accessRouter.js";
-import { googleAuthRouter } from "./routes/googleAuthRouter.js";
+import {googleRouter} from  "./routes/googleRouter.js"
 
 
 // Utility Functions
@@ -72,7 +70,8 @@ app.use('/api/notification',notificationRouter);
 app.use('/api/assignment',assignmentRouter);
 app.use('/api/answer',answerRouter);
 app.use('/api/access',accessRouter);
-app.use('/api/gauth',cors(),googleAuthRouter)
+app.use('/api/glogin',googleRouter);
+
 
 
 

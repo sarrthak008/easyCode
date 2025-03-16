@@ -24,7 +24,6 @@ const userSchma = new Schema({
     },
     password: {
         type: String,
-        unique: true,
         trim: true,
     },
     role:{
