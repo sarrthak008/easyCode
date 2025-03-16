@@ -1,13 +1,14 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import jwt from "jsonwebtoken";
-import user from "../models/user.model.js"; 
+import user from "../models/user.model.js";
+import { responder } from "../utils/responder.js";
 
 const googleStrategyConfig = (passport) => {
   passport.use(
     new GoogleStrategy(
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_SECRET, 
+        clientSecret: process.env.GOOGLE_SECRET,
         callbackURL: "https://www.easycode.support/dashboard",
       },
       async (accessToken, refreshToken, profile, done) => {
@@ -39,7 +40,7 @@ const googleStrategyConfig = (passport) => {
             await existingUser.save();
           }
 
-          // Generate JWT token
+          // Generate JWT token (same as your login flow)
           const token = jwt.sign(
             {
               _id: existingUser._id,
@@ -50,12 +51,12 @@ const googleStrategyConfig = (passport) => {
               mobile: existingUser.mobile,
               isBan: existingUser.isBan,
             },
-            process.env.JWT_SECRET, // Make sure JWT_SECRET is correct
+            process.env.JWT_SECRET, 
             { expiresIn: "7d" }
           );
 
           // Attach token to user object
-          const userWithToken = { ...existingUser._doc, token };
+          const userWithToken = { ...existingUser.toObject(), token };
 
           return done(null, userWithToken);
         } catch (error) {
@@ -66,15 +67,16 @@ const googleStrategyConfig = (passport) => {
     )
   );
 
-  // Serialize user for session
+  // ✅ Store only `_id` in session
   passport.serializeUser((user, done) => {
-    done(null, user);
+    done(null, user._id);
   });
 
-  // Deserialize user from session
-  passport.deserializeUser(async (user, done) => {
+  // ✅ Retrieve full user data using `_id`
+  passport.deserializeUser(async (id, done) => {
     try {
-      done(null, user);
+      const foundUser = await user.findById(id);
+      done(null, foundUser);
     } catch (error) {
       done(error, null);
     }

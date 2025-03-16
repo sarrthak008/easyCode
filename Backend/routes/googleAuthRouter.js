@@ -1,17 +1,17 @@
-import { Router } from "express";
+import express from "express";
 import passport from "passport";
+import { googleAuth } from "../controllers/auth.controller.js";
 
-const googleAuthRouter = Router()
+const googleAuthRouter = express.Router();
 
-googleAuthRouter.get('/auth/google',passport.authenticate('google', { scope: ['profile'] }))
+// Redirect user to Google authentication
+googleAuthRouter.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
-googleAuthRouter.get("/google/callback",
-    passport.authenticate("google", { failureRedirect: "http://localhost:5173/login" }),
-    (req, res) => {
-        console.log(req.user)
-        res.redirect(`http://localhost:5173/dashboard`);
-    }
+// Handle callback from Google
+googleAuthRouter.get(
+    "/google/callback",
+    passport.authenticate("google", { failureRedirect: "/login" }),
+    googleAuth
 );
 
-
-export {googleAuthRouter}
+export default router;
