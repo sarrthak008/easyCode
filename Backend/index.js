@@ -29,7 +29,7 @@ app.use(passport.session());
 
 // CORS Configuration
 app.use(cors({
-    origin: ["http://localhost:5173/", "https://www.easycode.support"],
+    origin: ["http://localhost:5173", "https://www.easycode.support"],
     credentials: true,
 }));
 
@@ -72,7 +72,7 @@ app.use('/api/notification',notificationRouter);
 app.use('/api/assignment',assignmentRouter);
 app.use('/api/answer',answerRouter);
 app.use('/api/access',accessRouter);
-app.use('/api/gauth',googleAuthRouter)
+app.use('/api/gauth',cors(),googleAuthRouter)
 
 
 
