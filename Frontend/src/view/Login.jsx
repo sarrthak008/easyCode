@@ -64,12 +64,7 @@ const Login = () => {
   };
 
   const handelGoogleLogin = async()=>{
-      try {
-          const responce = await axios.get(`${API_URL}/api/gauth/auth/google`)
-          console.log(responce)
-      } catch (error) {
-        console.log(error)
-      }
+      window.location.href = "http://localhost:3000/api/gauth/auth/google";
   }
 
   return (

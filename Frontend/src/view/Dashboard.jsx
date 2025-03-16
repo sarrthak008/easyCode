@@ -214,7 +214,7 @@ const AddFeedBack = ({ setOpenFeedback }) => {
 
 const BanComp = () => {
   const { currentUser } = useStore()
-  const [isban, setIsBan] = useState(currentUser().isBan)
+  const [isban, setIsBan] = useState(currentUser()?.isBan)
 
   return (
     <>
@@ -291,7 +291,7 @@ const Dashboard = () => {
     loadMycourses()
     loadPreviousFeedBack()
     deleteNotification()
-    loadNotificationNumber()
+    window.history.replaceState({}, document.title, "/dashboard");
   }, [])
 
   return (
@@ -317,7 +317,7 @@ const Dashboard = () => {
         <SpeedDilarUser />
       </div>
 
-      <BanComp />
+      {/* <BanComp /> */}
     </>
   )
 }
