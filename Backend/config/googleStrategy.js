@@ -1,12 +1,13 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import user from "../models/user.model.js"; // Ensure correct model import
+import jwt from "jsonwebtoken";
+import user from "../models/user.model.js"; 
 
 const googleStrategyConfig = (passport) => {
   passport.use(
     new GoogleStrategy(
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_SECRET, // Fixed typo (GOOGLE_SECRECT → GOOGLE_SECRET)
+        clientSecret: process.env.GOOGLE_SECRET, 
         callbackURL: "https://www.easycode.support/dashboard",
       },
       async (accessToken, refreshToken, profile, done) => {
@@ -25,21 +26,38 @@ const googleStrategyConfig = (passport) => {
           // Check if the user already exists in DB
           let existingUser = await user.findOne({ email });
 
-          if (existingUser) {
-            return done(null, existingUser);
+          if (!existingUser) {
+            // If user doesn't exist, create a new one
+            existingUser = new user({
+              name,
+              email,
+              profilePic,
+              password: "", // No password as it's OAuth
+              validateUser: true, // Mark as validated since it's Google login
+            });
+
+            await existingUser.save();
           }
 
-          // If user doesn't exist, create a new one
-          const newUser = new user({
-            name,
-            email,
-            profilePic,
-            password: "", // No password as it's OAuth
-            validateUser: true, // Mark as validated since it's Google login
-          });
+          // Generate JWT token
+          const token = jwt.sign(
+            {
+              _id: existingUser._id,
+              role: existingUser.role,
+              validateUser: existingUser.validateUser,
+              email: existingUser.email,
+              name: existingUser.name,
+              mobile: existingUser.mobile,
+              isBan: existingUser.isBan,
+            },
+            process.env.JWT_SECRET, // Make sure JWT_SECRET is correct
+            { expiresIn: "7d" }
+          );
 
-          await newUser.save();
-          return done(null, newUser);
+          // Attach token to user object
+          const userWithToken = { ...existingUser._doc, token };
+
+          return done(null, userWithToken);
         } catch (error) {
           console.error("Error in Google Auth:", error);
           return done(error, null);
@@ -50,13 +68,12 @@ const googleStrategyConfig = (passport) => {
 
   // Serialize user for session
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user);
   });
 
   // Deserialize user from session
-  passport.deserializeUser(async (id, done) => {
+  passport.deserializeUser(async (user, done) => {
     try {
-      const user = await User.findById(id);
       done(null, user);
     } catch (error) {
       done(error, null);
