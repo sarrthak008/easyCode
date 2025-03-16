@@ -10,6 +10,8 @@ const API_URL = import.meta.env.VITE_SERVER_URI
 import Cookies from 'js-cookie';
 import { useStore } from '../context/Store';
 import { useNavigate } from 'react-router-dom';
+import GOOGLE_ICO from "../assets/google.svg"
+
 
 
 
@@ -61,6 +63,14 @@ const Login = () => {
     }
   };
 
+  const handelGoogleLogin = async()=>{
+      try {
+          const responce = await axios.get(`${API_URL}/api/gauth/auth/google`)
+          console.log(responce)
+      } catch (error) {
+        console.log(error)
+      }
+  }
 
   return (
     <div>
@@ -79,7 +89,7 @@ const Login = () => {
 
 
         <div className="w-full h-full flex justify-center items-center ">
-          <div className="w-[90%] h-[70%] sm:w-[50%] rounded-lg p-8 bg-gray-900">
+          <div className="w-[90%] min-h-[70%] sm:w-[50%] rounded-lg p-8 bg-gray-900">
             <h1 className="text-4xl font-bold text-center text-white">Login</h1>
             <p className="text-center text-gray-400 text-sm mt-2">
               Start your journey with EasyCode...
@@ -115,6 +125,17 @@ const Login = () => {
                 />
               </span>
             </div>
+             
+             <div className='w-full'>
+                <span className='w-full h-[0.3px] bg-white block mt-7  flex items-center justify-center'> 
+                     <span className='py-[1px] px-5 bg-green-400 rounded-md text-sm '>or</span>
+                </span>
+                <button className='h-12 w-full bg-green-800 mt-7 flex items-center justify-center gap-1 sm:gap-4 rounded-lg text-white ' onClick={handelGoogleLogin}>
+                   <img src={GOOGLE_ICO} className='h-[80%] object-fill' /> 
+                   Continue with google
+                </button>
+             </div>
+
           </div>
         </div>
       </div>
