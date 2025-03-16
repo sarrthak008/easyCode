@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { googleAuth } from "../controllers/auth.controller.js";
+import { googleAuth } from "../controllers/authControl.js";
 
 const googleAuthRouter = express.Router();
 
@@ -14,4 +14,4 @@ googleAuthRouter.get(
     googleAuth
 );
 
-export default router;
+export {googleAuthRouter};
