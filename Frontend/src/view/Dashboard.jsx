@@ -291,7 +291,6 @@ const Dashboard = () => {
     loadMycourses()
     loadPreviousFeedBack()
     deleteNotification()
-    window.history.replaceState({}, document.title, "/dashboard");
   }, [])
 
   return (
