@@ -16,7 +16,7 @@ googleRouter.get(
   passport.authenticate("google", { session: false }),
   (req, res) => {
     if (!req.user) {
-      return res.redirect("http://localhost:5173/login?error=AuthenticationFailed");
+      return res.redirect("https://www.easycode.support/login?error=AuthenticationFailed");
     }
 
     // Generate JWT Token
@@ -41,7 +41,7 @@ googleRouter.get(
     });
 
     // Redirect to frontend with token
-    res.redirect(`http://localhost:5173/dashboard?token=${token}`);
+    res.redirect(`https://www.easycode.support/dashboard?token=${token}`);
   }
 );
 

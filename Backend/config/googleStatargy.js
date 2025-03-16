@@ -11,7 +11,7 @@ let googleStatargy = (passport) =>{
           {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_SECRECT,
-            callbackURL: "http://localhost:3000/api/glogin/callback", // Backend callback
+            callbackURL: "https://easycode-1-ka1u.onrender.com/api/gauth/callback", // Backend callback
           },
           async (accessToken, refreshToken, profile, done) => {
             // console.log(profile);
