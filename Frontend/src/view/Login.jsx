@@ -64,7 +64,7 @@ const Login = () => {
   };
 
   const handelGoogleLogin = async()=>{
-      window.location.href = "http://localhost:3000/api/gauth/auth/google";
+      window.location.href = `${API_URL}/api/gauth/auth/google`;
   }
 
   return (
