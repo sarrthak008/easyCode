@@ -9,7 +9,6 @@ const userSchma = new Schema({
     },
     mobile:{
         type: Number,
-        required: true,
         trim: true,
         maxlenght:10
     },
@@ -27,7 +26,6 @@ const userSchma = new Schema({
         type: String,
         unique: true,
         trim: true,
-        required: true
     },
     role:{
         type:String,

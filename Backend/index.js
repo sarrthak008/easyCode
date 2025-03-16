@@ -1,10 +1,13 @@
 import express, { urlencoded } from "express";
 import cors from 'cors';
 import dotenv from 'dotenv';
-import cookieParser from "cookie-parser";
-
-// Initialize environment variables
 dotenv.config();
+import cookieParser from "cookie-parser";
+import session from "express-session";
+import passport from "passport";
+import googleStrategyConfig from "./config/googleStrategy.js";
+googleStrategyConfig(passport)
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,9 +17,19 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 
+app.use(session({
+    secret: "easyCodeIsBest",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, httpOnly: false, maxAge:30 * 24 * 60 * 60 * 1000 }
+  }))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 // CORS Configuration
 app.use(cors({
-    origin: ["http://localhost:5173", "https://www.easycode.support"],
+    origin: ["http://localhost:5173/", "https://www.easycode.support"],
     credentials: true,
 }));
 
@@ -38,6 +51,7 @@ import {notificationRouter} from "./routes/notificationRouter.js";
 import {assignmentRouter} from "./routes/assignmentRouter.js";
 import {answerRouter} from "./routes/answerRouter.js";
 import {accessRouter}  from  "./routes/accessRouter.js";
+import { googleAuthRouter } from "./routes/googleAuthRouter.js";
 
 
 // Utility Functions
@@ -58,7 +72,7 @@ app.use('/api/notification',notificationRouter);
 app.use('/api/assignment',assignmentRouter);
 app.use('/api/answer',answerRouter);
 app.use('/api/access',accessRouter);
-
+app.use('/api/gauth',googleAuthRouter)
 
 
 
