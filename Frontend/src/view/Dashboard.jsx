@@ -303,7 +303,7 @@ const Dashboard = () => {
     loadMycourses()
     loadPreviousFeedBack()
     deleteNotification()
-    window.location.reload()
+    // window.location.reload()
   }, [])
 
   return (
