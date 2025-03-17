@@ -1,40 +1,24 @@
-import express from "express";
-import user from "../models/user.model"
 import user from "../models/user.model";
+import { responder } from "../utils/responder.js";
 
-function saveUserMobile = async (req, res) => {
-    try {
-        const { id, mobile } = req.body;
-        if (!id || mobile) {
-            return res.json(
-                {
-                    message: "user id and mobile number are required"
-                }
-            )
-        }
-
-        const findedUser = await findedUser.findById(id);
-
-        if (!findedUser) {
-            return res.json({
-                message: "user not found "
-            });
-        }
-
-        findedUser.mobile = mobile;
-        await findedUser.save();
-
-        res.json(
-            {
-                message: "mobile number updated successfully"
+const  saveUserMobile = async (req, res) => {
+       try {
+           const {id,mobile} = req.body
+            if(!id || !mobile){
+               return  responder(res,false,"required mobile number and id",null,400);
             }
-        );
-    }
-    catch (error) {
-        res.json({ 
-            message: "Server Error", error: error.message
-        });
-    }
+          
+            const findedUser = await user.findById(id);
+            if(!findedUser){
+                 return responder(res,false,'user not find check a id ',null,404);
+            }{
+                findedUser.mobile = mobile;
+                await findedUser.save()
+                return responder(res,true,'link mobile succesfully',null,200 )
+            }
+       } catch (error) {
+          return responder(res,false,error.message,null,500)
+       }
 };
 
 
