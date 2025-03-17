@@ -1,4 +1,4 @@
-import user from "../models/user.model";
+import user from "../models/user.model.js";
 import { responder } from "../utils/responder.js";
 
 const  saveUserMobile = async (req, res) => {
