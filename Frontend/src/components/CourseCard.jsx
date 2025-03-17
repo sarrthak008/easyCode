@@ -59,12 +59,13 @@ const CourseCard = ({ course, index }) => {
   }
 
   const checkMobile = async (course, index) => {
+    
+    let ismob=  localStorage.getItem('isMob')
 
     if (!currentUser()) {
       return enqueueSnackbar("login to send course request", { variant: 'error' });
-    } else if (!currentUser()?.mobile) {
+    } else if (!currentUser()?.mobile && !ismob) {
       setMobComp(true)
-      isLink ? handelRequest(course,index):null
     } else {
       handelRequest(course, index);
     }
@@ -84,7 +85,7 @@ const CourseCard = ({ course, index }) => {
         }, { withCredentials: true });
 
         if (response.data.success) {
-          setisLink(true)
+           localStorage.setItem('isMob',true)
           setMobComp(false)
           enqueueSnackbar(response.data.message, { variant: 'success' });
         }
