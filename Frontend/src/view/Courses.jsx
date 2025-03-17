@@ -11,9 +11,10 @@ import { useStore } from '../context/Store'
 const Courses = () => {
       
         const [courses, setCourses] = useState([])  
-        const numberOfSkelleton = [1,2];
+        const [getnumberComp,setnumberComp] = useState()
+        const numberOfSkelleton = [1,2,3];
         const {loadNotificationNumber} = useStore()
-
+        const {currentUser} = useStore()
 
         const fetchCourses = async () => { 
           //console.log(API_URL)
@@ -26,6 +27,8 @@ const Courses = () => {
               console.log(error)
            }
         }
+
+      
       
 
        useEffect(() => {

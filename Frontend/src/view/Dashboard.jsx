@@ -245,6 +245,7 @@ const Dashboard = () => {
      const token = url.searchParams.get('token')
      if(token){
         Cookies.set('token', token, { expires: 7 });
+         window.location.reload()
      }else{
        console.warn("you are login from email or pass either something went wrong inform developers")
      }
