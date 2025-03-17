@@ -13,15 +13,22 @@ function saveUserMobile = async (req, res) => {
             )
         }
 
-        const user = await user.findOne({ _id: id, mobile: mobile }).select("mobile");
+        const findedUser = await findedUser.findById(id);
 
-        if (!user) {
+        if (!findedUser) {
             return res.json({
-                message: "user not found or mobile number is not maching"
+                message: "user not found "
             });
         }
 
-        res.json({ userId: id, mobile: user.mobile })
+        findedUser.mobile = mobile;
+        await findedUser.save();
+
+        res.json(
+            {
+                message: "mobile number updated successfully"
+            }
+        );
     }
     catch (error) {
         res.json({ 
@@ -33,4 +40,4 @@ function saveUserMobile = async (req, res) => {
 
 
 
-export default saveUserMobile;
+export  {saveUserMobile};
