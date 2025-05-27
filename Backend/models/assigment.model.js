@@ -20,5 +20,5 @@ const assignmtnSchme = new Schema({
     }
 }) 
 
-const assignment =  model("assignments",assignmtnSchme);
+const assignment =  model("assignment",assignmtnSchme);
 export default assignment;
