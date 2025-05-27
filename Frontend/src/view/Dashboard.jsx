@@ -46,11 +46,11 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
                 <span className='text-gray-400 text-sm text-center'>"code, create, conquer. Every bug is a lesson, every line is progress. Keep going!" 🚀💻</span>
               </div>
               :
-              <div className='h-[80%] mt-12 w-[80%] bg-gray-900 opacity-85 flex items-center justify-center flex-col overflow-x-hidden overflow-y-scroll py-10 hide-scroll-bar' onClick={(e) => e.stopPropagation()}>
+              <div className='h-[80%] mt-12 w-[80%] bg-gray-900 pt-32  opacity-85 flex items-center justify-center flex-col overflow-x-hidden overflow-y-scroll  hide-scroll-bar' onClick={(e) => e.stopPropagation()}>
                 <>
                   {
                     assignment?.map((assignmetn_info, index) => (
-                       <div key={index} className='min-h-[60px] w-[80%] bg-gray-600 my-6 mx-auto rounded-lg flex overflow-hidden cursor-pointer shadow-sm hover:scale-[1.01] shadow-green-500' 
+                       <div key={index} className='min-h-[60px] w-[80%] bg-gray-600 my-6 mx-auto rounded-lg flex overflow-hidden cursor-pointer shadow-sm hover:scale-[1.01] shadow-green-500 ' 
                        onClick={()=>HandelAssignmentnOpen(assignmetn_info)}
                        >
                         <div className='hidden sm:flex sm:w-10 bg-red-200 flex items-center justify-center button-8 '
