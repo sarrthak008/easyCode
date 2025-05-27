@@ -39,6 +39,12 @@ function Addvideo() {
         if (response.data.success) {
            // console.log(response.data.message)
             enqueueSnackbar(`${response.data.message}`, { variant: "success" });
+            setaddinfo({
+                title: '',
+                link1: '',
+                link2: '',
+                link3: ''
+            })
         }
         else {
             console.log(response.data.message)
