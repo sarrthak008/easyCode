@@ -1,159 +1,56 @@
 import React from 'react'
-import ARROW from "../assets/arrrow.svg";
-import CIRCLE from "../assets/circle.svg";
-import ROUND from "../assets/round.svg";
-import THREED from "../assets/3d.jpg";
-import Shadow from './Shadow';
-import ARROW1 from "../assets/arrow2.svg";
-import Feedback from './Feedback';
+import BGIMG from "../assets/mongo.png"
+import Particles from './ReactBit/Particles'
+import StarBorder from './ReactBit/StarBorder'
 
 export const Hero = () => {
 
-  const items = [
-    { 
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1737807822/sarthak-Photoroom.png.png",
-      name: "Sarthak", 
-      description: " I am proud to offer a platform dedicated to making coding accessible and easy to learn for everyone. Our mission is to simplify complex programming concepts and help students gain practical skills through interactive lessons, real-world examples, and a supportive community. Whether you are a beginner or an experienced coder, EasyCode has something for you. Join us today and start your coding journey!" 
-    },
-    {
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1736518849/IMG_4367.JPG.jpg",
-      name: "krushna", 
-      description: "as a cofounder our mission of making coding accessible to everyone is what drives us. We are committed to providing high-quality content that is easy to understand and engaging. We believe that anyone can learn to code, and we are here to help you every step of the way.",
-    },
-    { 
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1736679054/IMG_20220728_104522_enhanced.jpg.png",
-      name: "prathmesh", 
-      description: "It’s been amazing to see how much we've accomplished together, and I’m excited about all the future possibilities we do everything to make coding easy for everyone." 
-    },
-    { 
-      profile: "https://res.cloudinary.com/dqjmbn0dy/image/upload/v1735545701/user.png.png",
-      name: "Neha", 
-      description: " Our mission is to simplify complex programming concepts and help students gain practical skills through interactive lessons" 
-    },
-    
-  ];
-  
-
   return (
-    <>
-      <div className='h-96 text-white w-full flex justify-center items-center flex-col relative bg-[url("./assets/bg.svg")] bg-center bg-cover bg-no-repeat'>
 
-        <h1 className=' text-6xl text-center  sm:text-[4.8em]  uppercase  mt-[40%]  sm:mt-[20%]   md:mt-[10%] hevy font-thin'>we Transform <span className='text-green'>Ideas</span> into <span className='text-green'>Code</span> !</h1>
+    <div className=' w-screen  mt-16 relative'>
+      <div className='w-screen min-h-screen  bg-black flex relative flex-col sm:flex-row justify-center items-center'>
 
-        <div className=' w-72 sm:w-80 text-center opacity-75 font-thin leading-6 text-sm sm:text-xl '><p className=' mt-4'>Dive right into <span className='text-green font-bold'>coding</span> with our easy-to-follow live tutorials and tools <span className='text-green font-bold'>designed</span> for beginners and pros alike. Start building your first <span className='text-green font-bold'>project</span> today!</p></div>
-      </div>
-      <div className='mt-20'>
-
-        <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-4xl block mb-10 tracking-[5px]'>Explore Skill</h1>
-        <div className='flex justify-center items-center h-20 w-[90%] sm:w-[75%] m-auto relative'>
-          <marquee scrollamount='2' behavior="alternate" className='text-green-400 opacity-50 font-bold text-5xl sm:text-6xl'>
-            <span className='m-5'>HTML</span>
-            <span className='m-5'>CSS</span>
-            <span className='m-5'>CSS</span>
-            <span className='m-5'>JAVASCRIP</span>
-            <span className='m-5'>REACT JS</span>
-            <span className='m-5'>NODE JS</span>
-            <span className='m-5'>EXPRESS JS</span>
-            <span className='m-5'>MONGODB</span>
-            <span className='m-5'>C</span>
-            <span className='m-5'>PYTHON</span>
-            <span className='m-5'>GIT & GITHUB </span>
-            <span className='m-5'>HTML</span>
-            <span className='m-5'>CSS</span>
-            <span className='m-5'>CSS</span>
-            <span className='m-5'>JAVASCRIP</span>
-            <span className='m-5'>REACT JS</span>
-            <span className='m-5'>NODE JS</span>
-            <span className='m-5'>EXPRESS JS</span>
-            <span className='m-5'>MONGODB</span>
-            <span className='m-5'>C</span>
-            <span className='m-5'>PYTHON</span>
-            <span className='m-5'>GIT & GITHUB </span>
-            <span className='m-5'>HTML</span>
-            <span className='m-5'>CSS</span>
-            <span className='m-5'>CSS</span>
-            <span className='m-5'>JAVASCRIP</span>
-            <span className='m-5'>REACT JS</span>
-            <span className='m-5'>NODE JS</span>
-            <span className='m-5'>EXPRESS JS</span>
-            <span className='m-5'>MONGODB</span>
-            <span className='m-5'>C</span>
-            <span className='m-5'>PYTHON</span>
-            <span className='m-5'>GIT & GITHUB </span>
-
-          </marquee>
-          <div className=' bg-gradient-to-l to-[#060A23] from-transparent w-[50%] absolute top-0 left-0  h-full'> </div>
-          <div className=' bg-gradient-to-r to-[#060A23] from-transparent w-[50%] absolute top-0 right-0  h-full'></div>
-
-        </div>
-      </div>
-
-      <div className='flex justify-center items-center mt-10'>
-        <img src={ARROW} height="200px" width="150px" />
-      </div>
-      <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-4xl block mb-10 tracking-[2px]'>How We Work</h1>
-
-      <div className='min-h-72 w-full flex items-center justify-evenly flex-wrap mb-20 gap-14'>
-        <div className='h-[350px] w-[300px] bg-gray-900  rounded-md overflow-hidden flex flex-col px-3'>
-          <div className='h-[160px] w-full overflow-hidden flex items-center justify-center cursor-pointer'>
-            <img src={CIRCLE} className='w-[300px] object-cover hover:animate-pulse duration-300' />
+        <div className='absolute pointer-events-none top-0 left-0 h-full w-full'>
+          <div style={{ width: '100%', height: '600px', position: 'absolute' }}>
+            <Particles
+              particleColors={['#ffffff', '#ffffff']}
+              particleCount={100}
+              particleSpread={10}
+              speed={0.1}
+              particleBaseSize={100}
+              moveParticlesOnHover={true}
+              alphaParticles={false}
+              disableRotation={false}
+            />
           </div>
+        </div>
+
+
+        <div className='w-full sm:w-[40vw] h-full flex  justify-center items-center'>
+          <img src={BGIMG} className='h-full w-full object-contain'></img>
+        </div>
+        <div className='w-full sm:w-[60vw] h-full flex flex-col justify-center '>
+          <h1 className='text-5xl text-center sm:text-7xl text-gray-300 sm:text-start' >Power Your Skills  With
+            EasyCode.
+          </h1>
+          <p className='text-center text-sm sm:text-md  mt-4  sm:text-start text-gray-500 block '>Learn coding step-by-step with practical examples, interactive lessons, and support from a community that’s passionate about making programming easy and fun.</p>
+
           <div>
-            <h3 className='hevy text-green text-4xl tracking-[5px]'>Learn :</h3>
-            <p className='text-white font-thin opacity-75 '>where you are learn from zero to advanced from understanding the core principles and basics . We always making sure to connect theory with real-world applications. </p>
+            <button className=' gap-2 cursor-pointer mt-4 text-black flex items-center justify-center bg-gray-400 h-[40px] w-[200px] rounded-3xl'>view courses
+              <span className='animate-pulse inline-block h-[30px] w-[30px] rounded-full text-black flex items-center justify-center  glass'><i className="ri-arrow-right-up-line"></i></span>
+            </button>
           </div>
-        </div>
 
-
-        <div className='h-[350px] w-[300px] bg-gray-900  rounded-md overflow-hidden flex flex-col px-3'>
-          <div className='h-[160px] w-full overflow-hidden flex items-center justify-center cursor-pointer'>
-            <img src={ROUND} className='w-[300px] object-cover hover:animate-bounce duration-300' />
-          </div>
-          <div>
-            <h3 className='hevy text-green text-4xl tracking-[5px]'>Explore :</h3>
-            <p className='text-white font-thin opacity-75 '>We explore new methods thats help you grow up and build a storng knowladge  By exploring new ideas and continuously improving our content, we aim to give you the tools to not only learn but to master skills at your own pace</p>
-          </div>
         </div>
 
 
 
-        <div className='h-[350px] w-[300px] bg-gray-900  rounded-md overflow-hidden flex flex-col px-3'>
-          <div className='h-[160px] w-full overflow-hidden flex items-center justify-center cursor-pointer'>
-            <img src={THREED} className='w-full   object-cover hover:scale-[1.8] duration-300' />
-          </div>
-          <div>
-            <h3 className='hevy text-green text-4xl tracking-[5px]'>Build :</h3>
-            <p className='text-white font-thin opacity-75 '> We focus on building real-world projects that help you apply what you’ve learned. You will work on practical examples that solve actual problems, giving you hands-on experience.</p>
-          </div>
-        </div>
+        <div className='h-[200px] w-[200px] absolute top-0 left-0  filter-blur bg-blue-700 pointer-events-none'></div>
+
+        <div className='h-[100px] w-[200px] absolute bottom-0 right-0  filter-blur bg-green-500 pointer-events-none'></div>
       </div>
-
-      <div>
-        <h1 className='text-center text-white  opacity-40 font-bold text-3xl sm:text-3xl block mb-10 tracking-[2px]'>Understand Workflow</h1>
-        <div className='w-full min-h-96  relative'>
-          <div className='m-auto h-[80px] sm:h-[100px] w-[90%] sm:w-[40%] cursor-wait relative flex items-center  justify-center border-2 text-4xl sm:text-5xl font-medium border-green-300 text-linear border-r-1 bordered-r-sm rounded-t-[10px]'>request course
-            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -left-3 shadow-green'></span>
-            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -top-5 -right-3 shadow-lg shadow-green-400'></span>
-            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -left-3'></span>
-            <span className='h-[20px] w-[20px] absolute  bg-green-300 border-4 border-green-600 -bottom-5 -right-3 shadow-green'></span>
-            <div className='h-[90%] w-[99%] border-[0.3px] border-gray-300 absolute -top-[0.1] opacity-60 '></div>
-          </div>
-          <div className=' w-[70px] h-[70px] m-auto'><img src={ARROW1} className='h-full object-contain w-full ' /></div>
-          <div className='m-auto h-8 w-[90%] text-center text-white mt-2'><span className='bg-gradient-to-tr to-gray-800 from-slate-500 py-1  sm:px-7  px-2  rounded-md text-2xl opacity-75 font-thin shaow-lg shadow-gray-100'>our assitant call you</span></div>
-          <div className='m-auto h-8 w-[90%] text-center text-white mt-6'><span className='bg-gradient-to-tr to-gray-800 from-slate-500 py-1  sm:px-7  px-2 rounded-md text-2xl opacity-75 font-thin shaow-lg shadow-gray-100'>pay & attend live lectures</span></div>
-          <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b to-black from-transparent'></div>
-        </div>
-      </div>
-      <div className='text-white w-full bg-gradient-to-t to-black from-transparent relative'>
-        <h1 className='hevy text-7xl text-center mb-5'>SpeakEasy</h1>
-        <div className="min-h-screen w-full overflow-hidden ">
-          <Feedback items={items} />
-        </div>
-        <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b to-black from-transparent'></div>
-      </div>
-    </>
-
-
+    </div>
   )
+
 }
 

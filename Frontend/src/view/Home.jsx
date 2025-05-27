@@ -39,7 +39,7 @@ const Home = () => {
     <div className='w-lvw min-h-lvh bg-dark'>
        <Navbar></Navbar>
        <Hero></Hero>
-       <Shadow></Shadow>
+       {/* <Shadow></Shadow> */}
        <Footer></Footer>
     </div>
   )

@@ -1,72 +1,86 @@
-@font-face{
-    font-family:'myfont';
-    src: url('./fonts/font.TTF');
+@font-face {
+  font-family: 'myfont';
+  src: url('./fonts/font.TTF');
 }
 
 @font-face {
-    font-family: 'gilyroy';
-    src: url('/fonts/gilyroy.ttf')
-
+  font-family: 'gilyroy';
+  src: url('./fonts/Exo2-VariableFont_wght.ttf')
 }
 
-.gilyroy{
-    font-family: "gilyroy";
+@font-face {
+  font-family: carsue;
+  src: url("./fonts/Signatrue.ttf");
 }
 
-.hevy{
-    font-family: "myfont";
+.carsue {
+  font-family: carsue;
 }
 
-html,body{
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-    background-color:#060A23;
+* {
+  font-family: "gilyroy";
 }
 
-.bg-dark{
-    background-color:#060A23;
+
+.gilyroy {
+  font-family: "gilyroy";
 }
 
-.text-green{
-    color: #00db80;
+.hevy {
+  font-family: "myfont";
 }
 
-.bg-blur{
-    filter: blur(170px);
-    pointer-events: none;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #060A23;
 }
 
-body::-webkit-scrollbar{
-    display: none;
+.bg-dark {
+  background-color: #060A23;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.text-green {
+  color: #00db80;
 }
 
-.text-linear{
-    background:linear-gradient(to left ,#04f304,#ffffffef,#9e9e9eae);
-    background-clip: text;
-    color: transparent;
+.bg-blur {
+  filter: blur(170px);
+  pointer-events: none;
 }
 
-.shadow-green{
-    box-shadow: 20px 20px 40px #00db80;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-.green-drop-shadow{
-    filter: drop-shadow(0px 0px 50px #00db80);
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.text-linear {
+  background: linear-gradient(to left, #04f304, #ffffffef, #9e9e9eae);
+  background-clip: text;
+  color: transparent;
+}
+
+.shadow-green {
+  box-shadow: 20px 20px 40px #00db80;
+}
+
+.green-drop-shadow {
+  filter: drop-shadow(0px 0px 50px #00db80);
 }
 
 .hide-scroll-bar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-.bg-blur-gray{
-    background-color: rgba(0, 0, 0, 0.541);
+.bg-blur-gray {
+  background-color: rgba(0, 0, 0, 0.541);
 }
 
 
@@ -162,6 +176,7 @@ input[type=number]::-webkit-outer-spin-button {
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 100% 50%;
   }
@@ -173,9 +188,11 @@ input[type=number]::-webkit-outer-spin-button {
   0% {
     background-position: -100%;
   }
+
   50% {
     background-position: 200%;
   }
+
   100% {
     background-position: -100%;
   }
@@ -194,9 +211,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 .child {
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
+  /* Initially hidden */
   animation: dropDown 0.3s ease forwards;
-  animation-delay: calc(0.3s * var(--i)); /* Delay each div */
+  animation-delay: calc(0.3s * var(--i));
+  /* Delay each div */
   margin-bottom: 10px;
 }
 
@@ -206,8 +225,26 @@ input[type=number]::-webkit-outer-spin-button {
     transform: translateY(-50px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.green-shadow {
+  text-shadow: 20px 20px 70px #0cd324;
+}
+
+.filter-blur {
+  filter: blur(100px);
+}
+
+
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
