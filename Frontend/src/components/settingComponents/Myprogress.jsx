@@ -4,8 +4,6 @@ import axios from 'axios';
 import { useSnackbar } from 'notistack'
 import ARROWSVG from "../../assets/arrrow.svg"
 import Appinput from '../Appinput'
-
-
 const API_URL = import.meta.env.VITE_SERVER_URI;
 
 function Myprogress({ user,setOpenProgress }) {
@@ -39,7 +37,7 @@ function Myprogress({ user,setOpenProgress }) {
 
   const Loaduserassignment = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/answer/getuseranswer/${user._id}/${courseId.id}`, {
+      const response = await axios.get(`${API_URL}/api/answer/getuseranswer/${user._id}/${courseId.id}`, {
         withCredentials: true,
       });
       const data = response.data;
@@ -53,7 +51,7 @@ function Myprogress({ user,setOpenProgress }) {
   
    const Allassignment = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/assignment/getallcourseassignments/${courseId?.id}`, {
+      const response = await axios.get(`${API_URL}/api/assignment/getallcourseassignments/${courseId?.id}`, {
         withCredentials: true,
       });
       const data = response.data;
