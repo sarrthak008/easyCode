@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack'
-// import ARROWSVG from '../assets/assignmetnarr.svg';
+import ARROWSVG from "../../assets/arrrow.svg"
 import Appinput from '../Appinput'
 
 
 const API_URL = import.meta.env.VITE_SERVER_URI;
 
-function Myprogress({ user }) {
+function Myprogress({ user,setOpenProgress }) {
   const courseId = useParams();
 
 
@@ -75,8 +75,10 @@ function Myprogress({ user }) {
   return (
     <div className='absolute top-0 left-0 h-full w-screen z-[100] backdrop-blur-md'>
 
-      <div className=' bg-gradient-to-r to-green-900 from-gray-800 z-20 p-6 mt-2 rounded-2xl flex justify-evenly items-center'>
-        
+      
+
+      <div className=' bg-gradient-to-r to-green-900 from-gray-800 z-20 p-6 mt-2 rounded-2xl flex justify-evenly items-center relative'>
+        <span className=' absolute top-1 right-20 text-4xl text-white bg-red-500 cursor-pointer rounded-md' onClick={()=>setOpenProgress(false)}><i class="ri-close-line"></i></span>
         <div className="text-3xl text-white font-bold mt-4">
           {user.name ? user.name : <div className="w-[60%] h-10 bg-gray-400 animate-pulse rounded"></div>}
         </div>
@@ -94,8 +96,8 @@ function Myprogress({ user }) {
         {
           ansno.length == 0 ?
             <div className='h-[80%] w-[80%]  opacity-85 flex items-center justify-center flex-col'>
-              <img src={"#"} className='h-[100px]' />
-              <div className='text-2xl text-gray-300 mb-4'>we are add assignment for youhh...</div>
+              <img src={ARROWSVG } className='h-[100px]' />
+              <div className='text-2xl text-gray-300 mb-4'>Student Noting Submited Any Assignment...</div>
               <span className='text-gray-400 text-sm text-center'>"code, create, conquer. Every bug is a lesson, every line is progress. Keep going!" 🚀💻</span>
             </div>
             : <>
