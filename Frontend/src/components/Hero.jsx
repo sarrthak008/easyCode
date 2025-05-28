@@ -3,6 +3,12 @@ import BGIMG from "../assets/mongo.png"
 import Particles from './ReactBit/Particles'
 import StarBorder from './ReactBit/StarBorder'
 import VIDEO from "../assets/bgvideo.mp4"
+import SpotlightCard from './ReactBit/SpotlightCard'
+import AVTAR1 from "../assets/avtar1.png"
+import AVTAR2 from "../assets/avtar2.png"
+import AVTAR3 from "../assets/avtar3.png"
+
+
 
 export const Hero = () => {
 
@@ -55,21 +61,56 @@ export const Hero = () => {
       {/* section 2 */}
 
       <div className=' w-screen bg-black relative '>
-           <div className='h-[70vh] w-full mx-auto overflow-hidden relative bg-red-500 flex justify-center items-center'>
-                <video autoPlay loop muted className='h-[130%] w-[60%] object-cover'>
-                    <source src={VIDEO} type="video/mp4"/>
-                </video>
-                <div className='overlay absolute top-0 left-0 h-full w-full'></div>
-           </div>
+        <div className='h-[70vh] w-full mx-auto overflow-hidden relative bg-red-500 flex justify-center items-center'>
+          <video autoPlay loop muted className='h-[130%] w-[60%] object-cover'>
+            <source src={VIDEO} type="video/mp4" />
+          </video>
+          <div className='overlay absolute top-0 left-0 h-full w-full'></div>
+        </div>
 
-           <span className='glass blue-box-shadow absolute top-3 left-2 py-2 px-4 rounded-3xl text-white '>hight quality lectures <i className="ri-video-on-ai-fill"></i></span>
+        <span className='glass blue-box-shadow absolute top-3 left-2 py-2 px-4 rounded-3xl text-white '>hight quality lectures <i className="ri-video-on-ai-fill"></i></span>
 
-           <span className='glass pink-box-shadow absolute top-16 right-10 py-2 px-4 rounded-3xl text-white '>24 x 7 support <i className="ri-time-fill"></i></span>
+        <span className='glass pink-box-shadow absolute top-16 right-10 py-2 px-4 rounded-3xl text-white '>24 x 7 support <i className="ri-time-fill"></i></span>
 
-           <span className='glass orange-box-shadow absolute bottom-[50%] left-[20%] py-2 px-4 rounded-3xl text-white '>group projects <i className="ri-group-fill"></i></span>
+        <span className='glass orange-box-shadow absolute bottom-[50%] left-[20%] py-2 px-4 rounded-3xl text-white '>group projects <i className="ri-group-fill"></i></span>
 
-           <span className='glass green-box-shadow absolute bottom-[35%] right-[20%] py-2 px-4 rounded-3xl text-white '>regular assignments <i className="ri-booklet-fill"></i></span>
+        <span className='glass green-box-shadow absolute bottom-[35%] right-[20%] py-2 px-4 rounded-3xl text-white '>regular assignments <i className="ri-booklet-fill"></i></span>
       </div>
+
+      <div className='min-h-screen w-screen bg-black '>
+      <h1>why easyCode ?</h1>
+        <div className='flex items-center flex-wrap justify-evenly gap-10 '>
+          <div className='h-[400px] w-[300px] m-4'>
+            <SpotlightCard className="custom-spotlight-card h-full" spotlightColor="rgba(0, 229, 255, 0.2)">
+                 <img src={AVTAR1} className='h-[130px]'/>
+                 <h2 className='text-3xl text-white font-bold'>Build communiyt </h2>
+                 <p className='text-gray-400 text-sm mt-4'>build a strong students ,developers community in hole batch</p>
+                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>join community <i className="ri-arrow-right-up-line"></i></button>
+            </SpotlightCard>
+          </div>
+
+          <div className='h-[400px] w-[300px] m-4'>
+            <SpotlightCard className="custom-spotlight-card h-full" spotlightColor="#09c43b8d ">
+                 <img src={AVTAR2} className='h-[120px]'/>
+                 <h2 className='text-3xl text-white font-bold'>Affordable  <br></br>prise </h2>
+                 <p className='text-gray-400 text-sm mt-4'>build a strong students ,developers community in hole batch</p>
+                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>join <i className="ri-arrow-right-up-line"></i></button>
+            </SpotlightCard>
+          </div>
+
+
+          <div className='h-[400px] w-[300px] m-4'>
+            <SpotlightCard className="custom-spotlight-card h-full" spotlightColor="#67583c97">
+                 <img src={AVTAR3} className='h-[130px]'/>
+                 <h2 className='text-3xl text-white font-bold'>Build communiyt </h2>
+                 <p className='text-gray-400 text-sm mt-4'>build a strong students ,developers community in hole batch</p>
+                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>join <i className="ri-arrow-right-up-line"></i></button>
+            </SpotlightCard>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   )
 
