@@ -89,16 +89,16 @@ const postapprovalassignment = async (req, res) => {
 
 
 const getUserAssignment = async (req, res) => {
-    const {userId,assignmentId} = req.params;
-    if(!userId || !assignmentId){
+    const {userId,courseId} = req.params;
+    if(!userId || ! courseId){
          return responder(res,false,"Please provide all the required fields",null,400);
     }
     try {
-        const responce =  await answer.find({userID:userId,assignmentID:assignmentId})
+        const responce =  await answer.find({userID:userId,courseID:courseId}).populate("assignmentID")
         if(!responce){
             return responder(res,false,"No answer found",null,404);
         }else{
-            return responder(res,true,"student anser loaded",responce,200);
+            return responder(res,true,"student",responce,200);
         }
     }catch(err){
        return responder(res,false,err.message,null,500);

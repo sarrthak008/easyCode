@@ -76,11 +76,12 @@ const Navbar = () => {
 
             {
               isLoggedIn ? <NavProfile userPicUrl={userPicUrl} userInfo={userInfo} /> :
-                <Link to={'/singup'}>
-                  <button className="button-8" role="button">
-                    <span className="text">Sign in</span>
-                  </button>
-                </Link>
+                // <Link to={'/singup'}>
+                //   <button className="button-8" role="button">
+                //     <span className="text">Sign in</span>
+                //   </button>
+                // </Link>
+                null
             }
           </div>
 
@@ -106,12 +107,12 @@ const Navbar = () => {
                     <img src={userPicUrl} className='object-fill h-full w-full' />
                   </div>
                   <div className='text-white text-2xl cursor-pointer opacity-75 ' onClick={() => logOut()}>Logout</div>
-                </div> :
-                <Link to={'/singup'}>
-                  <button className="button-8" role="button">
-                    <span className="text">signup</span>
-                  </button>
-                </Link>
+                </div> : null
+                // <Link to={'/singup'}>
+                //   <button className="button-8" role="button">
+                //     <span className="text">signup</span>
+                //   </button>
+                // </Link>
             }
           </div>
         </div>
