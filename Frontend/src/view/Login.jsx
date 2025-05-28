@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
-import LOGIN from '../assets/login.svg';
+import LOGIN from '../assets/bgimg2.jpeg';
 import Shadow from "../components/Shadow";
 import Appinput from '../components/Appinput';
 import Appbtn from '../components/Appbtn';
@@ -11,13 +11,13 @@ import Cookies from 'js-cookie';
 import { useStore } from '../context/Store';
 import { useNavigate } from 'react-router-dom';
 import GOOGLE_ICO from "../assets/google.svg"
-
+import LetterGlitch from '../components/ReactBit/LetterGlitch';
 
 
 
 const Login = () => {
 
-  const {autoNavigate} = useStore()
+  const { autoNavigate } = useStore()
   const navigate = useNavigate()
   const [passtype, setPassType] = useState('password')
   const { enqueueSnackbar } = useSnackbar()
@@ -26,10 +26,10 @@ const Login = () => {
     password: "",
   })
 
-  
-  useEffect(()=>{
-     autoNavigate() 
-  },[])
+
+  useEffect(() => {
+    autoNavigate()
+  }, [])
 
   const handelLogin = async () => {
     if (userInfo.email.length === 0 || userInfo.password.length === 0) {
@@ -38,7 +38,7 @@ const Login = () => {
     }
 
     try {
-      
+
       let snackid = enqueueSnackbar('login...', { variant: "info" });
       const response = await axios.post(`${API_URL}/api/auth/login`, {
         email: userInfo.email,
@@ -63,8 +63,8 @@ const Login = () => {
     }
   };
 
-  const handelGoogleLogin = async()=>{
-      window.location.href = `${API_URL}/api/glogin/auth/google`;
+  const handelGoogleLogin = async () => {
+    window.location.href = `${API_URL}/api/glogin/auth/google`;
   }
 
   return (
@@ -72,18 +72,16 @@ const Login = () => {
       <Navbar />
       <Shadow />
 
-      <div className="h-screen w-full flex items-center justify-center">
+      <div className="h-screen w-full flex items-center justify-center bg-black">
 
-        <div className="w-0 sm:w-1/2 h-full">
-          <img
-            src={LOGIN}
-            alt="login"
-            className="h-full w-full object-cover"
-          />
+        <div className="w-0 sm:w-[60vw] h-full relative">
+          <img src={LOGIN} className='h-full object-cover'></img>
+           <div className='h-[100px] w-[200px] absolute bottom-0 right-0  filter-blur bg-green-500 pointer-events-none'></div>
+      
         </div>
 
 
-        <div className="w-full h-full flex justify-center items-center ">
+        <div className="w-full h-full flex justify-center items-center  bg-black">
           <div className="w-[90%] min-h-[70%] sm:w-[50%] rounded-lg p-8 bg-gray-900">
             <h1 className="text-4xl font-bold text-center text-white">Login</h1>
             <p className="text-center text-gray-400 text-sm mt-2">
@@ -120,16 +118,16 @@ const Login = () => {
                 />
               </span>
             </div>
-             
-             <div className='w-full'>
-                <span className='w-full h-[0.3px] bg-white block mt-7  flex items-center justify-center'> 
-                     <span className='py-[1px] px-5 bg-green-400 rounded-md text-sm '>or</span>
-                </span>
-                <button className='h-12 w-full bg-green-800 mt-7 flex items-center justify-center gap-1 sm:gap-4 rounded-lg text-white ' onClick={handelGoogleLogin}>
-                   <img src={GOOGLE_ICO} className='h-[80%] object-fill' /> 
-                   Continue with google
-                </button>
-             </div>
+
+            <div className='w-full'>
+              <span className='w-full h-[0.3px] bg-white block mt-7  flex items-center justify-center'>
+                <span className='py-[1px] px-5 bg-green-400 rounded-md text-sm '>or</span>
+              </span>
+              <button className='h-12 w-full bg-green-800 mt-7 flex items-center justify-center gap-1 sm:gap-4 rounded-lg text-white ' onClick={handelGoogleLogin}>
+                <img src={GOOGLE_ICO} className='h-[80%] object-fill' />
+                Continue with google
+              </button>
+            </div>
 
           </div>
         </div>
