@@ -14,8 +14,9 @@ function Myprogress({ user }) {
 
   const [ansno, setansno] = useState([]);
   const [extraMsg, setExtraMsg] = useState("i am happy with your work, keep it up! 🎉");
+  const [allassignment, setallassignment] = useState([]);
 
-  // console.log(user)
+  
 
   const handelSubmission = async (info, status) => {
     let assgnmentId=   info?.assignmentID?._id
@@ -49,22 +50,41 @@ function Myprogress({ user }) {
     }
   };
 
+  
+   const Allassignment = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/assignment/getallcourseassignments/${courseId?.id}`, {
+        withCredentials: true,
+      });
+      const data = response.data;
+      setallassignment(data.data);
+      
+    } catch (error) {
+      console.error("Error fetching all assignments:", error);  
+    }
+  };
+
+
+
+
   useEffect(() => {
     Loaduserassignment();
+    Allassignment();
   }, []);
 
   return (
     <div className='absolute top-0 left-0 h-full w-screen z-[100] backdrop-blur-md'>
 
-      <div className=' bg-gradient-to-r to-green-900 from-gray-800 z-20 p-6 mt-2 rounded-2xl'>
-        <div className='text-xl text-green-400 font-semibold'> <i className="ri-git-merge-fill"></i> Assignment Submissions !</div>
+      <div className=' bg-gradient-to-r to-green-900 from-gray-800 z-20 p-6 mt-2 rounded-2xl flex justify-evenly items-center'>
+        
         <div className="text-3xl text-white font-bold mt-4">
-          {ansno.question ? ansno.question : <div className="w-[60%] h-10 bg-gray-400 animate-pulse rounded"></div>}
+          {user.name ? user.name : <div className="w-[60%] h-10 bg-gray-400 animate-pulse rounded"></div>}
         </div>
 
-        <div className="text-xl text-gray-400 mt-2">
-          {ansno.description ? ansno.description : <div className="w-[80%] h-6 bg-gray-500 animate-pulse rounded"></div>}
-        </div>
+         <div className='text-4xl text-white font-bold '>
+                  <h1>{ansno.length}/ {allassignment.length}</h1>
+         </div>
+          
       </div>
       <div className='w-full h-1 mt-10 mb-10 bg-gray-400 rounded-xl relative flex items-center justify-center'>
         <span className='text-white bg-green-400 py-1 px-4 rounded-2xl '>submissions</span>
