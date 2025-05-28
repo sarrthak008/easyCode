@@ -4,26 +4,36 @@ import { useStore } from '../../context/Store'
 import { useParams } from 'react-router-dom'
 import { useSnackbar } from 'notistack'
 const API_URL = import.meta.env.VITE_SERVER_URI
+import Myprogress from './Myprogress'
 
 
 const StudentCards = ({ user }) => {
   // console.log(user)
- const {enqueueSnackbar,closeSnackbar} = useSnackbar()
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
+  const [OpenProgress, setOpenProgress] = useState(false)
 
-  const handelBanUnban = async()=>{
+  const handelBanUnban = async () => {
 
     try {
-      let snakID =  enqueueSnackbar("updating status of user",{variant:"info"});
-      const  response =  await axios.get(`${API_URL}/api/access/banUnban/${user?._id}`);
+      let snakID = enqueueSnackbar("updating status of user", { variant: "info" });
+      const response = await axios.get(`${API_URL}/api/access/banUnban/${user?._id}`);
       closeSnackbar(snakID)
-      enqueueSnackbar(response.data.message,{variant:"success"})
+      enqueueSnackbar(response.data.message, { variant: "success" })
       window.location.reload()
     } catch (error) {
       enqueueSnackbar(error.message);
     }
   }
 
+
+  const handalMypro = () => {
+    setOpenProgress(true)
+    console.log("open progress")
+  }
+
   return (
+
+    <>
     <div className=' w-80 sm:w-96 bg-gray-900 backdrop-blur-md p-4 ml-2 sm:ml-0 relative z-10'>
       <div className='flex text-gray-400 gap-4 '>
         <div className='h-[50px] w-[50px] m-1 sm:h-[65px] sm:w-[65px] rounded-full overflow-hidden'>
@@ -43,9 +53,17 @@ const StudentCards = ({ user }) => {
             <button className='w-full sm:w-[40%] m-3  rounded-sm text-center shadow-lg hover:bg-red-500  text-white
              bg-red-800 py-1 text-2xl' onClick={handelBanUnban}>ban <i className="ri-fire-line"></i></button>
         }
-        <button className='w-full sm:w-[40%] m-3  rounded-sm text-center shadow-lg hover:bg-green-500 text-white bg-green-800  py-1 text-2xl' >progress <i className="ri-user-unfollow-line"></i></button>
+        <button className='w-full sm:w-[40%] m-3  rounded-sm text-center shadow-lg hover:bg-green-500 text-white bg-green-800  py-1 text-2xl' onClick={handalMypro} >progress <i className="ri-user-unfollow-line"></i></button>
       </div>
+  
+
     </div>
+
+    {
+      OpenProgress && <Myprogress user={user} setOpenProgress={setOpenProgress} />
+    }
+      
+    </>
   )
 }
 

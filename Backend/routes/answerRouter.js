@@ -12,7 +12,7 @@ import {verifyJwtUser} from "../middlewares/jwtVarify.js"
 answerRouter.post("/addassignment",upload.single("image"), postassignment);
 answerRouter.get("/getallanswers/:assignmentID", getallanswers);
 answerRouter.post("/postapprovalassignment/:assignmentid",postapprovalassignment);
-answerRouter.get("/getuseranswer/:userId/:assignmentId",getUserAssignment);
+answerRouter.get("/getuseranswer/:userId/:courseId",getUserAssignment);
 
 
 export { answerRouter }
