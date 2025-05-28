@@ -36,11 +36,32 @@ const Courses = () => {
           loadNotificationNumber()
         }, [])
   return (
-    <div>
+    <div className='bg-black'>
        <Navbar/>
-       <div className='text-gray-700 text-2xl mt-20 text-center'>
-          <span>We belive on <br/> <span className='text-green font-bold text-9xl hevy '>Skills</span> <br/> not on certificate.</span>
-       </div>
+       <div className="mt-24 px-6 sm:px-12 md:px-20 flex items-start gap-6">
+  {/* Glowing Left Bar */}
+  <div className="w-1 rounded-full bg-gradient-to-b from-emerald-400 via-teal-400 to-cyan-400 shadow-lg shadow-emerald-500/30 animate-pulse"></div>
+
+  {/* Content Section */}
+  <div className="space-y-5 max-w-3xl">
+    {/* Main Heading */}
+    <h2 className="text-white font-extrabold text-[44px] sm:text-[48px] leading-tight tracking-tight">
+      We believe in <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400">skills</span>,<br />
+      not just certificates.
+    </h2>
+
+    {/* Subheading */}
+    <p className="text-gray-400 text-base sm:text-lg font-medium leading-relaxed">
+      It’s not about what you’ve collected — it’s about what you’ve created.  
+      Master real-world skills that turn ideas into impact.
+    </p>
+
+    {/* Motivational Quote */}
+    <p className="text-gray-500 text-sm italic pt-2">
+      "Certificates show your path. Skills show your power."
+    </p>
+  </div>
+</div>
 
        { courses.length ==0  ? 
          <div className='flex flex-wrap justify-evenly items-center gap-4 mt-8 p-4 '>
