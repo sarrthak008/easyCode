@@ -36,7 +36,7 @@ const Courses = () => {
           loadNotificationNumber()
         }, [])
   return (
-    <div className='bg-black'>
+    <div className='min-h-screen bg-black'>
        <Navbar/>
        <div className="mt-24 px-6 sm:px-12 md:px-20 flex items-start gap-6">
   {/* Glowing Left Bar */}
