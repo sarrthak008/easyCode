@@ -78,8 +78,9 @@ export const Hero = () => {
       </div>
 
       <div className='min-h-screen w-screen bg-black '>
-      <h1>why easyCode ?</h1>
-        <div className='flex items-center flex-wrap justify-evenly gap-10 '>
+      <h1 className='text-6xl text-gray-300 pt-5 ml-5'>Why easyCode ?</h1>
+      <p className='mt-4 ml-5 text-gray-400'>At EasyCode, we make learning to code simple, interactive, and rewarding.<br></br> Whether you're a complete beginner or looking to sharpen your skills, our platform offers:</p>
+        <div className='flex items-center flex-wrap justify-evenly gap-10 mt-20'>
           <div className='h-[400px] w-[300px] m-4'>
             <SpotlightCard className="custom-spotlight-card h-full" spotlightColor="rgba(0, 229, 255, 0.2)">
                  <img src={AVTAR1} className='h-[130px]'/>
@@ -93,8 +94,8 @@ export const Hero = () => {
             <SpotlightCard className="custom-spotlight-card h-full" spotlightColor="#09c43b8d ">
                  <img src={AVTAR2} className='h-[120px]'/>
                  <h2 className='text-3xl text-white font-bold'>Affordable  <br></br>prise </h2>
-                 <p className='text-gray-400 text-sm mt-4'>build a strong students ,developers community in hole batch</p>
-                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>join <i className="ri-arrow-right-up-line"></i></button>
+                 <p className='text-gray-400 text-sm mt-4'>Quality coding education at a price that won’t break the bank.</p>
+                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>view prises <i className="ri-arrow-right-up-line"></i></button>
             </SpotlightCard>
           </div>
 
@@ -102,9 +103,8 @@ export const Hero = () => {
           <div className='h-[400px] w-[300px] m-4'>
             <SpotlightCard className="custom-spotlight-card h-full" spotlightColor="#67583c97">
                  <img src={AVTAR3} className='h-[130px]'/>
-                 <h2 className='text-3xl text-white font-bold'>Build communiyt </h2>
-                 <p className='text-gray-400 text-sm mt-4'>build a strong students ,developers community in hole batch</p>
-                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>join <i className="ri-arrow-right-up-line"></i></button>
+                 <h2 className='text-3xl text-white font-bold'>Learn Basics to advance  </h2>
+                 <p className='text-gray-400 text-sm mt-4'>Affordable coding courses that take you from zero to hero.</p>
             </SpotlightCard>
           </div>
         </div>

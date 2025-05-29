@@ -77,11 +77,11 @@ const postSignup = async (req, res) => {
 
             const info = await transporter.sendMail({
                 from: 'easycode2324@gmail.com',
-                to: `${email}`,
-                subject: `hello this message is regarding to signup please dont share your OTP`,
-                text: "hello student keep learning",
-                html: `<h2>your otp is : <h1><b> ${OTP} </b></h1></h2>`,
-            });
+                    to: `${email}`,
+                    subject: `hello this message is regarding to signup please dont share your OTP`,
+                    text: "hello student keep learning",
+                    html: `<h2>your otp is : <h1><b> ${OTP} </b></h1></h2>`,
+                });
 
             const newOtp = new otp({
                 userId: createduser._id,
