@@ -68,7 +68,7 @@ export const Hero = () => {
           <div className='overlay absolute top-0 left-0 h-full w-full'></div>
         </div>
 
-        <span className='glass blue-box-shadow absolute top-3 left-2 py-2 px-4 rounded-3xl text-white '>Hight Quality Lectures <i className="ri-video-on-ai-fill"></i></span>
+        <span className='glass blue-box-shadow absolute top-3 left-2 py-2 px-4 rounded-3xl text-white '>High Quality Lectures <i className="ri-video-on-ai-fill"></i></span>
 
         <span className='glass pink-box-shadow absolute top-16 right-10 py-2 px-4 rounded-3xl text-white '>24 x 7 Support <i className="ri-time-fill"></i></span>
 
