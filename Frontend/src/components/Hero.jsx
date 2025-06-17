@@ -44,7 +44,7 @@ export const Hero = () => {
           <p className='text-center text-sm sm:text-md  mt-4  sm:text-start text-gray-500 block '>Learn coding step-by-step with practical examples, interactive lessons, and support from a community that’s passionate about making programming easy and fun.</p>
 
           <div>
-            <button className=' gap-2 cursor-pointer mt-4 text-black flex items-center justify-center bg-gray-400 h-[40px] w-[200px] rounded-3xl'>view courses
+            <button className='mx-auto sm:mx-0 gap-2 cursor-pointer mt-4 text-black flex items-center justify-center bg-gray-400 h-[40px] w-[200px] rounded-3xl'>view courses
               <span className='animate-pulse inline-block h-[30px] w-[30px] rounded-full text-black flex items-center justify-center  glass'><i className="ri-arrow-right-up-line"></i></span>
             </button>
           </div>
