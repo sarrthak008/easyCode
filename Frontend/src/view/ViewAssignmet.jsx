@@ -141,7 +141,6 @@ const ViewAssignmet = () => {
       try {
          const responce = await axios.get(`${API_URL}/api/answer/getuseroneassignment/${currentUser()?._id}/${assignmentId}`);
          setuserAnswer(responce.data.data)
-
          if (responce.data?.data.length == 0) {
             setassignmentStatus('please submit your assignment')
          } else {
@@ -152,7 +151,6 @@ const ViewAssignmet = () => {
       }
    }
 
-   console.log(userAnswer)
 
    useEffect(() => {
       LoadAssignmentByID()
@@ -219,7 +217,7 @@ const ViewAssignmet = () => {
                                  <h5 className='text-white text-xl '>related information: </h5>
                                  <div className='flex items-center text-xl'><i className="ri-github-fill mt-1"></i>github url: <a href={userAnswer[0].github_URL} className='text-green-400 ml-3 line-clamp-1'>{userAnswer[0].github_URL}</a></div>
                                  <div className='flex items-center text-xl'><i className="ri-link mt-1"></i>host url: <a href={userAnswer[0].host_URL} className='text-green-400 ml-3 line-clamp-1'>{userAnswer[0].host_URL}</a></div>
-                                 <div className='flex items-center text-md'><i className="ri-pushpin-fill"></i>Assignment Id: {userAnswer[0].assignmentID}</div>
+                                 <div className='flex items-center text-md'><i className="ri-pushpin-fill"></i>Assignment Id: {userAnswer[0].assignmentID?._id}</div>
                                  <span className='mt-7 block'><i className="ri-alarm-warning-fill"></i> we <b>approved</b> your assignment please wait . </span>
                               </div>
 
