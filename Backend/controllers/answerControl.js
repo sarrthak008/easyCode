@@ -105,5 +105,23 @@ const getUserAssignment = async (req, res) => {
     }
 }
 
-export { postassignment, getallanswers ,postapprovalassignment,getUserAssignment}
+
+const getUserOneAssignment = async (req, res) => {
+ const {userId,assignmetId} = req.params;
+ if(!userId || ! assignmetId){
+ return responder(res,false,"Please provide all the required fields",null,400);
+ }
+ try {
+ const responce = await answer.find({userID:userId,assignmentID:assignmetId}).populate("assignmentID")
+ if(!responce){
+ return responder(res,false,"No answer found",null,404);
+ }else{
+ return responder(res,true,"student",responce,200);
+ }
+ }catch(err){
+ return responder(res,false,err.message,null,500);
+ }
+}
+
+export { postassignment, getallanswers ,postapprovalassignment,getUserAssignment,getUserOneAssignment}
 
