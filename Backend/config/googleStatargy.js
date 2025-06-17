@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 let googleStatargy = (passport) =>{
  
-    console.log(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_SECRECT)
+    // console.log(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_SECRECT)
 
     passport.use(
         new GoogleStrategy(
