@@ -8,6 +8,8 @@ import axios from 'axios';
 import NavProfile from './NavProfile';
 import NotificationPannel from './NotificationPannel';
 const API_URL = import.meta.env.VITE_SERVER_URI
+import INFO from '../utils/comman';
+
 
 const Navbar = () => {
 
@@ -61,6 +63,9 @@ const Navbar = () => {
           <div className='hidden  w-1/3 sm:flex justify-evenly items-center text-white text-[17px] font-semibold'>
             <Link to={'/'}><span className='cursor-pointer hover:text-green-400'>Home</span></Link>
             <Link to={'/course'}><span className='cursor-pointer hover:text-green-400'>Courses</span></Link>
+            <span className='cursor-pointer text-red-500 vibrate' onClick={()=>{window.open(INFO.NEW_LAUNCH_WEB_URL),"_blank"}}>MERN ✘ AI</span>
+
+
 
             {
               isLoggedIn ? <div className='cursor-pointer' onClick={() => autoNavigate()}>dashboard</div> :
@@ -96,6 +101,7 @@ const Navbar = () => {
           <div className='flex flex-col items-center mt-[40%] gap-7 h-full'>
             <Link to={'/'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Home</span></Link>
             <Link to={'/course'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Courses</span></Link>
+            <span className='cursor-pointer text-red-500 vibrate' onClick={()=>{window.open(INFO.NEW_LAUNCH_WEB_URL),"_blank"}}>MERN ✘ AI</span>
             {
 
               isLoggedIn ? <div onClick={() => autoNavigate()}><span className='text-white text-2xl cursor-pointer opacity-75 '>Dashboard</span></div> : <Link to={'/login'}><span className='text-white text-2xl cursor-pointer opacity-75 '>Login</span></Link>
