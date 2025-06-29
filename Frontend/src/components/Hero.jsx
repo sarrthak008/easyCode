@@ -7,11 +7,12 @@ import SpotlightCard from './ReactBit/SpotlightCard'
 import AVTAR1 from "../assets/avtar1.png"
 import AVTAR2 from "../assets/avtar2.png"
 import AVTAR3 from "../assets/avtar3.png"
+import { useNavigate } from 'react-router-dom'
 
 
 
 export const Hero = () => {
-
+const navigate = useNavigate()
   return (
 
     <div className=' w-screen  mt-16 relative'>
@@ -44,7 +45,7 @@ export const Hero = () => {
           <p className='text-center text-sm sm:text-md  mt-4  sm:text-start text-gray-500 block '>Learn coding step-by-step with practical examples, interactive lessons, and support from a community that’s passionate about making programming easy and fun.</p>
 
           <div>
-            <button className='mx-auto sm:mx-0 gap-2 cursor-pointer mt-4 text-black flex items-center justify-center bg-gray-400 h-[40px] w-[200px] rounded-3xl'>view courses
+            <button className='mx-auto sm:mx-0 gap-2 cursor-pointer mt-4 text-black flex items-center justify-center bg-gray-400 h-[40px] w-[200px] rounded-3xl' onClick={()=>{navigate('/course')}}>view courses
               <span className='animate-pulse inline-block h-[30px] w-[30px] rounded-full text-black flex items-center justify-center  glass'><i className="ri-arrow-right-up-line"></i></span>
             </button>
           </div>
@@ -86,7 +87,7 @@ export const Hero = () => {
                  <img src={AVTAR1} className='h-[130px]'/>
                  <h2 className='text-3xl text-white font-bold'>Build Community </h2>
                  <p className='text-gray-400 text-sm mt-4'>Build a vibrant and collaborative community that empowers the entire batch to grow and succeed together.</p>
-                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>Join Community <i className="ri-arrow-right-up-line"></i></button>
+                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl' onClick={()=>{window.open("https://chat.whatsapp.com/F9ANVb59OwdI0IezKk4oS4","_blank")}}>Join Community <i className="ri-arrow-right-up-line"></i></button>
             </SpotlightCard>
           </div>
 
@@ -95,7 +96,7 @@ export const Hero = () => {
                  <img src={AVTAR2} className='h-[120px]'/>
                  <h2 className='text-3xl text-white font-bold'>Affordable  <br></br>Price </h2>
                  <p className='text-gray-400 text-sm mt-4'>Quality coding education at a price that won’t break the bank.</p>
-                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>View Prises <i className="ri-arrow-right-up-line"></i></button>
+                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl' onClick={()=>{navigate('/course')}}>View Prises <i className="ri-arrow-right-up-line"></i></button>
             </SpotlightCard>
           </div>
 
@@ -105,7 +106,7 @@ export const Hero = () => {
                  <img src={AVTAR3} className='h-[130px]'/>
                  <h2 className='text-3xl text-white font-bold'>Learn Basics to Advance  </h2>
                  <p className='text-gray-400 text-sm mt-4'>Affordable coding courses that take you from zero to hero.</p>
-                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'>View Courses <i className="ri-arrow-right-up-line"></i></button>
+                 <button className='glass mt-4 px-6 text-xl text-white flex items-center justify-center rounded-xl'onClick={()=>{navigate('/course')}}>View Courses <i className="ri-arrow-right-up-line"></i></button>
             </SpotlightCard>
           </div>
         </div>
