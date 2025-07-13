@@ -46,7 +46,7 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
                 <span className='text-gray-400 text-sm text-center'>"code, create, conquer. Every bug is a lesson, every line is progress. Keep going!" 🚀💻</span>
               </div>
               :
-              <div className='h-[80%] mt-12 w-[80%] bg-gray-900 pt-32  opacity-85 flex items-center justify-center flex-col overflow-x-hidden overflow-y-scroll  hide-scroll-bar' onClick={(e) => e.stopPropagation()}>
+              <div className='h-[80%] mt-12 w-[80%] bg-gray-900   opacity-85 flex items-center justify-center flex-col overflow-x-hidden overflow-y-scroll  hide-scroll-bar' onClick={(e) => e.stopPropagation()}>
                 <>
                   {
                     assignment?.map((assignmetn_info, index) => (
