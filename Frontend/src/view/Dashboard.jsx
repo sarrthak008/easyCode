@@ -12,7 +12,7 @@ import Cookies from 'js-cookie';
 
 
 const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
-  console.log(courseinfo._id)
+  // console.log(courseinfo._id)
   const [assignment, setAssignment] = useState([])
 
   const LoadAssignment = async () => {
