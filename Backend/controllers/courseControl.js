@@ -8,7 +8,7 @@ import user from "../models/user.model.js"
 
 const getcourses = async (req, res) => {
     try {
-        const allcource = await course.find().select("-videos")
+        const allcource = await course.find().select("-videos -quizs")
         if (!allcource) {
             return responder(res, false, "No course found", 404)
         }

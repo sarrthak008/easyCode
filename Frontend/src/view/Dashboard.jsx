@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import axios from 'axios'
 import { closeSnackbar, useSnackbar } from 'notistack'
 import { Link } from 'react-router-dom'
-  const API_URL = import.meta.env.VITE_SERVER_URI
+const API_URL = import.meta.env.VITE_SERVER_URI
 import Shadow from "../components/Shadow"
 import SpeedDilarUser from '../components/SpeedDilarUser'
 import { useStore } from '../context/Store'
@@ -30,8 +30,8 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
   }, [])
 
 
-  const HandelAssignmentnOpen = (info) =>{
-     window.open(`https://www.easycode.support/view/${info._id}/${courseinfo._id}`,"_blank")
+  const HandelAssignmentnOpen = (info) => {
+    window.open(`https://www.easycode.support/view/${info._id}/${courseinfo._id}`, "_blank")
   }
 
   return (
@@ -46,16 +46,21 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
                 <span className='text-gray-400 text-sm text-center'>"code, create, conquer. Every bug is a lesson, every line is progress. Keep going!" 🚀💻</span>
               </div>
               :
-              <div className='h-[80%] mt-12 w-[80%] bg-gray-900   opacity-85 flex items-center justify-center flex-col overflow-x-hidden overflow-y-scroll  hide-scroll-bar' onClick={(e) => e.stopPropagation()}>
+
+              <div className='h-[80vh] w-[80vw] bg-gray-900 overflow-y-scroll rounded-md shadow-md hide-scroll-bar' onClick={(e) => e.stopPropagation()}>
+                <h2 className='text-gray-500 text-lg font-semibold mt-4 text-center'>
+                  📌 Note: To get the certificate, you must complete all assignments.
+                </h2>
+
                 <>
                   {
                     assignment?.map((assignmetn_info, index) => (
-                       <div key={index} className='min-h-[60px] w-[80%] bg-gray-600 my-6 mx-auto rounded-lg flex overflow-hidden cursor-pointer shadow-sm hover:scale-[1.01] shadow-green-500 ' 
-                       onClick={()=>HandelAssignmentnOpen(assignmetn_info)}
-                       >
+                      <div key={index} className='min-h-[60px] w-[80%] bg-gray-600 my-6 mx-auto rounded-lg flex overflow-hidden cursor-pointer shadow-sm hover:scale-[1.01] shadow-green-500 '
+                        onClick={() => HandelAssignmentnOpen(assignmetn_info)}
+                      >
                         <div className='hidden sm:flex sm:w-10 bg-red-200 flex items-center justify-center button-8 '
                         >
-                        <i className="ri-code-s-slash-line text-4xl"></i>
+                          <i className="ri-code-s-slash-line text-4xl"></i>
                         </div>
                         <div className='w-[90%] flex items-center justify-between px-2 py-3'>
                           <div className="text-xl text-gray-400 text-center font-medium">{assignmetn_info?.assignmetName}</div>
@@ -64,7 +69,7 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
                     ))
                   }
                 </>
-              </div>  
+              </div>
 
           }
         </>
@@ -240,14 +245,14 @@ const Dashboard = () => {
   const [videoComp, setVideoComp] = useState(false)
   const { loadNotificationNumber, deleteNotification } = useStore()
 
-  const LoadTokenFromURl =()=>{
-     const url = new URL(window.location.href)
-     const token = url.searchParams.get('token')
-     if(token){
-        Cookies.set('token', token, { expires: 7 });
-     }else{
-       console.warn("you are login from email or pass either something went wrong inform developers")
-     }
+  const LoadTokenFromURl = () => {
+    const url = new URL(window.location.href)
+    const token = url.searchParams.get('token')
+    if (token) {
+      Cookies.set('token', token, { expires: 7 });
+    } else {
+      console.warn("you are login from email or pass either something went wrong inform developers")
+    }
   }
 
 
