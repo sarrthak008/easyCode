@@ -42,7 +42,7 @@ const LoadAssignmentsComponent = ({ setAssignmetn, courseinfo }) => {
             assignment.length == 0 ?
               <div className='h-[80%] w-[80%] bg-gray-900 opacity-85 flex items-center justify-center flex-col' onClick={(e) => e.stopPropagation()}>
                 <img src={ARROWSVG} className='h-[100px]' />
-                <div className='text-2xl text-gray-300 mb-4'>we are add assignment for youhh...</div>
+                <div className='text-2xl text-gray-300 mb-4 text-center'>we are add assignment for youhh...</div>
                 <span className='text-gray-400 text-sm text-center'>"code, create, conquer. Every bug is a lesson, every line is progress. Keep going!" 🚀💻</span>
               </div>
               :
@@ -334,7 +334,7 @@ const Dashboard = () => {
         <SpeedDilarUser />
       </div>
 
-      {/* <BanComp /> */}
+      <BanComp />
     </>
   )
 }
