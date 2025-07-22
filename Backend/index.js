@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(urlencoded({ extended: true }));
 
 app.use(session({
-    secret: "easyCodeIsBest",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false, httpOnly: false, maxAge:30 * 24 * 60 * 60 * 1000 }
